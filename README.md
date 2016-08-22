@@ -226,10 +226,10 @@ would print [1, 2].
 
 The iterate function takes a function and a initial value and produces iterators that produces reapeated application. That is initial, function(initial), function(function(initial)) and so on.
 
-The infinite range function could be created as:
+The infinite rangeFrom function could be created as:
 
 ```java
-Iterable<Integer> range(int initial){
+Iterable<Integer> rangeFrom(int initial){
   return iterate(v->v+1, initial);
 }
 ```
@@ -237,10 +237,10 @@ Iterable<Integer> range(int initial){
 Since range would continue forever we can limit the iterators produced using take.
 
 ```java
-println(list(take(4, range(1))));
+println(list(take(4, rangeFrom(1))));
 ```
 
-would print [1,2,3,4]. range would not produce more than 4 numbers, as take won't pull more.
+would print [1,2,3,4]. rangeFrom would not produce more than 4 numbers, as take won't pull more.
 
 And there is more: 
 
@@ -278,13 +278,13 @@ Again, the iterators produced are lazy and the while functions can safely be com
 As seen above functional composition can be a little difficult to read. It executes backwards. With the thread function you can write nested composition in serial fasion, or backwards if you will.
 
 ```java
-println(list(take(4, range(1))));
+println(list(take(4, rangeFrom(1))));
 ```
 
 can instead be written
 
 ```java
-println(thread(range(1),
+println(thread(rangeFrom(1),
                r->take(4, r),
                s->list(s)));
 ```
@@ -294,7 +294,7 @@ The thread function takes the first value, and applies that to the first functio
 Method references cleans things up
 
 ```java
-println(thread(range(1),
+println(thread(rangeFrom(1),
                r->take(4, r),
                Iterables::list));
 ```
@@ -302,8 +302,8 @@ println(thread(range(1),
 When we have more than one argument, we can clean things up by resorting to partial application. Functions.java contains functions that improve functions. That is e.g. the partial application of converting a BiFunction to a Function by applying the first argument prior to executing the function.
 
 ```java
-println(thread(range(1),
-               partial(Iterables::take, 4),
+println(thread(rangeFrom(1),
+               function(Iterables::take, 4),
                Iterables::list));
 ```
 
