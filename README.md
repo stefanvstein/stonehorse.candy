@@ -12,7 +12,7 @@ You can either copy src to you project, or build with maven. It is not published
 
 Below are a few example usages of some functions to describe the basics. The functions are grouped in classes.
 
-Choices.java, [Maybe.java](#Maybe.java), [Iterables.java](#Iterables.java) [Threading.java and Functions.java](#Threading.java) & [Trampoline.java](#Trampoline.java)
+Choices.java, [Maybe.java](#maybejava), [Iterables.java](#iterablesjava) [Threading.java and Functions.java](#threadingjava-and-functionsjava) & [Trampoline.java](#trampolinejava)
 
 ### Choices.java
 
