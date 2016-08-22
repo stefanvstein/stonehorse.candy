@@ -62,6 +62,10 @@ public class Iterables {
 
     /**
      * A set with elements found in the next iterator of iterable. The iterable itself if it happen to be a Set
+     * * <p>Example:
+     * <pre>{@code
+     *
+     * }</pre>
      */
     public static <A> Set<A> set(Iterable<A> iterable) {
         if (isNull(iterable))
@@ -73,6 +77,10 @@ public class Iterables {
 
     /**
      * Combines elements of the first iterator into a single result by repeated application of a combining operation f where the initial result is accumulator
+     * * <p>Example:
+     * <pre>{@code
+     * reduce((a,v)->a+v, 0, Arrays.asList(1,2,3,4)) => 10
+     * }</pre>
      */
     public static <A, V, AP extends A> A reduce(BiFunction<AP, ? super V, AP> f, AP accumulator, Iterable<? extends V> elements) {
         if (isNull(elements) || isNull(f))
@@ -84,6 +92,10 @@ public class Iterables {
 
     /**
      * Iterable of lazy iterators filtering another Iterable using a predicate
+     * <p>Example:
+     * <pre>{@code
+     * list(filter( e -> 0==e%2, Arrays.asList(1, 2, 3, 4))) => [2, 4]
+     * }</pre>
      */
     public static <T> Iterable<T> filter(final Predicate<? super T> f, Iterable<T> data) {
         if (isNull(data) || isNull(f))
@@ -110,6 +122,10 @@ public class Iterables {
 
     /**
      * Iterable of lazy iterators applying a function to all element induced by a Iterable
+     * <p>Example:
+     * <pre>{@code
+     * list(map( e -> e+1, Arrays.asList(1, 2, 3, 4))) => [2, 3, 4, 5]
+     * }</pre>
      */
     public static <A, V> Iterable<V> map(final Function<? super A, V> f, final Iterable<A> data) {
         if (isNull(data) || isNull(f))
@@ -132,6 +148,10 @@ public class Iterables {
     }
     /**
      * Iterable of lazy iterators applying a combining function to every element induced by two Iterables, until one of the iterators are empty.
+     * <p>Example:
+     * <pre>{@code
+     * list(map( (a,b) -> a+b, Arrays.asList(1, 2, 3, 4), Arrays.asList(1, 2, 3))) => [2, 4, 6]
+     * }</pre>
      */
     public static <A, B, V> Iterable<V> map(BiFunction<? super A, ? super B, V> f, final Iterable<? extends A> i1, final Iterable<? extends B> i2) {
         if (isNull(i1) || isNull(i2) || isNull(f))
@@ -156,6 +176,10 @@ public class Iterables {
 
     /**
      * Iterable of lazy iterators producing intermediate values of the reduction of elements by f, starting with accumulator
+     * <p>Example:
+     * <pre>{@code
+     * list( reductions( (a,b) -> a+b, 0, Arrays.asList(1, 2, 3, 4))) => [1, 3, 6, 10]
+     * }</pre>
      */
     public static <A, V, VP extends V> Iterable<V> reductions(final BiFunction<? super V, ? super A, VP> f, final V accumulator, final Iterable<? extends A> elements) {
         if (isNull(elements) || isNull(f))
@@ -176,7 +200,10 @@ public class Iterables {
 
     /**
      * Iterable of lazy iterators but the num first elements of iterable
-     */
+     * <p>Example:
+     * <pre>{@code
+     * list( drop( 2, Arrays.asList(1, 2, 3, 4))) => [3, 4]
+     * }</pre>   */
     public static <T> Iterable<T> drop(int num, Iterable<T> iterable) {
         if (iterable == null)
             return null;
@@ -206,6 +233,10 @@ public class Iterables {
 
     /**
      * The first element of the next iterator of iterable or null
+     * <p>Example:
+     * <pre>{@code
+     * first(  Arrays.asList(1, 2, 3, 4)) => 1
+     * }</pre>
      */
     public static <T> T first(Iterable<T> iterable) {
         if (isNull(iterable))
@@ -218,6 +249,10 @@ public class Iterables {
 
     /**
      * The second element of the next iterator of iterable or null
+     * <p>Example:
+     * <pre>{@code
+     * second( Arrays.asList(1, 2, 3, 4)) => 2
+     * }</pre>
      */
     public static <T> T second(Iterable<T> iterable) {
         if (isNull(iterable))
@@ -227,6 +262,10 @@ public class Iterables {
 
     /**
      * The nth element of the next iterator of iterable or null
+     * <p>Example:
+     * <pre>{@code
+     * nth(2, Arrays.asList(1, 2, 3, 4)) => 3
+     * }</pre>
      */
 
     public static <T> T nth(int i, Iterable<T> iterable) {

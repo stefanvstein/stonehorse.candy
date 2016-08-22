@@ -234,7 +234,7 @@ Iterable<Integer> rangeFrom(int initial){
 }
 ```
 
-Since range would continue forever we can limit the iterators produced using take.
+Since rangeFrom would continue forever we can limit the iterators produced using take.
 
 ```java
 println(list(take(4, rangeFrom(1))));
