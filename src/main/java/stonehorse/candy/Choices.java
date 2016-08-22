@@ -37,6 +37,13 @@ public class Choices{
    * Evaluates each test t in order until true, in which case value of corresponding v is returned. 
    * When all values are false, or null, returns the value of last v. Evaluations short circuits on truth. 
    * There are overloads with arity on test cases.   
+   * <p>Example:
+   * <pre>{@code
+   * cond(() -> false, () -> "No",
+   *      () -> true, () -> "Yes",
+   *      () -> true, () -> "Already caught" ,
+   *      () -> "catch all")  => "Yes"
+   * }</pre>  
    */
   public static <T> T cond(
       Supplier<? extends T> v0){
@@ -48,6 +55,13 @@ public class Choices{
    * Evaluates each test t in order until true, in which case value of corresponding v is returned.
    * When all values are false, or null, returns the value of last v. Evaluations short circuits on truth. 
    * There are overloads with arity on test cases.   
+   * <p>Example:
+   * <pre>{@code
+   * cond(() -> false, () -> "No",
+   *      () -> true, () -> "Yes",
+   *      () -> true, () -> "Already caught" ,
+   *      () -> "catch all")  => "Yes"
+   * }</pre>  
    */
 
   public static <T> T cond(
@@ -60,6 +74,13 @@ public class Choices{
    * Evaluates each test t in order until true, in which case value of corresponding v is returned. 
    * When all values are false, or null, returns the value of last v. 
    * Evaluations short circuits on truth. There are overloads with arity on test cases.   
+   * <p>Example:
+   * <pre>{@code
+   * cond(() -> false, () -> "No",
+   *      () -> true, () -> "Yes",
+   *      () -> true, () -> "Already caught" ,
+   *      () -> "catch all")  => "Yes"
+   * }</pre>  
    */
   public static <T> T cond(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
@@ -82,6 +103,13 @@ public class Choices{
    * Evaluates each test t in order until true, in which case value of corresponding v is returned. 
    * When all values are false, or null, returns the value of last v. 
    * Evaluations short circuits on truth. There are overloads with arity on test cases.   
+   * <p>Example:
+   * <pre>{@code
+   * cond(() -> false, () -> "No",
+   *      () -> true, () -> "Yes",
+   *      () -> true, () -> "Already caught" ,
+   *      () -> "catch all")  => "Yes"
+   * }</pre>  
    */
   public static <T> T cond(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
@@ -106,6 +134,13 @@ public class Choices{
    * Evaluates each test t in order until true, in which case value of corresponding v is returned. 
    * When all values are false, or null, returns the value of last v. 
    * Evaluations short circuits on truth. There are overloads with arity on test cases.   
+   * <p>Example:
+   * <pre>{@code
+   * cond(() -> false, () -> "No",
+   *      () -> true, () -> "Yes",
+   *      () -> true, () -> "Already caught" ,
+   *      () -> "catch all")  => "Yes"
+   * }</pre>  
    */
   public static <T> T cond(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
@@ -132,6 +167,13 @@ public class Choices{
    * Evaluates each test t in order until true, in which case value of corresponding v is returned. 
    * When all values are false, or null, returns the value of last v. 
    * Evaluations short circuits on truth. There are overloads with arity on test cases.   
+   * <p>Example:
+   * <pre>{@code
+   * cond(() -> false, () -> "No",
+   *      () -> true, () -> "Yes",
+   *      () -> true, () -> "Already caught" ,
+   *      () -> "catch all")  => "Yes"
+   * }</pre>  
    */
   public static <T> T cond(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
@@ -160,6 +202,13 @@ public class Choices{
    * Evaluates each test t in order until true, in which case value of corresponding v is returned. 
    * When all values are false, or null, returns the value of last v. 
    * Evaluations short circuits on truth. There are overloads with arity on test cases.   
+   * <p>Example:
+   * <pre>{@code
+   * cond(() -> false, () -> "No",
+   *      () -> true, () -> "Yes",
+   *      () -> true, () -> "Already caught" ,
+   *      () -> "catch all")  => "Yes"
+   * }</pre>  
    */
   public static <T> T cond(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
@@ -190,6 +239,13 @@ public class Choices{
    * Evaluates each test t in order until true, in which case value of corresponding v is returned. 
    * When all values are false, or null, returns the value of last v. 
    * Evaluations short circuits on truth. There are overloads with arity on test cases.   
+   * <p>Example:
+   * <pre>{@code
+   * cond(() -> false, () -> "No",
+   *      () -> true, () -> "Yes",
+   *      () -> true, () -> "Already caught" ,
+   *      () -> "catch all")  => "Yes"
+   * }</pre>  
    */
   public static <T> T cond(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
@@ -222,6 +278,13 @@ public class Choices{
    * Evaluates each test t in order until true, in which case value of corresponding v is returned. 
    * When all values are false, or null, returns the value of last v. 
    * Evaluations short circuits on truth. There are overloads with arity on test cases.   
+   * <p>Example:
+   * <pre>{@code
+   * cond(() -> false, () -> "No",
+   *      () -> true, () -> "Yes",
+   *      () -> true, () -> "Already caught" ,
+   *      () -> "catch all")  => "Yes"
+   * }</pre>  
    */
   public static <T> T cond(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
@@ -256,6 +319,13 @@ public class Choices{
    * Evaluates each test t in order until true, in which case value of corresponding v is returned. 
    * When all values are false, or null, returns the value of last v. 
    * Evaluations short circuits on truth. There are overloads with arity on test cases.   
+   * <p>Example:
+   * <pre>{@code
+   * cond(() -> false, () -> "No",
+   *      () -> true, () -> "Yes",
+   *      () -> true, () -> "Already caught" ,
+   *      () -> "catch all")  => "Yes"
+   * }</pre>  
    */
   public static <T> T cond(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
@@ -292,6 +362,13 @@ public class Choices{
    * Evaluates each test t in order until true, in which case value of corresponding v is returned. 
    * When all values are false, or null, returns the value of last v. 
    * Evaluations short circuits on truth. There are overloads with arity on test cases.   
+   * <p>Example:
+   * <pre>{@code
+   * cond(() -> false, () -> "No",
+   *      () -> true, () -> "Yes",
+   *      () -> true, () -> "Already caught" ,
+   *      () -> "catch all")  => "Yes"
+   * }</pre>  
    */
   public static <T> T cond(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
@@ -339,6 +416,11 @@ public class Choices{
   /**
    * Evaluates then and returns its value unless test is false, in which case otherwise is evaluated and its value returned. 
    * Behaves like if-then-else but is a expression. That is ternary operator with prefix syntax. 
+   * <p>Example:
+   * <pre>{@code
+   * ifelse(true, () -> "Yes", () -> "No") => "Yes"
+   * ifelse(false, () -> "Yes", () -> "No") => "No"
+   * }</pre>  
    */
   public static <T> T ifelse(boolean test, Supplier<T> then,
                              Supplier<T> otherwise) {
@@ -349,6 +431,11 @@ public class Choices{
 
   /**
    * Then is evaluated and its value returned if test is true. Otherwise null is returned
+   * <p>Example:
+   * <pre>{@code
+   * when(true, () -> "Yes") => "Yes"
+   * when(false, () -> "Yes") => null
+   * }</pre>
    */
   public static <T> T when(boolean test, Supplier<T> then){
     return ifelse(test, then, ()->null);
@@ -356,6 +443,11 @@ public class Choices{
 
   /**
    * Evaluates then and returns its value unless test is true, in which case otherwise is evaluated and its value returned. 
+   <p>Example:
+   * <pre>{@code
+   * ifNot(true, () -> "Yes", () -> "No") => "No"
+   * ifNot(false, () -> "Yes", () -> "No") => "Yes"
+   * }</pre>
    */
   public static <T> T ifNot(boolean test, Supplier<T> then, Supplier<T> otherwise){
     return ifelse(test, otherwise, then);
@@ -363,6 +455,11 @@ public class Choices{
 
   /**
    * Then is evaluated and its value returned if test is false. Otherwise null is returned   
+   * <p>Example:
+   * <pre>{@code
+   * whenNot(true, () -> "Yes") => null
+   * whenNot(false, () -> "Yes") => "Yes"
+   * }</pre>
    */
   public static <T> T whenNot(boolean test, Supplier<T> then){
     return ifelse(test, ()->null, then);
@@ -370,6 +467,11 @@ public class Choices{
 
   /**
    * Returns evaluation of then, unless test happen to be true, in which case the evaluation of otherwise is returned
+   * <p>Example:
+   * <pre>{@code
+   * unless(() -> "Yes", true, () -> "No") => "Yes"
+   * unless(() -> "Yes", false, () -> "No") => "No"
+   * }</pre>
    */
   public static <T> T unless(Supplier<T> then, boolean test, Supplier<T> otherwise) {
     requireNonNull(then);
@@ -381,6 +483,11 @@ public class Choices{
 
   /**
    * t is delivered unless it is null, in which case the evaluation of then is returned
+   * <p>Example:
+   * <pre>{@code
+   * unlessNull("Yes", ()->"No") => "Yes"
+   * unlessNull(null, ()->"No") => "No"
+   * }</pre>
    */
   public static <T> T unlessNull( T t, Supplier<? extends T> then){
     requireNonNull(then);
@@ -391,6 +498,11 @@ public class Choices{
 
   /**
    * Return application of t to f, unless t is null, in which case evaluation of supplier s returns
+   * <p>Example:
+   * <pre>{@code
+   * mapOr("Yes", String::toUpperCase,()-> "No") => "YES"
+   * mapOr(((String)null), String::toUpperCase,()-> "No") => "No"
+   * }</pre>
    */
   public static <T, V> V mapOr(T t, Function<T, V> f, Supplier<V> s) {
     requireNonNull(f);
