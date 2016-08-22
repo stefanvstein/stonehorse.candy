@@ -1,0 +1,197 @@
+(ns generators.generate-supplier-logic
+  (require [generators.common :refer [increasing-args nline]]))
+
+(defn increasing-per-line [prefix postfix from to leading-spaces]
+  (apply str 
+         (map #(str (apply str (repeat leading-spaces " ")) prefix % postfix (nline))
+              (range from to))))
+
+(defn increasing-args-lines [prefix postfix from to leading-spaces seperator]
+  (apply str (interpose
+              (apply str seperator (nline) (repeat leading-spaces " "))
+              (map #(str prefix % postfix)
+                   (range from to)))))
+
+(defn generate-or [x]
+  (str
+            "  /**
+   * Are any suppliers returning true. There are overloads with different numbers of suppliers. The test will short circuit when there is a true value.
+   * @see #and(Supplier)
+   * @see #anyEquals(Object,Supplier)
+   * @see #allEquals(Object,Supplier)
+   */
+"
+
+   "  public static boolean or("     
+       (increasing-args-lines "Supplier<Boolean> b" "" 0  x 6 ",")
+       "){"
+       (nline)
+       (increasing-per-line "requireNonNull(b" ");" 0 x 4)
+       "    return "
+       (increasing-args-lines "whenOr(b" ".get(), identity(), ()->false)" 0 x 5 " ||")
+       ";"
+       (nline)
+       "  }"))
+
+(defn generate-and [x]
+  (str 
+         "  /**
+   * Are all suppliers returning true. There are overloads with different numbers of suppliers. The test will short circuit when there is a false value.
+   * @see #or(Supplier)
+   * @see #anyEquals(Object,Supplier)
+   * @see #allEquals(Object,Supplier)
+   */
+"
+         
+       "  public static boolean and("
+       (increasing-args-lines "Supplier<Boolean> b" "" 0 x 6 ",")
+       "){"
+       (nline)
+       (increasing-per-line "requireNonNull(b" ");" 0 x 4)
+       "    return "
+       (increasing-args-lines "whenOr(b" ".get(), identity(), ()->false)" 0 x 5 " &&")
+       ";"
+       (nline)
+       "  }"))
+
+(defn generate-anyEquals
+  
+  ([]
+   "  public static boolean anyEquals(Object o, Supplier<Object> s0){
+    requireNonNull(s0);
+    return Objects.equals(o, s0.get());
+  }
+
+  private static Supplier<RecursiveVal<Boolean>> anyEqualsRec(Object o, Supplier<Object> s0){
+    return ()->done(Objects.equals(o, s0.get()));
+  }")
+  ([n]
+   (str
+   "  /**
+   * Do the values of all suppliers equal o. Short circuits when not. There are overrides with different arity 
+   * @see #or(Supplier)
+   * @see #and(Supplier)
+   * @see #allEquals(Object,Supplier)
+   */
+"
+   (if (= 1 n)
+     (generate-anyEquals)
+     (str  "  public static boolean anyEquals(Object o,"
+           (nline)
+           "      "
+           (increasing-args-lines " Supplier<Object> s" "" 0 n 6 ",")
+           "){"
+           (nline)
+           (increasing-per-line "requireNonNull(s" ");" 0 n 4)
+           "    return trampoline(anyEqualsRec(o,"
+           (increasing-args "s" 0 n)
+           "));"
+           (nline)
+           "  }"
+           (nline 2)
+           "  private static Supplier<RecursiveVal<Boolean>> anyEqualsRec(Object o,"
+           (nline)
+           "      "
+           (increasing-args-lines " Supplier<Object> s" "" 0 n 6 ",")
+           "){"
+           (nline)
+           "    return ()->ifelse(Objects.equals(o, s0.get()),
+               ()->done(true),
+               ()->recur(anyEqualsRec(o,"
+           (increasing-args "s" 1 n)
+           ")));"
+           (nline)
+           "  }"
+           )))))
+
+(defn generate-allEquals
+  ([]
+   "  public static boolean allEquals(Object o, Supplier<Object> s0){
+    requireNonNull(s0);
+    return Objects.equals(o, s0.get());
+  }
+
+  private static Supplier<RecursiveVal<Boolean>> allEqualsRec(Object o, Supplier<Object> s0){
+    return ()->done(Objects.equals(o, s0.get()));
+  }")
+  ([n]
+   (str
+       "  /**
+   * Do the values of all suppliers equal o. Short circuits when not. There are overrides with different arity 
+   * @see #or(Supplier)
+   * @see #and(Supplier)
+   * @see #anyEquals(Object,Supplier)
+   */
+"
+   (if (= 1 n)
+     (generate-allEquals)
+     (str  "  public static boolean allEquals(Object o,"
+           (nline)
+           "      "
+           (increasing-args-lines " Supplier<Object> s" "" 0 n 6 ",")
+           "){"
+           (nline)
+           (increasing-per-line "requireNonNull(s" ");" 0 n 4)
+           "    return trampoline(allEqualsRec(o,"
+           (increasing-args "s" 0 n)
+           "));"
+           (nline)
+           "  }"
+           (nline 2)
+           "  private static Supplier<RecursiveVal<Boolean>> allEqualsRec(Object o,"
+           (nline)
+           "      "
+           (increasing-args-lines " Supplier<Object> s" "" 0 n 6 ",")
+           "){"
+           (nline)
+           "    return ()->ifelse(Objects.equals(o, s0.get()),
+               ()->recur(allEqualsRec(o,"
+           (increasing-args "s" 1 n)
+           ")),"
+           (nline)
+           "               ()->done(false));"
+           (nline)
+           "  }"
+           )))))
+
+(defn header [package]
+  (str "package " package ";
+
+import static " package ".Functions.identity;
+import static java.util.Objects.requireNonNull;
+import java.util.Objects;
+import java.util.function.Supplier;
+import static " package ".Choices.whenOr;
+import static " package ".Choices.ifelse;
+import " package ".Trampoline.RecursiveVal;
+import static " package ".Trampoline.done;
+import static " package ".Trampoline.recur;
+import static " package ".Trampoline.trampoline;
+/**
+ * Functions for basic logical operations on Suppliers. Functions do not chain automatically, as they are expected to receive lambda expressions. There are overload with different arity on Suppliers and they short circuit when the answer is found.
+ * @see #and(Supplier)
+ * @see #or(Supplier)
+ * @see #anyEquals(Object, Supplier)
+ * @see #allEquals(Object, Supplier)
+ * @see Functions
+ * @see NullableBooleans
+ */
+"))
+
+(defn generate [x package]
+  (println (str
+            (header package)
+            "public class SupplierLogic{
+  private SupplierLogic(){}"
+            (nline)
+            (apply str (map (fn [n]
+                              (str  (generate-and n)
+                                    (nline 2)
+                                    (generate-or n)
+                                    (nline 2)
+                                    (generate-anyEquals n)
+                                    (nline 2)
+                                    (generate-allEquals n)
+                                    (nline 2)))
+                            (range 1 x)))
+            "}")))
