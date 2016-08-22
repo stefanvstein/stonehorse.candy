@@ -46,6 +46,10 @@
                     <links>
                         <link>https://docs.oracle.com/javase/8/docs/api/</link>
                     </links>
+<notimestamp>true</notimestamp>
+          <reportOutputDirectory>${project.reporting.outputDirectory}/..</reportOutputDirectory>
+          <destDir>docs</destDir>
+
                 </configuration>
                 <executions>
                     <execution>
