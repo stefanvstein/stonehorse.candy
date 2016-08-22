@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.function.Function;
 
 import static stonehorse.candy.Functions.compose;
-import static stonehorse.candy.Functions.partial;
+import static stonehorse.candy.Functions.function;
 import static stonehorse.candy.Threading.thread;
 import static stonehorse.candy.Threading.threadMaybe;
 import static junit.framework.TestCase.assertEquals;
@@ -34,14 +34,14 @@ public class TestThreading {
         thread("Text",
                 Ex::len,
                 Ex::inc,
-                partial(Ex::plus, 4));
+                function(Ex::plus, 4));
 
         assertEquals(9, (Ex.plus(4, Ex.inc(Ex.len("Text")))));
         assertNull(threadMaybe(null, Ex::len));
         Function<String, Integer> f =
                 compose(Ex::len,
                         compose(Ex::inc,
-                                partial(Ex::plus, 4)));
+                                function(Ex::plus, 4)));
 
         assertEquals(Integer.valueOf(9), f.apply("Text"));
 

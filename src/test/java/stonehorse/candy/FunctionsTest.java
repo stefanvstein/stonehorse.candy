@@ -16,27 +16,19 @@ import static org.junit.Assert.assertTrue;
 public class FunctionsTest {
     @Test
     public void testPartial() {
-        assertEquals("lue", Functions.partial((BiFunction<String, Integer, String>) String::substring, "Value").apply(2));
+        assertEquals("lue", Functions.function((BiFunction<String, Integer, String>) String::substring, "Value").apply(2));
 
         try {
             BiFunction<String, String, String> nil = null;
-            Functions.partial(nil, "Value");
+            Functions.function(nil, "Value");
             fail();
         } catch (NullPointerException e) {
         }
 
-        assertEquals("VALUE", Functions.partial((Function<String, String>) String::toUpperCase, "value").get());
+        assertEquals("VALUE", Functions.supplier((Function<String, String>) String::toUpperCase, "value").get());
         try {
             Function<String, String> nil = null;
-            Functions.partial(nil, "Value");
-            fail();
-        } catch (NullPointerException e) {
-        }
-
-        assertEquals(Boolean.TRUE, Functions.partialP((String s) -> s.endsWith("e"), "value").get());
-        try {
-            Predicate<String> nil = null;
-            Functions.partialP(nil, "Value");
+            Functions.supplier(nil, "Value");
             fail();
         } catch (NullPointerException e) {
         }
@@ -45,15 +37,7 @@ public class FunctionsTest {
 
     @Test
     public void testComplement() {
-        assertFalse(Functions.complementF(v -> true).apply("Value"));
-        assertTrue(Functions.complementF(v -> false).apply("Value"));
-        assertTrue(Functions.complementF(v -> null).apply("Value"));
-        try {
-            Function<String, Boolean> nil = null;
-            Functions.complementF(nil).apply("Value");
-            fail();
-        } catch (NullPointerException e) {
-        }
+
         assertFalse(Functions.complement(v -> true).apply("Value"));
         assertTrue(Functions.complement(v -> false).apply("Value"));
         try {

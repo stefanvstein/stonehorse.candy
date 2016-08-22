@@ -12,21 +12,21 @@ public class Functions {
 	private Functions(){}
 	/**
 	 * produces a supplier by applying the argument to a functions, without calling the function. The function is called when the supplier is evaluated.
+	 * <p>Example:
+	 * <pre>{@code
+	 * }</pre>
 	 */
-	public static <T, V> Supplier<V> partial(final Function<? super T, ? extends V> f, final T t) {
+	public static <T, V> Supplier<V> supplier(final Function<? super T, ? extends V> f, final T t) {
 		Objects.requireNonNull(f);
 		return () -> f.apply(t);
 	}
-	public static <T> Supplier<Boolean> partialP(final Predicate<? super T> f, final T t) {
-	Objects.requireNonNull(f);
-		return () -> f.test(t);
-	}
+
 
 	/**
 	 * Produces a Function of a BiFunction by supplying the first argument
 	 */
-	public static <T, U, V> Function<U, V> partial(final java.util.function.BiFunction<? super T, ? super U, ? extends V> f,
-												   final T t) {
+	public static <T, U, V> Function<U, V> function(final java.util.function.BiFunction<? super T, ? super U, ? extends V> f,
+													final T t) {
 		Objects.requireNonNull(f);
 		return a -> f.apply(t, a);
 	}
@@ -34,12 +34,6 @@ public class Functions {
 	/**
 	 * Returns a function that return false if supplied returns true, and true is supplied returns false
 	 */
-
-	public static <T> Function<T, Boolean> complementF(
-			final Function<? super T, Boolean> f) {
-		Objects.requireNonNull(f);
-		return a -> NullableBooleans.not(f.apply(a));
-	}
 
 
 
