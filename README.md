@@ -14,6 +14,8 @@ Below are a few example usages of some functions to describe the basics. The fun
 
 Choices.java, [Maybe.java](#maybejava), [Iterables.java](#iterablesjava) [Threading.java and Functions.java](#threadingjava-and-functionsjava) & [Trampoline.java](#trampolinejava)
 
+[JavaDoc](https://stefanvstein.github.io/stonehorse.candy/index.html)
+
 ### Choices.java
 
 Choices is a number of expression replacements for the if-statement. It is used to reduce the control flow graph and to make code easier to read by naming different types of conditional expressions
