@@ -9,7 +9,7 @@ It is very early, and interface may still change
 Currently running github as maven repo. Add the following to your pom
 
 Add a the repository
-<pre>
+```xml
 <repositories>
     <repository>
         <id>stefanvstein-snapshots</id>
@@ -20,10 +20,10 @@ Add a the repository
         </snapshots>
     </repository>
 </repositories>
-</pre>
+```
 
 and dependency:
-<pre>
+```xml
 <dependencies>
   <dependency>
     <groupId>stonehorse</groupId>
@@ -31,7 +31,7 @@ and dependency:
     <version>0.1-SNAPSHOT</version>
   </dependency>
 </dependencies>
-</pre>
+```
 to your pom
 
 ## Usage
