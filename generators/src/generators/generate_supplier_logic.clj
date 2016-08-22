@@ -28,7 +28,7 @@
        (nline)
        (increasing-per-line "requireNonNull(b" ");" 0 x 4)
        "    return "
-       (increasing-args-lines "whenOr(b" ".get(), identity(), ()->false)" 0 x 5 " ||")
+       (increasing-args-lines "mapOr(b" ".get(), identity(), ()->false)" 0 x 5 " ||")
        ";"
        (nline)
        "  }"))
@@ -49,7 +49,7 @@
        (nline)
        (increasing-per-line "requireNonNull(b" ");" 0 x 4)
        "    return "
-       (increasing-args-lines "whenOr(b" ".get(), identity(), ()->false)" 0 x 5 " &&")
+       (increasing-args-lines "mapOr(b" ".get(), identity(), ()->false)" 0 x 5 " &&")
        ";"
        (nline)
        "  }"))
@@ -161,7 +161,7 @@ import static " package ".Functions.identity;
 import static java.util.Objects.requireNonNull;
 import java.util.Objects;
 import java.util.function.Supplier;
-import static " package ".Choices.whenOr;
+import static " package ".Choices.mapOr;
 import static " package ".Choices.ifelse;
 import " package ".Trampoline.RecursiveVal;
 import static " package ".Trampoline.done;

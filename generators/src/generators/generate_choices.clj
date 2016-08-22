@@ -78,7 +78,7 @@ import static " package ".NullableBooleans.truth;
  * {@link #whenNot(boolean, Supplier)} is if-else without then. Delivers null on then<br>
  * {@link #unless(Supplier, boolean, Supplier)} is then-if-else as expression<br>
  * {@link #unlessNull(Object, Supplier)} Supplier value instead if T happen to be null. T if it is an object<br>
- * {@link #whenOr(Object, Function, Supplier)} return application of T to Function, unless null when Supplier value returns<br>
+ * {@link #mapOr(Object, Function, Supplier)} return application of T to Function, unless null when Supplier value returns<br>
  * <br>
  * {@link #doIfElse(boolean, Runnable, Runnable)} ifelse for side effects<br>
  *{@link #doWhen(boolean, Runnable)} when for side effects<br>
@@ -112,7 +112,7 @@ public class Choices{
       Supplier<Boolean> t0, Supplier<? extends T> v0,
       Supplier<? extends T> v1){
   requireAllNonNull(t0,v0,v1);
-  return ifelse(truth(t0.get()),()->v0.get(),()->v1.get());
+  return ifelse(truth(t0.get()), v0::get, v1::get);
   }"))
 
 
@@ -189,7 +189,7 @@ public class Choices{
   /**
    * Return application of t to f, unless t is null, in which case evaluation of supplier s returns
    */
-  public static <T, V> V whenOr(T t, Function<T, V> f, Supplier<V> s) {
+  public static <T, V> V mapOr(T t, Function<T, V> f, Supplier<V> s) {
     requireNonNull(f);
     requireNonNull(s);
     if (nonNull(t))
@@ -232,7 +232,7 @@ public class Choices{
   }
 
   /**
-   * Throws nullpointer exception if any is null
+   * Throws null pointer exception if any is null
    */
   public static <T> void requireAllNonNull(Object... nonNulls) {
         for (Object o: nonNulls) {

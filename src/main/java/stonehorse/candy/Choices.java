@@ -20,7 +20,6 @@ import static stonehorse.candy.NullableBooleans.truth;
  * {@link #whenNot(boolean, Supplier)} is if-else without then. Delivers null on then<br>
  * {@link #unless(Supplier, boolean, Supplier)} is then-if-else as expression<br>
  * {@link #unlessNull(Object, Supplier)} Supplier value instead if T happen to be null. T if it is an object<br>
- *
  * {@link #mapOr(Object, Function, Supplier)} return application of T to Function, unless null when Supplier value returns<br>
  * <br>
  * {@link #doIfElse(boolean, Runnable, Runnable)} ifelse for side effects<br>
@@ -28,9 +27,6 @@ import static stonehorse.candy.NullableBooleans.truth;
  * {@link #doWhenNot(boolean, Runnable)} whenNot for side effects<br>
  * <br>
  * {@link #requireAllNonNull(Object...)} throws NPE if any is null <br>
- *
- *  @author Stefan von Stein
- *  
  */
 //This class is generated
 
