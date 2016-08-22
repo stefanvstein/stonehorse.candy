@@ -17,6 +17,16 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+<distributionManagement>
+    <repository>
+        <id>repo</id>
+        <url>https://github.com/stefanvstein/mvn/raw/master/releases</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshot-repo</id>
+        <url>https://github.com/stefanvstein/mvn/raw/master/snapshots</url>
+    </snapshotRepository>
+</distributionManagement>
     <build>
         <plugins>
             <plugin>

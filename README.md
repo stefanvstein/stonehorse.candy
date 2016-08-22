@@ -6,7 +6,33 @@ It is very early, and interface may still change
 
 ## Installation
 
-You can either copy src to you project, or build with maven. It is not published to any public repo yet.
+Currently running github as maven repo. Add the following to your pom
+
+Add a the repository
+<pre>
+<repositories>
+    <repository>
+        <id>stefanvstein-snapshots</id>
+        <url>https://github.com/stefanvstein/mvn/raw/master/snapshots</url>
+        <snapshots>
+           <enabled>true</enabled>
+           <updatePolicy>daily</updatePolicy>
+        </snapshots>
+    </repository>
+</repositories>
+</pre>
+
+and dependency:
+<pre>
+<dependencies>
+  <dependency>
+    <groupId>stonehorse</groupId>
+    <artifactId>candy</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </dependency>
+</dependencies>
+</pre>
+to your pom
 
 ## Usage
 
