@@ -3,7 +3,9 @@ package stonehorse.candy;
 import java.util.Objects;
 import java.util.function.Function;
 
-
+/**
+ * The identity
+ */
 public class Identity<T> {
     final private T t;
     private Identity(T t){

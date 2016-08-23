@@ -278,6 +278,10 @@ public class Iterables {
 
     /**
      * Iterable of lazy iterators having num first values of iterable
+     * <p>Example:
+     * <pre>{@code
+     * list( take(2, Arrays.asList(1, 2, 3, 4))) => [1, 2]
+     * }</pre>
      */
 
     public static <T> Iterable<T> take(final int num, final Iterable<T> iterable) {
@@ -302,6 +306,10 @@ public class Iterables {
 
     /**
      * Iterable of lazy iterators having the first elements matching predicate
+     * <p>Example:
+     * <pre>{@code
+     * list( takeWhile(x -> x<3, Arrays.asList(1, 2, 3, 4))) => [1, 2]
+     * }</pre>
      */
     public static <T> Iterable<T> takeWhile(Predicate<? super T> pred, Iterable<T> iterable) {
         return () -> {
@@ -324,6 +332,10 @@ public class Iterables {
 
     /**
      * The last element of the next iterator of iterable or null
+     * <p>Example:
+     * <pre>{@code
+     * last(  Arrays.asList(1, 2, 3, 4)) => 4
+     * }</pre>
      */
 
     public static <T> T last(Iterable<T> i) {
@@ -332,6 +344,10 @@ public class Iterables {
 
     /**
      * Iterable of lazy iterators with every nth element of iterables iterator
+     * <p>Example:
+     * <pre>{@code
+     * list( takeNth(2, Arrays.asList(1, 2, 3, 4))) => [1, 3]
+     * }</pre>
      */
     public static <T> Iterable<T> takeNth(int nth, Iterable< T> iterable) {
         if (isNull( iterable))
@@ -344,15 +360,18 @@ public class Iterables {
             if (not(iterator.hasNext()))
                 return stop();
             T v = iterator.next();
-            int inced=cnt + 1;
-            if (inced % nth == 0)
-                return seq(takeNthI(iterator, nth, inced), v);
-            return recur(takeNthI(iterator, nth, inced));
+            if (cnt == 0)
+                return seq(takeNthI(iterator, nth, nth-1), v);
+            return recur(takeNthI(iterator, nth, cnt-1));
         };
     }
 
     /**
      * Iterable of lazy iterators which concatenate the result of applying map to every element in iterators of data.
+     * <p>Example:
+     * <pre>{@code
+     * list( flatMap((v) -> asList(v, v), asList(1, 2))) => [1, 1, 2, 2]
+     * }</pre>
      */
     public static <V, A> Iterable<A> flatMap(Function<? super V, Iterable< A>> f, Iterable<? extends V> data) {
         if (isNull(data) || isNull(f))
@@ -379,6 +398,11 @@ public class Iterables {
 
     /**
      * Iterable of lazy iterators emitting all elements but first from iterable or null if empty
+     * <p>Example:
+     * <pre>{@code
+     * list( next( asList(1, 2, 3))) => [2, 2]
+     * list( next( asList(1))) => null
+     * }</pre>
      */
     public static <T> Iterable<T> next(Iterable<T> iterable) {
         if(iterable==null)
@@ -404,6 +428,11 @@ public class Iterables {
 
     /**
      * Iterable of lazy iterators emitting all elements but first from iterable
+     * <p>Example:
+     * <pre>{@code
+     * list( rest( asList(1, 2, 3))) => [2, 2]
+     * list( rest( asList(1))) => []
+     * }</pre>
      */
     public static <T> Iterable<T> rest(Iterable<T> iterable) {
         if(iterable==null)
@@ -421,6 +450,10 @@ public class Iterables {
     }
     /**
      * Iterable of lazy iterators emitting all elements except last num elements
+     * <p>Example:
+     * <pre>{@code
+     * list( dropLast( 2, asList(1, 2, 3))) => [1]
+     * }</pre>
      */
 
     public static <T> Iterable<T> dropLast(int num, Iterable<T> iterable) {
@@ -437,6 +470,10 @@ public class Iterables {
 
     /**
      * Iterable of lazy iterators emitting all elements but except the first matching predicate
+     * <p>Example:
+     * <pre>{@code
+     * list( dropWhile( e -> e<3, asList(1, 2, 3))) => [3]
+     * }</pre>
      */
 
     public static <T> Iterable<T> dropWhile(Predicate<? super T> predicate, Iterable<T> iterable) {
@@ -460,6 +497,10 @@ public class Iterables {
 
     /**
      * Iterable of lazy iterators partitioning elements into num long iterables
+     * <p>Example:
+     * <pre>{@code
+     * list(map( Iterables::list,  list( partition( 3, asList(1, 2, 3, 4, 5, 6, 7))))) => [[1, 2, 3], [4, 5, 6]]
+     * }</pre>
      */
     public static <T> Iterable<Iterable<T>> partition(int num, Iterable<T> iterable) {
         if (num < 1)
@@ -489,6 +530,10 @@ public class Iterables {
 
     /**
      * Iterable of lazy iterators partitioning elements by application to function
+     * * <p>Example:
+     * <pre>{@code
+     * list( map( Iterables::list,  partitionBy( v -> v%2, asList(1, 3, 4, 5, 7, 6)))) => [[1, 3], [4], [5, 7], [6]]
+     * }</pre>
      */
     public static <T> Iterable<Iterable<T>> partitionBy(Function<? super T, Object> function, Iterable<T> iterable) {
         if (function == null)
@@ -526,25 +571,37 @@ public class Iterables {
 
     /**
      * Tuple of Iterables of lazy iterators by spliting iterables iterators at i
+     * * <p>Example:
+     * <pre>{@code
+     *  list(map( Iterables::list, splitAt( 3, asList(1, 2, 3, 4, 5, 6, 7))))) => [[1, 2, 3], [4, 5, 6, 7]]
+     * }</pre>
      */
-    public static <T> T2<Iterable<T>, Iterable<T>> splitAt(int i, Iterable< T> iterable){
+    public static <T> Iterable<Iterable<T>> splitAt(int i, Iterable< T> iterable){
         if(iterable==null || i<0)
             return null;
-        return Tuples.of(take(i, iterable), drop(i, iterable));
+        return asList(take(i, iterable), drop(i, iterable));
 
     }
 
     /**
      * Tuple of Iterables of lazy iterators by spliting iterables iterators by predicate
+     * * <p>Example:
+     * <pre>{@code
+     *  list(map( Iterables::list, splitWith(v->v%2==0, asList(4,2,3,4)))) => [[4, 2], [3, 4]]
+     * }</pre>
      */
-    public static <T> T2<Iterable<T>, Iterable<T>> splitWith(Predicate<T> p, Iterable< T> iterable){
+    public static <T> Iterable<Iterable<T>> splitWith(Predicate<T> p, Iterable< T> iterable){
         if(iterable==null || p==null)
             return null;
-        return Tuples.of(takeWhile(p, iterable), dropWhile(p, iterable));
+        return asList(takeWhile(p, iterable), dropWhile(p, iterable));
     }
 
     /**
      * Iterable of lazy iterators concatenating iterators from a and b
+     * * <p>Example:
+     * <pre>{@code
+     *  list(concat( asList(1,2), asList(3,4))) => [1, 2, 3, 4]
+     * }</pre>
      */
     public static <T> Iterable<T> concat(Iterable< T> a, Iterable< T> b) {
         if (null == a && null == b)
@@ -577,6 +634,10 @@ public class Iterables {
     }
     /**
      * Iterable of lazy iterators appending b to each iterator of iterable
+     * * <p>Example:
+     * <pre>{@code
+     *  list( withLast( asList(1,2), 3 )) => [1, 2, 3]
+     * }</pre>
      */
     public static <T> Iterable<T> withLast(Iterable<T> iterable, T b){
         if(iterable==null)
@@ -600,6 +661,10 @@ public class Iterables {
 
     /**
      * Iterable of lazy iterators prepending t to each iterator of iterable
+     * <p>Example:
+     * <pre>{@code
+     *  list( with( 1, asList(2,3))) => [1, 2, 3]
+     * }</pre>
      */
     public static <T> Iterable<T> with(T t, Iterable<? extends T> iterable) {
         return () -> {
@@ -619,19 +684,23 @@ public class Iterables {
 
     /**
      * Iterable of lazy infinite iterators iterating over function with initial value. That is initial, function(initial), function(function(initial)) and so on
+     * <p>Example:
+     * <pre>{@code
+     *  list(take(4, iterate(v -> v + 1, 5))) => [5, 6, 7, 8]
+     * }</pre>
      */
     public static <T> Iterable<T> iterate(Function<? super T, ? extends T> function, T initial) {
         return () -> {
             if (isNull(function))
                 return asList(initial).iterator();
-            return lazy(iterateI(function, initial)).iterator();
+            return with(initial, lazy(iterateI(function, initial))).iterator();
         };
     }
 
     private static <T> Supplier<RecursiveVal<T>> iterateI(Function<? super T, ? extends T> function, T val) {
         return () -> {
             T n = function.apply(val);
-            return seq(iterateI(function,n), val);
+            return seq(iterateI(function,n), n);
         };
     }
 
@@ -653,6 +722,10 @@ public class Iterables {
 
     /**
      * Iterable of lazy infinite iterators with invokes of supplier
+     * <p>Example:
+     * <pre>{@code
+     *  list(take(3, repeatedly(() -> 4))) => [4, 4, 4]
+     * }</pre>
      */
     public static <T> Iterable<T> repeatedly(Supplier<T> supplier) {
         if (isNull(supplier))
@@ -665,6 +738,10 @@ public class Iterables {
     }
     /**
      * Iterable of lazy infinite iterators of x
+     * <p>Example:
+     * <pre>{@code
+     *  list(take(3, repeat( 4))) => [4, 4, 4]
+     * }</pre>
      */
     public static <T> Iterable<T> repeat(T x){
         return ()->lazy(repeatI(x, null)).iterator();
@@ -690,6 +767,10 @@ public class Iterables {
 
     /**
      * Iterable of lazy iterators iterating from 0 to Integer.MAX_VALUE
+     * <p>Example:
+     * <pre>{@code
+     *  list(take(3, range())) => [0, 1, 2]
+     * }</pre>
      */
     public static Iterable<Integer> range(){
         return ()->lazy(rangeI(Integer.MAX_VALUE,1, 0)).iterator();
@@ -697,6 +778,10 @@ public class Iterables {
 
     /**
      * Iterable of lazy iterators iterating from 0 to n
+     * <p>Example:
+     * <pre>{@code
+     *  list(range(3)) => [0, 1, 2]
+     * }</pre>
      */
     public static Iterable<Integer> range(int n){
         if(n<0) return emptyList();
@@ -704,6 +789,10 @@ public class Iterables {
     }
     /**
      * Iterable of lazy iterators iterating from from to to
+     * <p>Example:
+     * <pre>{@code
+     *  list(range(1,3)) => [1, 2]
+     * }</pre>
      */
     public static Iterable<Integer> range(int from, int to){
         if(from==to) return emptyList();
@@ -714,6 +803,10 @@ public class Iterables {
     }
     /**
      * Iterable of lazy iterators iterating from from to to in steps of step
+     * <p>Example:
+     * <pre>{@code
+     *  list(range(1,5,3)) => [1, 4]
+     * }</pre>
      */
     public static Iterable<Integer> range(int from, int to, int step){
         return ()->lazy(rangeI(to,step, from)).iterator();
@@ -731,6 +824,10 @@ public class Iterables {
 
     /**
      * Iterable of lazy infinite iterators elements of in. A new iterator is created for each lap.
+     * <p>Example:
+     * <pre>{@code
+     *  list(take(5, cycle(asList(1,2,3)))) => [1, 2, 3, 1, 2]
+     * }</pre>
      */
     public static <T> Iterable<T> cycle(Iterable< T> in){
         if(!ofNullable(in)

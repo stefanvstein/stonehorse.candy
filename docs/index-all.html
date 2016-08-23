@@ -289,7 +289,8 @@
 </dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Iterables.html#concat-java.lang.Iterable-java.lang.Iterable-">concat(Iterable&lt;T&gt;, Iterable&lt;T&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Iterables.html" title="class in stonehorse.candy">Iterables</a></dt>
 <dd>
-<div class="block">Iterable of lazy iterators concatenating iterators from a and b</div>
+<div class="block">Iterable of lazy iterators concatenating iterators from a and b
+ *</div>
 </dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Choices.html#cond-java.util.function.Supplier-">cond(Supplier&lt;? extends T&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Choices.html" title="class in stonehorse.candy">Choices</a></dt>
 <dd>
@@ -432,7 +433,9 @@
 <div class="block">Produces a Function of a BiFunction by supplying the first argument</div>
 </dd>
 <dt><a href="stonehorse/candy/Functions.html" title="class in stonehorse.candy"><span class="typeNameLink">Functions</span></a> - Class in <a href="stonehorse/candy/package-summary.html">stonehorse.candy</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Functions for basic functional composition</div>
+</dd>
 </dl>
 <a name="I:G">
 <!--   -->
@@ -468,7 +471,9 @@
 <div class="block">returns the identity function, which returns the argument applied</div>
 </dd>
 <dt><a href="stonehorse/candy/Identity.html" title="class in stonehorse.candy"><span class="typeNameLink">Identity</span></a>&lt;<a href="stonehorse/candy/Identity.html" title="type parameter in Identity">T</a>&gt; - Class in <a href="stonehorse/candy/package-summary.html">stonehorse.candy</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">The identity</div>
+</dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Identity.html#identity-T-">identity(T)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Identity.html" title="class in stonehorse.candy">Identity</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Choices.html#ifelse-boolean-java.util.function.Supplier-java.util.function.Supplier-">ifelse(boolean, Supplier&lt;T&gt;, Supplier&lt;T&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Choices.html" title="class in stonehorse.candy">Choices</a></dt>
@@ -572,7 +577,9 @@
 <div class="block">The nth element of the next iterator of iterable or null</div>
 </dd>
 <dt><a href="stonehorse/candy/NullableBooleans.html" title="class in stonehorse.candy"><span class="typeNameLink">NullableBooleans</span></a> - Class in <a href="stonehorse/candy/package-summary.html">stonehorse.candy</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Boolean operations on Boolean where null is false</div>
+</dd>
 </dl>
 <a name="I:O">
 <!--   -->
@@ -643,7 +650,8 @@
 </dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Iterables.html#partitionBy-java.util.function.Function-java.lang.Iterable-">partitionBy(Function&lt;? super T, Object&gt;, Iterable&lt;T&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Iterables.html" title="class in stonehorse.candy">Iterables</a></dt>
 <dd>
-<div class="block">Iterable of lazy iterators partitioning elements by application to function</div>
+<div class="block">Iterable of lazy iterators partitioning elements by application to function
+ *</div>
 </dd>
 </dl>
 <a name="I:R">
@@ -738,11 +746,13 @@
 </dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Iterables.html#splitAt-int-java.lang.Iterable-">splitAt(int, Iterable&lt;T&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Iterables.html" title="class in stonehorse.candy">Iterables</a></dt>
 <dd>
-<div class="block">Tuple of Iterables of lazy iterators by spliting iterables iterators at i</div>
+<div class="block">Tuple of Iterables of lazy iterators by spliting iterables iterators at i
+ *</div>
 </dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Iterables.html#splitWith-java.util.function.Predicate-java.lang.Iterable-">splitWith(Predicate&lt;T&gt;, Iterable&lt;T&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Iterables.html" title="class in stonehorse.candy">Iterables</a></dt>
 <dd>
-<div class="block">Tuple of Iterables of lazy iterators by spliting iterables iterators by predicate</div>
+<div class="block">Tuple of Iterables of lazy iterators by spliting iterables iterators by predicate
+ *</div>
 </dd>
 <dt><a href="stonehorse/candy/package-summary.html">stonehorse.candy</a> - package stonehorse.candy</dt>
 <dd>&nbsp;</dd>
@@ -885,17 +895,25 @@
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Identity.html#toString--">toString()</a></span> - Method in class stonehorse.candy.<a href="stonehorse/candy/Identity.html" title="class in stonehorse.candy">Identity</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="stonehorse/candy/Trampoline.html" title="class in stonehorse.candy"><span class="typeNameLink">Trampoline</span></a> - Class in <a href="stonehorse/candy/package-summary.html">stonehorse.candy</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Functions for tail call</div>
+</dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Trampoline.html#trampoline-java.util.function.Supplier-">trampoline(Supplier&lt;Trampoline.RecursiveVal&lt;V&gt;&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Trampoline.html" title="class in stonehorse.candy">Trampoline</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Will recur on fun until done(value)</div>
+</dd>
 <dt><a href="stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy"><span class="typeNameLink">Trampoline.RecursiveVal</span></a>&lt;<a href="stonehorse/candy/Trampoline.RecursiveVal.html" title="type parameter in Trampoline.RecursiveVal">V</a>&gt; - Class in <a href="stonehorse/candy/package-summary.html">stonehorse.candy</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Tail call return value</div>
+</dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/NullableBooleans.html#truth-java.lang.Boolean-">truth(Boolean)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/NullableBooleans.html" title="class in stonehorse.candy">NullableBooleans</a></dt>
 <dd>
 <div class="block">true if TRUE</div>
 </dd>
 <dt><a href="stonehorse/candy/Tuples.html" title="class in stonehorse.candy"><span class="typeNameLink">Tuples</span></a> - Class in <a href="stonehorse/candy/package-summary.html">stonehorse.candy</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">A set of imutable tuples, where larger extends the smaller.</div>
+</dd>
 <dt><a href="stonehorse/candy/Tuples.T1.html" title="interface in stonehorse.candy"><span class="typeNameLink">Tuples.T1</span></a>&lt;<a href="stonehorse/candy/Tuples.T1.html" title="type parameter in Tuples.T1">V</a>&gt; - Interface in <a href="stonehorse/candy/package-summary.html">stonehorse.candy</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="stonehorse/candy/Tuples.T2.html" title="interface in stonehorse.candy"><span class="typeNameLink">Tuples.T2</span></a>&lt;<a href="stonehorse/candy/Tuples.T2.html" title="type parameter in Tuples.T2">V1</a>,<a href="stonehorse/candy/Tuples.T2.html" title="type parameter in Tuples.T2">V2</a>&gt; - Interface in <a href="stonehorse/candy/package-summary.html">stonehorse.candy</a></dt>
@@ -1020,7 +1038,8 @@
 </dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Iterables.html#withLast-java.lang.Iterable-T-">withLast(Iterable&lt;T&gt;, T)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Iterables.html" title="class in stonehorse.candy">Iterables</a></dt>
 <dd>
-<div class="block">Iterable of lazy iterators appending b to each iterator of iterable</div>
+<div class="block">Iterable of lazy iterators appending b to each iterator of iterable
+ *</div>
 </dd>
 </dl>
 <a name="I:Z:Z_">

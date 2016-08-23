@@ -6,7 +6,9 @@ import java.util.Objects;
 
 import static java.util.Arrays.asList;
 
-
+/**
+ * A set of imutable tuples, where larger extends the smaller.
+ */
 public class Tuples {
     private Tuples(){}
     public interface T1<V> {

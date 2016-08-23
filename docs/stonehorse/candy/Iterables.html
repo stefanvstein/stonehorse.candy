@@ -134,7 +134,8 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Iterables.html#concat-java.lang.Iterable-java.lang.Iterable-">concat</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;a,
       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;b)</code>
-<div class="block">Iterable of lazy iterators concatenating iterators from a and b</div>
+<div class="block">Iterable of lazy iterators concatenating iterators from a and b
+ *</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
@@ -260,7 +261,8 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Iterables.html#partitionBy-java.util.function.Function-java.lang.Iterable-">partitionBy</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function">Function</a>&lt;? super T,<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;function,
            <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</code>
-<div class="block">Iterable of lazy iterators partitioning elements by application to function</div>
+<div class="block">Iterable of lazy iterators partitioning elements by application to function
+ *</div>
 </td>
 </tr>
 <tr id="i20" class="altColor">
@@ -343,17 +345,19 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </td>
 </tr>
 <tr id="i32" class="altColor">
-<td class="colFirst"><code>static &lt;T&gt;&nbsp;<a href="../../stonehorse/candy/Tuples.T2.html" title="interface in stonehorse.candy">Tuples.T2</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;,<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&gt;</code></td>
+<td class="colFirst"><code>static &lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Iterables.html#splitAt-int-java.lang.Iterable-">splitAt</a></span>(int&nbsp;i,
        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</code>
-<div class="block">Tuple of Iterables of lazy iterators by spliting iterables iterators at i</div>
+<div class="block">Tuple of Iterables of lazy iterators by spliting iterables iterators at i
+ *</div>
 </td>
 </tr>
 <tr id="i33" class="rowColor">
-<td class="colFirst"><code>static &lt;T&gt;&nbsp;<a href="../../stonehorse/candy/Tuples.T2.html" title="interface in stonehorse.candy">Tuples.T2</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;,<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&gt;</code></td>
+<td class="colFirst"><code>static &lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Iterables.html#splitWith-java.util.function.Predicate-java.lang.Iterable-">splitWith</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html?is-external=true" title="class or interface in java.util.function">Predicate</a>&lt;T&gt;&nbsp;p,
          <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</code>
-<div class="block">Tuple of Iterables of lazy iterators by spliting iterables iterators by predicate</div>
+<div class="block">Tuple of Iterables of lazy iterators by spliting iterables iterators by predicate
+ *</div>
 </td>
 </tr>
 <tr id="i34" class="altColor">
@@ -394,7 +398,8 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Iterables.html#withLast-java.lang.Iterable-T-">withLast</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable,
         T&nbsp;b)</code>
-<div class="block">Iterable of lazy iterators appending b to each iterator of iterable</div>
+<div class="block">Iterable of lazy iterators appending b to each iterator of iterable
+ *</div>
 </td>
 </tr>
 </table>
@@ -611,7 +616,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>take</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;take(int&nbsp;num,
                                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</pre>
-<div class="block">Iterable of lazy iterators having num first values of iterable</div>
+<div class="block">Iterable of lazy iterators having num first values of iterable
+ <p>Example:
+ <pre><code>
+ list( take(2, Arrays.asList(1, 2, 3, 4))) =&gt; [1, 2]
+ </code></pre></div>
 </li>
 </ul>
 <a name="takeWhile-java.util.function.Predicate-java.lang.Iterable-">
@@ -622,7 +631,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>takeWhile</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;takeWhile(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html?is-external=true" title="class or interface in java.util.function">Predicate</a>&lt;? super T&gt;&nbsp;pred,
                                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</pre>
-<div class="block">Iterable of lazy iterators having the first elements matching predicate</div>
+<div class="block">Iterable of lazy iterators having the first elements matching predicate
+ <p>Example:
+ <pre><code>
+ list( takeWhile(x -&gt; x&lt;3, Arrays.asList(1, 2, 3, 4))) =&gt; [1, 2]
+ </code></pre></div>
 </li>
 </ul>
 <a name="last-java.lang.Iterable-">
@@ -632,7 +645,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>last</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;T&nbsp;last(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;i)</pre>
-<div class="block">The last element of the next iterator of iterable or null</div>
+<div class="block">The last element of the next iterator of iterable or null
+ <p>Example:
+ <pre><code>
+ last(  Arrays.asList(1, 2, 3, 4)) =&gt; 4
+ </code></pre></div>
 </li>
 </ul>
 <a name="takeNth-int-java.lang.Iterable-">
@@ -643,7 +660,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>takeNth</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;takeNth(int&nbsp;nth,
                                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</pre>
-<div class="block">Iterable of lazy iterators with every nth element of iterables iterator</div>
+<div class="block">Iterable of lazy iterators with every nth element of iterables iterator
+ <p>Example:
+ <pre><code>
+ list( takeNth(2, Arrays.asList(1, 2, 3, 4))) =&gt; [1, 3]
+ </code></pre></div>
 </li>
 </ul>
 <a name="flatMap-java.util.function.Function-java.lang.Iterable-">
@@ -654,7 +675,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>flatMap</h4>
 <pre>public static&nbsp;&lt;V,A&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;A&gt;&nbsp;flatMap(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function">Function</a>&lt;? super V,<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;A&gt;&gt;&nbsp;f,
                                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;? extends V&gt;&nbsp;data)</pre>
-<div class="block">Iterable of lazy iterators which concatenate the result of applying map to every element in iterators of data.</div>
+<div class="block">Iterable of lazy iterators which concatenate the result of applying map to every element in iterators of data.
+ <p>Example:
+ <pre><code>
+ list( flatMap((v) -&gt; asList(v, v), asList(1, 2))) =&gt; [1, 1, 2, 2]
+ </code></pre></div>
 </li>
 </ul>
 <a name="next-java.lang.Iterable-">
@@ -664,7 +689,12 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>next</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;next(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</pre>
-<div class="block">Iterable of lazy iterators emitting all elements but first from iterable or null if empty</div>
+<div class="block">Iterable of lazy iterators emitting all elements but first from iterable or null if empty
+ <p>Example:
+ <pre><code>
+ list( next( asList(1, 2, 3))) =&gt; [2, 2]
+ list( next( asList(1))) =&gt; null
+ </code></pre></div>
 </li>
 </ul>
 <a name="rest-java.lang.Iterable-">
@@ -674,7 +704,12 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>rest</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;rest(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</pre>
-<div class="block">Iterable of lazy iterators emitting all elements but first from iterable</div>
+<div class="block">Iterable of lazy iterators emitting all elements but first from iterable
+ <p>Example:
+ <pre><code>
+ list( rest( asList(1, 2, 3))) =&gt; [2, 2]
+ list( rest( asList(1))) =&gt; []
+ </code></pre></div>
 </li>
 </ul>
 <a name="dropLast-int-java.lang.Iterable-">
@@ -685,7 +720,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>dropLast</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;dropLast(int&nbsp;num,
                                        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</pre>
-<div class="block">Iterable of lazy iterators emitting all elements except last num elements</div>
+<div class="block">Iterable of lazy iterators emitting all elements except last num elements
+ <p>Example:
+ <pre><code>
+ list( dropLast( 2, asList(1, 2, 3))) =&gt; [1]
+ </code></pre></div>
 </li>
 </ul>
 <a name="dropWhile-java.util.function.Predicate-java.lang.Iterable-">
@@ -696,7 +735,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>dropWhile</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;dropWhile(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html?is-external=true" title="class or interface in java.util.function">Predicate</a>&lt;? super T&gt;&nbsp;predicate,
                                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</pre>
-<div class="block">Iterable of lazy iterators emitting all elements but except the first matching predicate</div>
+<div class="block">Iterable of lazy iterators emitting all elements but except the first matching predicate
+ <p>Example:
+ <pre><code>
+ list( dropWhile( e -&gt; e&lt;3, asList(1, 2, 3))) =&gt; [3]
+ </code></pre></div>
 </li>
 </ul>
 <a name="partition-int-java.lang.Iterable-">
@@ -707,7 +750,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>partition</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&gt;&nbsp;partition(int&nbsp;num,
                                                   <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</pre>
-<div class="block">Iterable of lazy iterators partitioning elements into num long iterables</div>
+<div class="block">Iterable of lazy iterators partitioning elements into num long iterables
+ <p>Example:
+ <pre><code>
+ list(map( Iterables::list,  list( partition( 3, asList(1, 2, 3, 4, 5, 6, 7))))) =&gt; [[1, 2, 3], [4, 5, 6]]
+ </code></pre></div>
 </li>
 </ul>
 <a name="partitionBy-java.util.function.Function-java.lang.Iterable-">
@@ -718,7 +765,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>partitionBy</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&gt;&nbsp;partitionBy(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function">Function</a>&lt;? super T,<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;function,
                                                     <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</pre>
-<div class="block">Iterable of lazy iterators partitioning elements by application to function</div>
+<div class="block">Iterable of lazy iterators partitioning elements by application to function
+ * <p>Example:
+ <pre><code>
+ list( map( Iterables::list,  partitionBy( v -&gt; v%2, asList(1, 3, 4, 5, 7, 6)))) =&gt; [[1, 3], [4], [5, 7], [6]]
+ </code></pre></div>
 </li>
 </ul>
 <a name="splitAt-int-java.lang.Iterable-">
@@ -727,9 +778,13 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>splitAt</h4>
-<pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="../../stonehorse/candy/Tuples.T2.html" title="interface in stonehorse.candy">Tuples.T2</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;,<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&gt;&nbsp;splitAt(int&nbsp;i,
-                                                             <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</pre>
-<div class="block">Tuple of Iterables of lazy iterators by spliting iterables iterators at i</div>
+<pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&gt;&nbsp;splitAt(int&nbsp;i,
+                                                <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</pre>
+<div class="block">Tuple of Iterables of lazy iterators by spliting iterables iterators at i
+ * <p>Example:
+ <pre><code>
+  list(map( Iterables::list, splitAt( 3, asList(1, 2, 3, 4, 5, 6, 7))))) =&gt; [[1, 2, 3], [4, 5, 6, 7]]
+ </code></pre></div>
 </li>
 </ul>
 <a name="splitWith-java.util.function.Predicate-java.lang.Iterable-">
@@ -738,9 +793,13 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>splitWith</h4>
-<pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="../../stonehorse/candy/Tuples.T2.html" title="interface in stonehorse.candy">Tuples.T2</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;,<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&gt;&nbsp;splitWith(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html?is-external=true" title="class or interface in java.util.function">Predicate</a>&lt;T&gt;&nbsp;p,
-                                                               <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</pre>
-<div class="block">Tuple of Iterables of lazy iterators by spliting iterables iterators by predicate</div>
+<pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&gt;&nbsp;splitWith(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html?is-external=true" title="class or interface in java.util.function">Predicate</a>&lt;T&gt;&nbsp;p,
+                                                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable)</pre>
+<div class="block">Tuple of Iterables of lazy iterators by spliting iterables iterators by predicate
+ * <p>Example:
+ <pre><code>
+  list(map( Iterables::list, splitWith(v-&gt;v%2==0, asList(4,2,3,4)))) =&gt; [[4, 2], [3, 4]]
+ </code></pre></div>
 </li>
 </ul>
 <a name="concat-java.lang.Iterable-java.lang.Iterable-">
@@ -751,7 +810,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>concat</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;concat(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;a,
                                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;b)</pre>
-<div class="block">Iterable of lazy iterators concatenating iterators from a and b</div>
+<div class="block">Iterable of lazy iterators concatenating iterators from a and b
+ * <p>Example:
+ <pre><code>
+  list(concat( asList(1,2), asList(3,4))) =&gt; [1, 2, 3, 4]
+ </code></pre></div>
 </li>
 </ul>
 <a name="withLast-java.lang.Iterable-java.lang.Object-">
@@ -764,7 +827,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>withLast</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;withLast(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterable,
                                        T&nbsp;b)</pre>
-<div class="block">Iterable of lazy iterators appending b to each iterator of iterable</div>
+<div class="block">Iterable of lazy iterators appending b to each iterator of iterable
+ * <p>Example:
+ <pre><code>
+  list( withLast( asList(1,2), 3 )) =&gt; [1, 2, 3]
+ </code></pre></div>
 </li>
 </ul>
 <a name="with-java.lang.Object-java.lang.Iterable-">
@@ -777,7 +844,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>with</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;with(T&nbsp;t,
                                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;? extends T&gt;&nbsp;iterable)</pre>
-<div class="block">Iterable of lazy iterators prepending t to each iterator of iterable</div>
+<div class="block">Iterable of lazy iterators prepending t to each iterator of iterable
+ <p>Example:
+ <pre><code>
+  list( with( 1, asList(2,3))) =&gt; [1, 2, 3]
+ </code></pre></div>
 </li>
 </ul>
 <a name="iterate-java.util.function.Function-java.lang.Object-">
@@ -790,7 +861,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>iterate</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;iterate(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function">Function</a>&lt;? super T,? extends T&gt;&nbsp;function,
                                       T&nbsp;initial)</pre>
-<div class="block">Iterable of lazy infinite iterators iterating over function with initial value. That is initial, function(initial), function(function(initial)) and so on</div>
+<div class="block">Iterable of lazy infinite iterators iterating over function with initial value. That is initial, function(initial), function(function(initial)) and so on
+ <p>Example:
+ <pre><code>
+  list(take(4, iterate(v -&gt; v + 1, 5))) =&gt; [5, 6, 7, 8]
+ </code></pre></div>
 </li>
 </ul>
 <a name="stream-java.lang.Iterable-">
@@ -820,7 +895,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>repeatedly</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;repeatedly(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;T&gt;&nbsp;supplier)</pre>
-<div class="block">Iterable of lazy infinite iterators with invokes of supplier</div>
+<div class="block">Iterable of lazy infinite iterators with invokes of supplier
+ <p>Example:
+ <pre><code>
+  list(take(3, repeatedly(() -&gt; 4))) =&gt; [4, 4, 4]
+ </code></pre></div>
 </li>
 </ul>
 <a name="repeat-java.lang.Object-">
@@ -832,7 +911,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>repeat</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;repeat(T&nbsp;x)</pre>
-<div class="block">Iterable of lazy infinite iterators of x</div>
+<div class="block">Iterable of lazy infinite iterators of x
+ <p>Example:
+ <pre><code>
+  list(take(3, repeat( 4))) =&gt; [4, 4, 4]
+ </code></pre></div>
 </li>
 </ul>
 <a name="repeat-int-java.lang.Object-">
@@ -854,7 +937,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>range</h4>
 <pre>public static&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;range()</pre>
-<div class="block">Iterable of lazy iterators iterating from 0 to Integer.MAX_VALUE</div>
+<div class="block">Iterable of lazy iterators iterating from 0 to Integer.MAX_VALUE
+ <p>Example:
+ <pre><code>
+  list(take(3, range())) =&gt; [0, 1, 2]
+ </code></pre></div>
 </li>
 </ul>
 <a name="range-int-">
@@ -864,7 +951,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>range</h4>
 <pre>public static&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;range(int&nbsp;n)</pre>
-<div class="block">Iterable of lazy iterators iterating from 0 to n</div>
+<div class="block">Iterable of lazy iterators iterating from 0 to n
+ <p>Example:
+ <pre><code>
+  list(range(3)) =&gt; [0, 1, 2]
+ </code></pre></div>
 </li>
 </ul>
 <a name="range-int-int-">
@@ -875,7 +966,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>range</h4>
 <pre>public static&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;range(int&nbsp;from,
                                       int&nbsp;to)</pre>
-<div class="block">Iterable of lazy iterators iterating from from to to</div>
+<div class="block">Iterable of lazy iterators iterating from from to to
+ <p>Example:
+ <pre><code>
+  list(range(1,3)) =&gt; [1, 2]
+ </code></pre></div>
 </li>
 </ul>
 <a name="range-int-int-int-">
@@ -887,7 +982,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <pre>public static&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;range(int&nbsp;from,
                                       int&nbsp;to,
                                       int&nbsp;step)</pre>
-<div class="block">Iterable of lazy iterators iterating from from to to in steps of step</div>
+<div class="block">Iterable of lazy iterators iterating from from to to in steps of step
+ <p>Example:
+ <pre><code>
+  list(range(1,5,3)) =&gt; [1, 4]
+ </code></pre></div>
 </li>
 </ul>
 <a name="cycle-java.lang.Iterable-">
@@ -897,7 +996,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>cycle</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;cycle(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;T&gt;&nbsp;in)</pre>
-<div class="block">Iterable of lazy infinite iterators elements of in. A new iterator is created for each lap.</div>
+<div class="block">Iterable of lazy infinite iterators elements of in. A new iterator is created for each lap.
+ <p>Example:
+ <pre><code>
+  list(take(5, cycle(asList(1,2,3)))) =&gt; [1, 2, 3, 1, 2]
+ </code></pre></div>
 </li>
 </ul>
 </li>

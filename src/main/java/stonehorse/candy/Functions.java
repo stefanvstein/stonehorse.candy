@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 /**
- *
+ * Functions for basic functional composition
  */
 public class Functions {
 	private Functions(){}

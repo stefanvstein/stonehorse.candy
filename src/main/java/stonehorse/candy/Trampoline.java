@@ -4,8 +4,15 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.function.Supplier;
 
+/**
+ * Functions for tail call
+ */
 public class Trampoline {
 	private Trampoline(){}
+
+	/**
+	 * Tail call return value
+	 */
 	public static class RecursiveVal<V> {
 		public final java.util.function.Supplier<RecursiveVal<V>> fun;
 
@@ -52,6 +59,9 @@ public class Trampoline {
 		return new RecursiveVal<>(f, v, true);
 	}
 
+	/**
+	 * Will recur on fun until done(value)
+	 */
 	public static <V> V trampoline(Supplier<RecursiveVal<V>> fun) {
 		boolean value = false;
 		RecursiveVal< V> ret = RecursiveVal.nil();

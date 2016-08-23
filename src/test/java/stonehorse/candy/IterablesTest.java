@@ -133,9 +133,9 @@ public class IterablesTest {
 
     @Test
     public void testTakeNth() {
-        assertEquals(asList(3, 6), list(takeNth(3, asList(1, 2, 3, 4, 5, 6, 7))));
-        assertEquals(asList(3), list(takeNth(3, asList(1, 2, 3))));
-        assertEquals(asList(), list(takeNth(3, asList(1, 2))));
+        assertEquals(asList(1, 4, 7), list(takeNth(3, asList(1, 2, 3, 4, 5, 6, 7))));
+        assertEquals(asList(1), list(takeNth(3, asList(1, 2, 3))));
+        assertEquals(asList(1), list(takeNth(3, asList(1, 2))));
         assertNull(takeNth(3, null));
         Iterable<A> as= takeNth(23, asList(b(),b()));
     }
@@ -227,12 +227,7 @@ public class IterablesTest {
         Iterator<Integer> si = s.iterator();
     }
 
-    public static <T> T2<List<T>, List<T>> asLists(T2<Iterable<T>, Iterable<T>> ts) {
 
-        if (ts == null)
-            return null;
-        return Tuples.of(list(ts._1()), list(ts._2()));
-    }
     @Test
     public void testPartitionBy() {
         assertEquals(asList(asList(1, 7), asList(4, 6), asList(3), asList(8)),
@@ -256,21 +251,21 @@ public class IterablesTest {
 
     @Test
     public void testSplitAt() throws Exception {
-        assertEquals(Tuples.of(asList(1,2),asList(3,4)),
-                asLists(splitAt(2, asList(1,2,3,4))));
-        assertEquals(Tuples.of(asList(),asList(1,2,3,4)),
-                asLists(splitAt(0, asList(1,2,3,4))));
-        assertEquals(Tuples.of(asList(1,2,3,4),asList()),
-                asLists(splitAt(7, asList(1,2,3,4))));
-        assertEquals(Tuples.of(asList(1),asList()),
-                asLists(splitAt(1, asList(1))));
-        assertNull(asLists(splitAt(1, null)));
+        assertEquals(asList(asList(1,2),asList(3,4)),
+                list(map (Iterables::list, splitAt(2, asList(1,2,3,4)))));
+        assertEquals(asList(asList(),asList(1,2,3,4)),
+                list(map (Iterables::list, splitAt(0, asList(1,2,3,4)))));
+        assertEquals(asList(asList(1,2,3,4),asList()),
+                list(map (Iterables::list,splitAt(7, asList(1,2,3,4)))));
+        assertEquals(asList(asList(1),asList()),
+                list(map (Iterables::list,splitAt(1, asList(1)))));
+        assertNull(splitAt(1, null));
     }
 
     @Test
     public void testSplitWith() throws Exception {
-        assertEquals(Tuples.of(asList(4,2),asList(3,4)),
-                asLists(splitWith(v->v%2==0, asList(4,2,3,4))));
+        assertEquals(asList(asList(4,2),asList(3,4)),
+                list(map(Iterables::list, splitWith(v->v%2==0, asList(4,2,3,4)))));
 
     }
 

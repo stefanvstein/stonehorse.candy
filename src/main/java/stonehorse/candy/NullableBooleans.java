@@ -3,7 +3,7 @@ package stonehorse.candy;
 import static stonehorse.candy.Choices.ifelse;
 import static java.util.Objects.nonNull;
 
-/*
+/**
  * Boolean operations on Boolean where null is false
  */
 public class NullableBooleans {

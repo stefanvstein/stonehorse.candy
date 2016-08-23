@@ -110,6 +110,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">Trampoline</span>
 extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+<div class="block">Functions for tail call</div>
 </li>
 </ul>
 </div>
@@ -130,7 +131,9 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="type parameter in Trampoline.RecursiveVal">V</a>&gt;</span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="type parameter in Trampoline.RecursiveVal">V</a>&gt;</span></code>
+<div class="block">Tail call return value</div>
+</td>
 </tr>
 </table>
 </li>
@@ -182,7 +185,9 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>static &lt;V&gt;&nbsp;V</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.html#trampoline-java.util.function.Supplier-">trampoline</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;&gt;&nbsp;fun)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.html#trampoline-java.util.function.Supplier-">trampoline</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;&gt;&nbsp;fun)</code>
+<div class="block">Will recur on fun until done(value)</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -260,6 +265,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>trampoline</h4>
 <pre>public static&nbsp;&lt;V&gt;&nbsp;V&nbsp;trampoline(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;&gt;&nbsp;fun)</pre>
+<div class="block">Will recur on fun until done(value)</div>
 </li>
 </ul>
 <a name="lazy-java.util.function.Supplier-">
