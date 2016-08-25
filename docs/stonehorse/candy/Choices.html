@@ -385,7 +385,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Choices.html#unless-java.util.function.Supplier-boolean-java.util.function.Supplier-">unless</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;T&gt;&nbsp;then,
       boolean&nbsp;test,
       <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;T&gt;&nbsp;otherwise)</code>
-<div class="block">Returns evaluation of then, unless test happen to be true, in which case the evaluation of otherwise is returned</div>
+<div class="block">Evaluates then and returns its value unless test is true, in which case otherwise is evaluated and its value returned.</div>
 </td>
 </tr>
 <tr id="i20" class="altColor">
@@ -827,11 +827,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <pre>public static&nbsp;&lt;T&gt;&nbsp;T&nbsp;unless(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;T&gt;&nbsp;then,
                            boolean&nbsp;test,
                            <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;T&gt;&nbsp;otherwise)</pre>
-<div class="block">Returns evaluation of then, unless test happen to be true, in which case the evaluation of otherwise is returned
+<div class="block">Evaluates then and returns its value unless test is true, in which case otherwise is evaluated and its value returned.
  <p>Example:
  <pre><code>
- unless(() -&gt; "Yes", true, () -&gt; "No") =&gt; "Yes"
- unless(() -&gt; "Yes", false, () -&gt; "No") =&gt; "No"
+ unless(() -&gt; "Yes", false, () -&gt; "No") =&gt; "Yes"
+ unless(() -&gt; "Yes", true, () -&gt; "No") =&gt; "No"
  </code></pre></div>
 </li>
 </ul>

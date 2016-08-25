@@ -48,7 +48,7 @@ Choices is a number of expression replacements for the if-statement. It is used 
 
 #### ifelse
 
-The most basic one is ifelse. A if else statement like:
+The most basic one is ifelse. An if else statement like:
 
 ```java
 int question =3;

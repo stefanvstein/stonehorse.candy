@@ -466,11 +466,11 @@ public class Choices{
   }
 
   /**
-   * Returns evaluation of then, unless test happen to be true, in which case the evaluation of otherwise is returned
+   * Evaluates then and returns its value unless test is true, in which case otherwise is evaluated and its value returned.
    * <p>Example:
    * <pre>{@code
-   * unless(() -> "Yes", true, () -> "No") => "Yes"
-   * unless(() -> "Yes", false, () -> "No") => "No"
+   * unless(() -> "Yes", false, () -> "No") => "Yes"
+   * unless(() -> "Yes", true, () -> "No") => "No"
    * }</pre>
    */
   public static <T> T unless(Supplier<T> then, boolean test, Supplier<T> otherwise) {
