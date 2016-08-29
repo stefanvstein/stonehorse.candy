@@ -425,9 +425,18 @@ Supplier<RecursiveVal<V>> mapI(Function<? super A, ? extends V> f,
 }
 ```
 
-The seq function is like recur but adds an aditional value along with the continuation. The lazy function creates a Iterator of the value passes along with the continuation. The iterator returned by lazy will continue to call incomming continuations and return values when present, until an eventual final value is present. There is also a stop function that stops the iterator without returning a final value. 
+The seq function is like recur but adds an aditional value along with the continuation. The lazy function creates a Iterator of the value passes along with the continuation. The iterator returned by lazy will continue to call incomming continuations and return values when present, until an eventual final value is present. There is also a stop function that stops the iterator without returning a final value.
 
-New lazy iterables can easily be constructed by composing the dozen of functions already existing. With recursion its also easy to implement these from scratch.
+
+New lazy iterables can easily be constructed by composing the dozen of functions already existing. PErhaps like
+```java
+<T> Iterable<T> interleave(Supplier<? extends T> t, Iterable<? extends T> d){
+  return with(first(d), flatMap(v-> asList(t.get(),v), Iterables.next(d)));
+}
+```
+With recursion its also easy to implement these from scratch.
+
+The important aspect of trampoline is that functional algorithms with tail recursion can be implemented in Java.
 
  <div align="right">
  /Stefan von Stein
