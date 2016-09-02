@@ -236,7 +236,7 @@ This is terminal
 
 #### take and takeWhile
 
-Rather that producing a single value like you do with reduce, you may need the first few elements in iterators. The take functions creates Iterables producing iterators that limit the number of elements produced. 
+Rather than producing a single value like you do with reduce, you may need the first few elements in iterators. The take functions creates Iterables producing iterators that limit the number of elements produced. 
 
 ```java
 Iterable<Integer> afew = take(3, asList(1,2,3,4));
