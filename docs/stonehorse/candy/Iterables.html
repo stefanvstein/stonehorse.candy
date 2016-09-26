@@ -293,17 +293,17 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </td>
 </tr>
 <tr id="i24" class="altColor">
-<td class="colFirst"><code>static &lt;A,V,AP extends A&gt;<br>A</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Iterables.html#reduce-java.util.function.BiFunction-AP-java.lang.Iterable-">reduce</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/BiFunction.html?is-external=true" title="class or interface in java.util.function">BiFunction</a>&lt;AP,? super V,AP&gt;&nbsp;f,
-      AP&nbsp;accumulator,
+<td class="colFirst"><code>static &lt;A,V&gt;&nbsp;A</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Iterables.html#reduce-java.util.function.BiFunction-A-java.lang.Iterable-">reduce</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/BiFunction.html?is-external=true" title="class or interface in java.util.function">BiFunction</a>&lt;? super A,? super V,? extends A&gt;&nbsp;f,
+      A&nbsp;accumulator,
       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;? extends V&gt;&nbsp;elements)</code>
 <div class="block">Combines elements of the first iterator into a single result by repeated application of a combining operation f where the initial result is accumulator
  *</div>
 </td>
 </tr>
 <tr id="i25" class="rowColor">
-<td class="colFirst"><code>static &lt;A,V,VP extends V&gt;<br><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;V&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Iterables.html#reductions-java.util.function.BiFunction-V-java.lang.Iterable-">reductions</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/BiFunction.html?is-external=true" title="class or interface in java.util.function">BiFunction</a>&lt;? super V,? super A,VP&gt;&nbsp;f,
+<td class="colFirst"><code>static &lt;A,V&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;V&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Iterables.html#reductions-java.util.function.BiFunction-V-java.lang.Iterable-">reductions</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/BiFunction.html?is-external=true" title="class or interface in java.util.function">BiFunction</a>&lt;? super V,? super A,? extends V&gt;&nbsp;f,
           V&nbsp;accumulator,
           <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;? extends A&gt;&nbsp;elements)</code>
 <div class="block">Iterable of lazy iterators producing intermediate values of the reduction of elements by f, starting with accumulator</div>
@@ -470,15 +470,15 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </ul>
 <a name="reduce-java.util.function.BiFunction-java.lang.Object-java.lang.Iterable-">
 <!--   -->
-</a><a name="reduce-java.util.function.BiFunction-AP-java.lang.Iterable-">
+</a><a name="reduce-java.util.function.BiFunction-A-java.lang.Iterable-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>reduce</h4>
-<pre>public static&nbsp;&lt;A,V,AP extends A&gt;&nbsp;A&nbsp;reduce(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/BiFunction.html?is-external=true" title="class or interface in java.util.function">BiFunction</a>&lt;AP,? super V,AP&gt;&nbsp;f,
-                                          AP&nbsp;accumulator,
-                                          <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;? extends V&gt;&nbsp;elements)</pre>
+<pre>public static&nbsp;&lt;A,V&gt;&nbsp;A&nbsp;reduce(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/BiFunction.html?is-external=true" title="class or interface in java.util.function">BiFunction</a>&lt;? super A,? super V,? extends A&gt;&nbsp;f,
+                             A&nbsp;accumulator,
+                             <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;? extends V&gt;&nbsp;elements)</pre>
 <div class="block">Combines elements of the first iterator into a single result by repeated application of a combining operation f where the initial result is accumulator
  * <p>Example:
  <pre><code>
@@ -540,9 +540,9 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>reductions</h4>
-<pre>public static&nbsp;&lt;A,V,VP extends V&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;V&gt;&nbsp;reductions(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/BiFunction.html?is-external=true" title="class or interface in java.util.function">BiFunction</a>&lt;? super V,? super A,VP&gt;&nbsp;f,
-                                                        V&nbsp;accumulator,
-                                                        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;? extends A&gt;&nbsp;elements)</pre>
+<pre>public static&nbsp;&lt;A,V&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;V&gt;&nbsp;reductions(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/BiFunction.html?is-external=true" title="class or interface in java.util.function">BiFunction</a>&lt;? super V,? super A,? extends V&gt;&nbsp;f,
+                                           V&nbsp;accumulator,
+                                           <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;? extends A&gt;&nbsp;elements)</pre>
 <div class="block">Iterable of lazy iterators producing intermediate values of the reduction of elements by f, starting with accumulator
  <p>Example:
  <pre><code>

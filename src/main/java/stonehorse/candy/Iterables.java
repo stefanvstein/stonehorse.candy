@@ -82,7 +82,7 @@ public class Iterables {
      * reduce((a,v)->a+v, 0, Arrays.asList(1,2,3,4)) => 10
      * }</pre>
      */
-    public static <A, V, AP extends A> A reduce(BiFunction<AP, ? super V, AP> f, AP accumulator, Iterable<? extends V> elements) {
+    public static <A, V> A reduce(BiFunction<? super A, ? super V, ? extends A> f, A accumulator, Iterable<? extends V> elements) {
         if (isNull(elements) || isNull(f))
             return accumulator;
         for (V v : elements)
@@ -181,13 +181,13 @@ public class Iterables {
      * list( reductions( (a,b) -> a+b, 0, Arrays.asList(1, 2, 3, 4))) => [1, 3, 6, 10]
      * }</pre>
      */
-    public static <A, V, VP extends V> Iterable<V> reductions(final BiFunction<? super V, ? super A, VP> f, final V accumulator, final Iterable<? extends A> elements) {
+    public static <A, V> Iterable<V> reductions(final BiFunction<? super V, ? super A, ? extends V> f, final V accumulator, final Iterable<? extends A> elements) {
         if (isNull(elements) || isNull(f))
             return null;
         return () -> lazy(reductionsI(f, accumulator, elements.iterator())).iterator();
     }
 
-    private static <V, A, VP extends V> Supplier<RecursiveVal<V>> reductionsI(BiFunction<? super V, ? super A, VP> f, V a, final Iterator<? extends A> elements) {
+    private static <V, A> Supplier<RecursiveVal<V>> reductionsI(BiFunction<? super V, ? super A, ? extends V> f, V a, final Iterator<? extends A> elements) {
         return () -> {
             if (!elements.hasNext())
                 return stop();
