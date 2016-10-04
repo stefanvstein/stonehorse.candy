@@ -79,10 +79,10 @@ public class Iterables {
      * Combines elements of the first iterator into a single result by repeated application of a combining operation f where the initial result is accumulator
      * * <p>Example:
      * <pre>{@code
-     * reduce((a,v)->a+v, 0, Arrays.asList(1,2,3,4)) => 10
+     * fold((a,v)->a+v, 0, Arrays.asList(1,2,3,4)) => 10
      * }</pre>
      */
-    public static <A, V> A reduce(BiFunction<? super A, ? super V, ? extends A> f, A accumulator, Iterable<? extends V> elements) {
+    public static <A, V> A fold(BiFunction<? super A, ? super V, ? extends A> f, A accumulator, Iterable<? extends V> elements) {
         if (isNull(elements) || isNull(f))
             return accumulator;
         for (V v : elements)
@@ -90,6 +90,16 @@ public class Iterables {
         return accumulator;
     }
 
+    /**
+     * Combines elements of the first iterator into a single result by repeated application of a combining operation f where the initial result is first element
+     * * <p>Example:
+     * <pre>{@code
+     * fold((a,v)->a+v, 0, Arrays.asList(1,2,3,4)) => 10
+     * }</pre>
+     */
+    public static <T> T reduce(BiFunction<? super T, ? super T, ? extends T> f, Iterable<? extends T> elements) {
+        return fold(f, first(elements), rest(elements));
+    }
     /**
      * Iterable of lazy iterators filtering another Iterable using a predicate
      * <p>Example:
@@ -339,7 +349,7 @@ public class Iterables {
      */
 
     public static <T> T last(Iterable<T> i) {
-        return reduce((a, v) -> v, null, i);
+        return fold((a, v) -> v, null, i);
     }
 
     /**

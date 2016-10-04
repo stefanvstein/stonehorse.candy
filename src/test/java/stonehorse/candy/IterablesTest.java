@@ -1,6 +1,5 @@
 package stonehorse.candy;
 
-import stonehorse.candy.Tuples.T2;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -18,9 +17,12 @@ import static org.junit.Assert.*;
 public class IterablesTest {
     @Test
     public void testReduce() {
-        assertEquals(6, (long) reduce((a, v) -> a + v, 0, asList(1, 2, 3)));
-        assertEquals(Integer.valueOf(0), reduce((a, v) -> a + v, 0, Collections.<Integer>emptyList()));
-        assertEquals(Integer.valueOf(0), reduce((a, v) -> a + v, 0, (List<Integer>)null));
+        assertEquals(6, (long) fold((a, v) -> a + v, 0, asList(1, 2, 3)));
+        assertEquals(Integer.valueOf(0), fold((a, v) -> a + v, 0, Collections.<Integer>emptyList()));
+        assertEquals(Integer.valueOf(0), fold((a, v) -> a + v, 0, (List<Integer>)null));
+        assertEquals(6, (long) reduce((a, v) -> a + v, asList(1, 2, 3)));
+        assertNull(reduce((a, v) -> a + v, (List<Integer>)null));
+        assertNull(reduce((a, v) -> a + v, Collections.<Integer>emptyList()));
     }
     @Test
     public void testFilter() {

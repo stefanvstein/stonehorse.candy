@@ -438,6 +438,11 @@
 </dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Maybe.html#flatmap-java.util.function.Function-java.util.Optional-">flatmap(Function&lt;? super T, Optional&lt;V&gt;&gt;, Optional&lt;T&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Maybe.html" title="class in stonehorse.candy">Maybe</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="stonehorse/candy/Iterables.html#fold-java.util.function.BiFunction-A-java.lang.Iterable-">fold(BiFunction&lt;? super A, ? super V, ? extends A&gt;, A, Iterable&lt;? extends V&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Iterables.html" title="class in stonehorse.candy">Iterables</a></dt>
+<dd>
+<div class="block">Combines elements of the first iterator into a single result by repeated application of a combining operation f where the initial result is accumulator
+ *</div>
+</dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Iterables.html#forceList-java.lang.Iterable-">forceList(Iterable&lt;A&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Iterables.html" title="class in stonehorse.candy">Iterables</a></dt>
 <dd>
 <div class="block">A new list with elements found in the next iterator of iterable</div>
@@ -701,9 +706,9 @@
 <dd>
 <div class="block">return recur to recur withLast f and a</div>
 </dd>
-<dt><span class="memberNameLink"><a href="stonehorse/candy/Iterables.html#reduce-java.util.function.BiFunction-A-java.lang.Iterable-">reduce(BiFunction&lt;? super A, ? super V, ? extends A&gt;, A, Iterable&lt;? extends V&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Iterables.html" title="class in stonehorse.candy">Iterables</a></dt>
+<dt><span class="memberNameLink"><a href="stonehorse/candy/Iterables.html#reduce-java.util.function.BiFunction-java.lang.Iterable-">reduce(BiFunction&lt;? super T, ? super T, ? extends T&gt;, Iterable&lt;? extends T&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Iterables.html" title="class in stonehorse.candy">Iterables</a></dt>
 <dd>
-<div class="block">Combines elements of the first iterator into a single result by repeated application of a combining operation f where the initial result is accumulator
+<div class="block">Combines elements of the first iterator into a single result by repeated application of a combining operation f where the initial result is first element
  *</div>
 </dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Iterables.html#reductions-java.util.function.BiFunction-V-java.lang.Iterable-">reductions(BiFunction&lt;? super V, ? super A, ? extends V&gt;, V, Iterable&lt;? extends A&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Iterables.html" title="class in stonehorse.candy">Iterables</a></dt>

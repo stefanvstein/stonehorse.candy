@@ -20,7 +20,7 @@ public class Alot {
 	
 		Iterable<Integer> ii = map(v -> v + 1, i);
 		Iterable<Integer> iii = filter(v -> v % 2 == 0, ii);
-		int r= reduce((a, v) -> a + v, 0, take(x, iii));
+		int r= fold((a, v) -> a + v, 0, take(x, iii));
 		System.out.println(System.currentTimeMillis() - time);
 
 		time = System.currentTimeMillis();
