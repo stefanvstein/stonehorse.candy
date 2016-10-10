@@ -49,7 +49,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../stonehorse/candy/Threading.html" title="class in stonehorse.candy"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?stonehorse/candy/Trampoline.html" target="_top">Frames</a></li>
@@ -131,7 +131,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="type parameter in Trampoline.RecursiveVal">V</a>&gt;</span></code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="type parameter in Trampoline.Continuation">V</a>&gt;</span></code>
 <div class="block">Tail call return value</div>
 </td>
 </tr>
@@ -151,26 +151,26 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>static &lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;</code></td>
+<td class="colFirst"><code>static &lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.html#done-V-">done</a></span>(V&nbsp;v)</code>
 <div class="block">return done to when last value is found</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static &lt;A,V&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;V&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.html#lazy-java.util.function.Supplier-">lazy</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;&gt;&nbsp;fun)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.html#lazy-java.util.function.Supplier-">lazy</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;&gt;&nbsp;fun)</code>
 <div class="block">Emits a lazy Iterable recuring until stop, done, null or lack of f</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>static &lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.html#recur-java.util.function.Supplier-">recur</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;&gt;&nbsp;f)</code>
+<td class="colFirst"><code>static &lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.html#recur-java.util.function.Supplier-">recur</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;&gt;&nbsp;f)</code>
 <div class="block">return recur to recur withLast f and a</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>static &lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.html#seq-java.util.function.Supplier-V-">seq</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;&gt;&nbsp;f,
+<td class="colFirst"><code>static &lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.html#seq-java.util.function.Supplier-V-">seq</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;&gt;&nbsp;f,
    V&nbsp;v)</code>
 <div class="block">return seq to yield lazy value v, and continue withLast f a
  f as null is same as done or stop, depending on v
@@ -178,14 +178,14 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>static &lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;</code></td>
+<td class="colFirst"><code>static &lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.html#stop--">stop</a></span>()</code>
 <div class="block">Return stop when done without a value.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>static &lt;V&gt;&nbsp;V</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.html#trampoline-java.util.function.Supplier-">trampoline</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;&gt;&nbsp;fun)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Trampoline.html#trampoline-java.util.function.Supplier-">trampoline</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;&gt;&nbsp;fun)</code>
 <div class="block">Will recur on fun until done(value)</div>
 </td>
 </tr>
@@ -217,7 +217,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>recur</h4>
-<pre>public static&nbsp;&lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;&nbsp;recur(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;&gt;&nbsp;f)</pre>
+<pre>public static&nbsp;&lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;&nbsp;recur(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;&gt;&nbsp;f)</pre>
 <div class="block">return recur to recur withLast f and a</div>
 </li>
 </ul>
@@ -229,7 +229,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>done</h4>
-<pre>public static&nbsp;&lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;&nbsp;done(V&nbsp;v)</pre>
+<pre>public static&nbsp;&lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;&nbsp;done(V&nbsp;v)</pre>
 <div class="block">return done to when last value is found</div>
 </li>
 </ul>
@@ -239,7 +239,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>stop</h4>
-<pre>public static&nbsp;&lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;&nbsp;stop()</pre>
+<pre>public static&nbsp;&lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;&nbsp;stop()</pre>
 <div class="block">Return stop when done without a value. Null if on trampoline</div>
 </li>
 </ul>
@@ -251,7 +251,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>seq</h4>
-<pre>public static&nbsp;&lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;&nbsp;seq(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;&gt;&nbsp;f,
+<pre>public static&nbsp;&lt;V&gt;&nbsp;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;&nbsp;seq(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;&gt;&nbsp;f,
                                                  V&nbsp;v)</pre>
 <div class="block">return seq to yield lazy value v, and continue withLast f a
  f as null is same as done or stop, depending on v
@@ -264,7 +264,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>trampoline</h4>
-<pre>public static&nbsp;&lt;V&gt;&nbsp;V&nbsp;trampoline(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;&gt;&nbsp;fun)</pre>
+<pre>public static&nbsp;&lt;V&gt;&nbsp;V&nbsp;trampoline(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;&gt;&nbsp;fun)</pre>
 <div class="block">Will recur on fun until done(value)</div>
 </li>
 </ul>
@@ -274,7 +274,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockListLast">
 <li class="blockList">
 <h4>lazy</h4>
-<pre>public static&nbsp;&lt;A,V&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;V&gt;&nbsp;lazy(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a>&lt;V&gt;&gt;&nbsp;fun)</pre>
+<pre>public static&nbsp;&lt;A,V&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;V&gt;&nbsp;lazy(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a>&lt;V&gt;&gt;&nbsp;fun)</pre>
 <div class="block">Emits a lazy Iterable recuring until stop, done, null or lack of f</div>
 </li>
 </ul>
@@ -306,7 +306,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../stonehorse/candy/Threading.html" title="class in stonehorse.candy"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?stonehorse/candy/Trampoline.html" target="_top">Frames</a></li>

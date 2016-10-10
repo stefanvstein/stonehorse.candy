@@ -453,7 +453,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Tuples.html#fourth-stonehorse.candy.Tuples.T4-">fourth(Tuples.T4&lt;?, ?, ?, T&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Tuples.html" title="class in stonehorse.candy">Tuples</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="stonehorse/candy/Trampoline.RecursiveVal.html#fun">fun</a></span> - Variable in class stonehorse.candy.<a href="stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a></dt>
+<dt><span class="memberNameLink"><a href="stonehorse/candy/Trampoline.Continuation.html#fun">fun</a></span> - Variable in class stonehorse.candy.<a href="stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Functions.html#function-java.util.function.BiFunction-T-">function(BiFunction&lt;? super T, ? super U, ? extends V&gt;, T)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Functions.html" title="class in stonehorse.candy">Functions</a></dt>
 <dd>
@@ -485,7 +485,7 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Identity.html#hashCode--">hashCode()</a></span> - Method in class stonehorse.candy.<a href="stonehorse/candy/Identity.html" title="class in stonehorse.candy">Identity</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="stonehorse/candy/Trampoline.RecursiveVal.html#hasValue">hasValue</a></span> - Variable in class stonehorse.candy.<a href="stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a></dt>
+<dt><span class="memberNameLink"><a href="stonehorse/candy/Trampoline.Continuation.html#hasValue">hasValue</a></span> - Variable in class stonehorse.candy.<a href="stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a name="I:I">
@@ -543,7 +543,7 @@
 <dd>
 <div class="block">The last element of the next iterator of iterable or null</div>
 </dd>
-<dt><span class="memberNameLink"><a href="stonehorse/candy/Trampoline.html#lazy-java.util.function.Supplier-">lazy(Supplier&lt;Trampoline.RecursiveVal&lt;V&gt;&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Trampoline.html" title="class in stonehorse.candy">Trampoline</a></dt>
+<dt><span class="memberNameLink"><a href="stonehorse/candy/Trampoline.html#lazy-java.util.function.Supplier-">lazy(Supplier&lt;Trampoline.Continuation&lt;V&gt;&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Trampoline.html" title="class in stonehorse.candy">Trampoline</a></dt>
 <dd>
 <div class="block">Emits a lazy Iterable recuring until stop, done, null or lack of f</div>
 </dd>
@@ -702,7 +702,7 @@
 <dd>
 <div class="block">Iterable of lazy iterators iterating from from to to in steps of step</div>
 </dd>
-<dt><span class="memberNameLink"><a href="stonehorse/candy/Trampoline.html#recur-java.util.function.Supplier-">recur(Supplier&lt;Trampoline.RecursiveVal&lt;V&gt;&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Trampoline.html" title="class in stonehorse.candy">Trampoline</a></dt>
+<dt><span class="memberNameLink"><a href="stonehorse/candy/Trampoline.html#recur-java.util.function.Supplier-">recur(Supplier&lt;Trampoline.Continuation&lt;V&gt;&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Trampoline.html" title="class in stonehorse.candy">Trampoline</a></dt>
 <dd>
 <div class="block">return recur to recur withLast f and a</div>
 </dd>
@@ -745,7 +745,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Tuples.html#second-stonehorse.candy.Tuples.T2-">second(Tuples.T2&lt;?, T&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Tuples.html" title="class in stonehorse.candy">Tuples</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="stonehorse/candy/Trampoline.html#seq-java.util.function.Supplier-V-">seq(Supplier&lt;Trampoline.RecursiveVal&lt;V&gt;&gt;, V)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Trampoline.html" title="class in stonehorse.candy">Trampoline</a></dt>
+<dt><span class="memberNameLink"><a href="stonehorse/candy/Trampoline.html#seq-java.util.function.Supplier-V-">seq(Supplier&lt;Trampoline.Continuation&lt;V&gt;&gt;, V)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Trampoline.html" title="class in stonehorse.candy">Trampoline</a></dt>
 <dd>
 <div class="block">return seq to yield lazy value v, and continue withLast f a
  f as null is same as done or stop, depending on v
@@ -933,11 +933,11 @@
 <dd>
 <div class="block">Functions for tail call</div>
 </dd>
-<dt><span class="memberNameLink"><a href="stonehorse/candy/Trampoline.html#trampoline-java.util.function.Supplier-">trampoline(Supplier&lt;Trampoline.RecursiveVal&lt;V&gt;&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Trampoline.html" title="class in stonehorse.candy">Trampoline</a></dt>
+<dt><span class="memberNameLink"><a href="stonehorse/candy/Trampoline.html#trampoline-java.util.function.Supplier-">trampoline(Supplier&lt;Trampoline.Continuation&lt;V&gt;&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Trampoline.html" title="class in stonehorse.candy">Trampoline</a></dt>
 <dd>
 <div class="block">Will recur on fun until done(value)</div>
 </dd>
-<dt><a href="stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy"><span class="typeNameLink">Trampoline.RecursiveVal</span></a>&lt;<a href="stonehorse/candy/Trampoline.RecursiveVal.html" title="type parameter in Trampoline.RecursiveVal">V</a>&gt; - Class in <a href="stonehorse/candy/package-summary.html">stonehorse.candy</a></dt>
+<dt><a href="stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy"><span class="typeNameLink">Trampoline.Continuation</span></a>&lt;<a href="stonehorse/candy/Trampoline.Continuation.html" title="type parameter in Trampoline.Continuation">V</a>&gt; - Class in <a href="stonehorse/candy/package-summary.html">stonehorse.candy</a></dt>
 <dd>
 <div class="block">Tail call return value</div>
 </dd>
@@ -987,7 +987,7 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="stonehorse/candy/Atomic.html#value-java.util.concurrent.atomic.AtomicReference-">value(AtomicReference&lt;T&gt;)</a></span> - Static method in class stonehorse.candy.<a href="stonehorse/candy/Atomic.html" title="class in stonehorse.candy">Atomic</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="stonehorse/candy/Trampoline.RecursiveVal.html#value">value</a></span> - Variable in class stonehorse.candy.<a href="stonehorse/candy/Trampoline.RecursiveVal.html" title="class in stonehorse.candy">Trampoline.RecursiveVal</a></dt>
+<dt><span class="memberNameLink"><a href="stonehorse/candy/Trampoline.Continuation.html#value">value</a></span> - Variable in class stonehorse.candy.<a href="stonehorse/candy/Trampoline.Continuation.html" title="class in stonehorse.candy">Trampoline.Continuation</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a name="I:W">
