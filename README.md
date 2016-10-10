@@ -357,7 +357,7 @@ static String foo(int a) {
 ...that eats stack, can be rewritten like:
 
 ```java
-static Supplier<RecursiveVal<String>> foo(int a) {
+static Supplier<Continuation<String>> foo(int a) {
   return () -> 
      ifelse(a > 200000,
             () -> done("Foo"),
@@ -377,14 +377,14 @@ The functions done and recur creates data telling the trampoline to either stop 
 This technique does allow for mutual recursion, like:
 
 ```java
-static Supplier<RecursiveVal<Boolean>> isEven(int a) {
+static Supplier<Continuation<Boolean>> isEven(int a) {
   return () -> 
     a == 0
     ? done(true)
     : recur(isOdd(a - 1));
 }
 
-static Supplier<RecursiveVal<Boolean>> isOdd(int a) {
+static Supplier<Continuation<Boolean>> isOdd(int a) {
   return () -> 
     a == 0
     ? done(false)
@@ -394,7 +394,7 @@ static Supplier<RecursiveVal<Boolean>> isOdd(int a) {
 trampoline(isEven(200000));
 ```
 
-A recursive function returns a Supplier of a RecursiveVal. The RecursiveVal either contains a final value or a continuation. The continuation may be another function that returns a RecursiveVal. The trampoline will call the repeatedly returned continuations as long as they returned. When none is returned the eventual final value is returned. The functions done and recur produce the apropriate RecursiveVals, with final value or continuation.
+A recursive function returns a Supplier of a Continuation. The Continuation either contains a final value or another function returning a Continuation. The trampoline will call the repeatedly returned continuation function as long as they returned. When none is returned the eventual final value is returned. The functions done and recur produce the apropriate Continuations, with final value or continuation.
 
 Three other functions lazy, seq, and stop are used similarily to produce lazy recursion through a the Iterator interface. Using these, the lazy iterators in Iterables.java becomes pretty easy to implement. 
 
@@ -414,7 +414,7 @@ public static <A, V> Iterable<V> map( Function<? super A, V> f,
 }
 
 private static <A, V> 
-Supplier<RecursiveVal<V>> mapI(Function<? super A, ? extends V> f, 
+Supplier<Continuation<V>> mapI(Function<? super A, ? extends V> f,
                                Iterator<A> elements) {
   return () -> {
     V v = f.apply(elements.next());

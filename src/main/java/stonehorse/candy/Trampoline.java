@@ -13,41 +13,41 @@ public class Trampoline {
 	/**
 	 * Tail call return value
 	 */
-	public static class RecursiveVal<V> {
-		public final java.util.function.Supplier<RecursiveVal<V>> fun;
+	public static class Continuation<V> {
+		public final java.util.function.Supplier<Continuation<V>> fun;
 
 		public final V value;
 		public final boolean hasValue;
 
-		private RecursiveVal(Supplier< RecursiveVal< V>> fun, V value, boolean hasValue) {
+		private Continuation(Supplier<Continuation< V>> fun, V value, boolean hasValue) {
 			this.fun = fun;
 			this.value = value;
 			this.hasValue = hasValue;
 		}
 
-		private static <V> RecursiveVal<V> nil() {
-			return new RecursiveVal<>(null, null, false);
+		private static <V> Continuation<V> nil() {
+			return new Continuation<>(null, null, false);
 		}
 	}
 
 	/**
 	 * return recur to recur withLast f and a
 	 */
-	public static < V> RecursiveVal<V> recur(Supplier<RecursiveVal<V>> f) {
-		return new RecursiveVal<>(f, null, false);
+	public static < V> Continuation<V> recur(Supplier<Continuation<V>> f) {
+		return new Continuation<>(f, null, false);
 	}
 /**
  * return done to when last value is found
  */
-	public static <V> RecursiveVal<V> done(V v) {
-		return new RecursiveVal<>(null, v, true);
+	public static <V> Continuation<V> done(V v) {
+		return new Continuation<>(null, v, true);
 	}
 
 	/**
 	 * Return stop when done without a value. Null if on trampoline
 	 */
-	public static <V> RecursiveVal< V> stop() {
-		return new RecursiveVal<>(null, null, false);
+	public static <V> Continuation< V> stop() {
+		return new Continuation<>(null, null, false);
 	}
 
 	/**
@@ -55,16 +55,16 @@ public class Trampoline {
 	 * f as null is same as done or stop, depending on v
 	 * Will behave like recur on a trampoline
 	 */
-	public static < V> RecursiveVal< V> seq(Supplier<RecursiveVal<V>> f, V v) {
-		return new RecursiveVal<>(f, v, true);
+	public static < V> Continuation< V> seq(Supplier<Continuation<V>> f, V v) {
+		return new Continuation<>(f, v, true);
 	}
 
 	/**
 	 * Will recur on fun until done(value)
 	 */
-	public static <V> V trampoline(Supplier<RecursiveVal<V>> fun) {
+	public static <V> V trampoline(Supplier<Continuation<V>> fun) {
 		boolean value = false;
-		RecursiveVal< V> ret = RecursiveVal.nil();
+		Continuation< V> ret = Continuation.nil();
 		while (fun != null && !value) {
 			ret = fun.get();
 
@@ -77,17 +77,17 @@ public class Trampoline {
 	/**
 	 * Emits a lazy Iterable recuring until stop, done, null or lack of f 
 	 */
-	public static <A, V> Iterable<V> lazy(final Supplier< RecursiveVal< V>> fun) {
+	public static <A, V> Iterable<V> lazy(final Supplier<Continuation< V>> fun) {
 		return ()-> new LazyIterator<>(fun);
 	}
 
 	private static class LazyIterator< V> implements Iterator<V> {
 
-		private Supplier<RecursiveVal<V>> fun;
+		private Supplier<Continuation<V>> fun;
 		private V next;
 		private boolean hasNext = false;
 
-		public LazyIterator(Supplier< RecursiveVal<V>> fun) {
+		public LazyIterator(Supplier<Continuation<V>> fun) {
 			this.fun = fun;
 		}
 
@@ -97,7 +97,7 @@ public class Trampoline {
 			if (null == fun)
 				return false;
 			while (true) {
-				RecursiveVal<V> ret = fun.get();
+				Continuation<V> ret = fun.get();
 				if(null==ret)
 					return false;
 				fun = ret.fun;

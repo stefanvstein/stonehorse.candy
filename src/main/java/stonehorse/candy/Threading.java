@@ -2,7 +2,7 @@ package stonehorse.candy;
 
 import java.util.function.Function;
 import static stonehorse.candy.Trampoline.done;
-import stonehorse.candy.Trampoline.RecursiveVal;
+import stonehorse.candy.Trampoline.Continuation;
 import static stonehorse.candy.Trampoline.trampoline;
 import static stonehorse.candy.Trampoline.recur;
 
@@ -28,7 +28,7 @@ public class Threading{
     return f.apply(t);
   }
 
-  private static <T0,T1> RecursiveVal<T1> threadRec(T0 t0, Function<T0,T1> f){
+  private static <T0,T1> Continuation<T1> threadRec(T0 t0, Function<T0,T1> f){
     return done(f.apply(t0));
   }
 
@@ -47,7 +47,7 @@ public class Threading{
     return null;
   }
 
-  private static <T0,T1> RecursiveVal<T1> threadMaybeRec(T0 t0, Function<T0,T1> f){
+  private static <T0,T1> Continuation<T1> threadMaybeRec(T0 t0, Function<T0,T1> f){
     if(t0!=null)
       return done(f.apply(t0));
     else return done(null);
@@ -70,15 +70,15 @@ public class Threading{
     return trampoline(()->threadMaybeRec(t0,f0,f1));
   }
 
-  private static <T0,T1,T2> RecursiveVal<T2> threadRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1){
+  private static <T0,T1,T2> Continuation<T2> threadRec(T0 t0,
+                                                       Function<T0, T1> f0,
+                                                       Function<T1, T2> f1){
     return recur(()->threadRec(f0.apply(t0),f1));
   }
 
-  private static <T0,T1,T2> RecursiveVal<T2> threadMaybeRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1){
+  private static <T0,T1,T2> Continuation<T2> threadMaybeRec(T0 t0,
+                                                            Function<T0, T1> f0,
+                                                            Function<T1, T2> f1){
     T1 v = f0.apply(t0);
     if(v==null)
       return done(null);
@@ -105,17 +105,17 @@ public class Threading{
     return trampoline(()->threadMaybeRec(t0,f0,f1,f2));
   }
 
-  private static <T0,T1,T2,T3> RecursiveVal<T3> threadRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2){
+  private static <T0,T1,T2,T3> Continuation<T3> threadRec(T0 t0,
+                                                          Function<T0, T1> f0,
+                                                          Function<T1, T2> f1,
+                                                          Function<T2, T3> f2){
     return recur(()->threadRec(f0.apply(t0),f1,f2));
   }
 
-  private static <T0,T1,T2,T3> RecursiveVal<T3> threadMaybeRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2){
+  private static <T0,T1,T2,T3> Continuation<T3> threadMaybeRec(T0 t0,
+                                                               Function<T0, T1> f0,
+                                                               Function<T1, T2> f1,
+                                                               Function<T2, T3> f2){
     T1 v = f0.apply(t0);
     if(v==null)
       return done(null);
@@ -144,19 +144,19 @@ public class Threading{
     return trampoline(()->threadMaybeRec(t0,f0,f1,f2,f3));
   }
 
-  private static <T0,T1,T2,T3,T4> RecursiveVal<T4> threadRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3){
+  private static <T0,T1,T2,T3,T4> Continuation<T4> threadRec(T0 t0,
+                                                             Function<T0, T1> f0,
+                                                             Function<T1, T2> f1,
+                                                             Function<T2, T3> f2,
+                                                             Function<T3, T4> f3){
     return recur(()->threadRec(f0.apply(t0),f1,f2,f3));
   }
 
-  private static <T0,T1,T2,T3,T4> RecursiveVal<T4> threadMaybeRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3){
+  private static <T0,T1,T2,T3,T4> Continuation<T4> threadMaybeRec(T0 t0,
+                                                                  Function<T0, T1> f0,
+                                                                  Function<T1, T2> f1,
+                                                                  Function<T2, T3> f2,
+                                                                  Function<T3, T4> f3){
     T1 v = f0.apply(t0);
     if(v==null)
       return done(null);
@@ -187,21 +187,21 @@ public class Threading{
     return trampoline(()->threadMaybeRec(t0,f0,f1,f2,f3,f4));
   }
 
-  private static <T0,T1,T2,T3,T4,T5> RecursiveVal<T5> threadRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3,
-    Function<T4, T5> f4){
+  private static <T0,T1,T2,T3,T4,T5> Continuation<T5> threadRec(T0 t0,
+                                                                Function<T0, T1> f0,
+                                                                Function<T1, T2> f1,
+                                                                Function<T2, T3> f2,
+                                                                Function<T3, T4> f3,
+                                                                Function<T4, T5> f4){
     return recur(()->threadRec(f0.apply(t0),f1,f2,f3,f4));
   }
 
-  private static <T0,T1,T2,T3,T4,T5> RecursiveVal<T5> threadMaybeRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3,
-    Function<T4, T5> f4){
+  private static <T0,T1,T2,T3,T4,T5> Continuation<T5> threadMaybeRec(T0 t0,
+                                                                     Function<T0, T1> f0,
+                                                                     Function<T1, T2> f1,
+                                                                     Function<T2, T3> f2,
+                                                                     Function<T3, T4> f3,
+                                                                     Function<T4, T5> f4){
     T1 v = f0.apply(t0);
     if(v==null)
       return done(null);
@@ -234,23 +234,23 @@ public class Threading{
     return trampoline(()->threadMaybeRec(t0,f0,f1,f2,f3,f4,f5));
   }
 
-  private static <T0,T1,T2,T3,T4,T5,T6> RecursiveVal<T6> threadRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3,
-    Function<T4, T5> f4,
-    Function<T5, T6> f5){
+  private static <T0,T1,T2,T3,T4,T5,T6> Continuation<T6> threadRec(T0 t0,
+                                                                   Function<T0, T1> f0,
+                                                                   Function<T1, T2> f1,
+                                                                   Function<T2, T3> f2,
+                                                                   Function<T3, T4> f3,
+                                                                   Function<T4, T5> f4,
+                                                                   Function<T5, T6> f5){
     return recur(()->threadRec(f0.apply(t0),f1,f2,f3,f4,f5));
   }
 
-  private static <T0,T1,T2,T3,T4,T5,T6> RecursiveVal<T6> threadMaybeRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3,
-    Function<T4, T5> f4,
-    Function<T5, T6> f5){
+  private static <T0,T1,T2,T3,T4,T5,T6> Continuation<T6> threadMaybeRec(T0 t0,
+                                                                        Function<T0, T1> f0,
+                                                                        Function<T1, T2> f1,
+                                                                        Function<T2, T3> f2,
+                                                                        Function<T3, T4> f3,
+                                                                        Function<T4, T5> f4,
+                                                                        Function<T5, T6> f5){
     T1 v = f0.apply(t0);
     if(v==null)
       return done(null);
@@ -285,25 +285,25 @@ public class Threading{
     return trampoline(()->threadMaybeRec(t0,f0,f1,f2,f3,f4,f5,f6));
   }
 
-  private static <T0,T1,T2,T3,T4,T5,T6,T7> RecursiveVal<T7> threadRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3,
-    Function<T4, T5> f4,
-    Function<T5, T6> f5,
-    Function<T6, T7> f6){
+  private static <T0,T1,T2,T3,T4,T5,T6,T7> Continuation<T7> threadRec(T0 t0,
+                                                                      Function<T0, T1> f0,
+                                                                      Function<T1, T2> f1,
+                                                                      Function<T2, T3> f2,
+                                                                      Function<T3, T4> f3,
+                                                                      Function<T4, T5> f4,
+                                                                      Function<T5, T6> f5,
+                                                                      Function<T6, T7> f6){
     return recur(()->threadRec(f0.apply(t0),f1,f2,f3,f4,f5,f6));
   }
 
-  private static <T0,T1,T2,T3,T4,T5,T6,T7> RecursiveVal<T7> threadMaybeRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3,
-    Function<T4, T5> f4,
-    Function<T5, T6> f5,
-    Function<T6, T7> f6){
+  private static <T0,T1,T2,T3,T4,T5,T6,T7> Continuation<T7> threadMaybeRec(T0 t0,
+                                                                           Function<T0, T1> f0,
+                                                                           Function<T1, T2> f1,
+                                                                           Function<T2, T3> f2,
+                                                                           Function<T3, T4> f3,
+                                                                           Function<T4, T5> f4,
+                                                                           Function<T5, T6> f5,
+                                                                           Function<T6, T7> f6){
     T1 v = f0.apply(t0);
     if(v==null)
       return done(null);
@@ -340,27 +340,27 @@ public class Threading{
     return trampoline(()->threadMaybeRec(t0,f0,f1,f2,f3,f4,f5,f6,f7));
   }
 
-  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8> RecursiveVal<T8> threadRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3,
-    Function<T4, T5> f4,
-    Function<T5, T6> f5,
-    Function<T6, T7> f6,
-    Function<T7, T8> f7){
+  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8> Continuation<T8> threadRec(T0 t0,
+                                                                         Function<T0, T1> f0,
+                                                                         Function<T1, T2> f1,
+                                                                         Function<T2, T3> f2,
+                                                                         Function<T3, T4> f3,
+                                                                         Function<T4, T5> f4,
+                                                                         Function<T5, T6> f5,
+                                                                         Function<T6, T7> f6,
+                                                                         Function<T7, T8> f7){
     return recur(()->threadRec(f0.apply(t0),f1,f2,f3,f4,f5,f6,f7));
   }
 
-  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8> RecursiveVal<T8> threadMaybeRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3,
-    Function<T4, T5> f4,
-    Function<T5, T6> f5,
-    Function<T6, T7> f6,
-    Function<T7, T8> f7){
+  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8> Continuation<T8> threadMaybeRec(T0 t0,
+                                                                              Function<T0, T1> f0,
+                                                                              Function<T1, T2> f1,
+                                                                              Function<T2, T3> f2,
+                                                                              Function<T3, T4> f3,
+                                                                              Function<T4, T5> f4,
+                                                                              Function<T5, T6> f5,
+                                                                              Function<T6, T7> f6,
+                                                                              Function<T7, T8> f7){
     T1 v = f0.apply(t0);
     if(v==null)
       return done(null);
@@ -399,29 +399,29 @@ public class Threading{
     return trampoline(()->threadMaybeRec(t0,f0,f1,f2,f3,f4,f5,f6,f7,f8));
   }
 
-  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8,T9> RecursiveVal<T9> threadRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3,
-    Function<T4, T5> f4,
-    Function<T5, T6> f5,
-    Function<T6, T7> f6,
-    Function<T7, T8> f7,
-    Function<T8, T9> f8){
+  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8,T9> Continuation<T9> threadRec(T0 t0,
+                                                                            Function<T0, T1> f0,
+                                                                            Function<T1, T2> f1,
+                                                                            Function<T2, T3> f2,
+                                                                            Function<T3, T4> f3,
+                                                                            Function<T4, T5> f4,
+                                                                            Function<T5, T6> f5,
+                                                                            Function<T6, T7> f6,
+                                                                            Function<T7, T8> f7,
+                                                                            Function<T8, T9> f8){
     return recur(()->threadRec(f0.apply(t0),f1,f2,f3,f4,f5,f6,f7,f8));
   }
 
-  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8,T9> RecursiveVal<T9> threadMaybeRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3,
-    Function<T4, T5> f4,
-    Function<T5, T6> f5,
-    Function<T6, T7> f6,
-    Function<T7, T8> f7,
-    Function<T8, T9> f8){
+  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8,T9> Continuation<T9> threadMaybeRec(T0 t0,
+                                                                                 Function<T0, T1> f0,
+                                                                                 Function<T1, T2> f1,
+                                                                                 Function<T2, T3> f2,
+                                                                                 Function<T3, T4> f3,
+                                                                                 Function<T4, T5> f4,
+                                                                                 Function<T5, T6> f5,
+                                                                                 Function<T6, T7> f6,
+                                                                                 Function<T7, T8> f7,
+                                                                                 Function<T8, T9> f8){
     T1 v = f0.apply(t0);
     if(v==null)
       return done(null);
@@ -462,31 +462,31 @@ public class Threading{
     return trampoline(()->threadMaybeRec(t0,f0,f1,f2,f3,f4,f5,f6,f7,f8,f9));
   }
 
-  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10> RecursiveVal<T10> threadRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3,
-    Function<T4, T5> f4,
-    Function<T5, T6> f5,
-    Function<T6, T7> f6,
-    Function<T7, T8> f7,
-    Function<T8, T9> f8,
-    Function<T9, T10> f9){
+  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10> Continuation<T10> threadRec(T0 t0,
+                                                                                 Function<T0, T1> f0,
+                                                                                 Function<T1, T2> f1,
+                                                                                 Function<T2, T3> f2,
+                                                                                 Function<T3, T4> f3,
+                                                                                 Function<T4, T5> f4,
+                                                                                 Function<T5, T6> f5,
+                                                                                 Function<T6, T7> f6,
+                                                                                 Function<T7, T8> f7,
+                                                                                 Function<T8, T9> f8,
+                                                                                 Function<T9, T10> f9){
     return recur(()->threadRec(f0.apply(t0),f1,f2,f3,f4,f5,f6,f7,f8,f9));
   }
 
-  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10> RecursiveVal<T10> threadMaybeRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3,
-    Function<T4, T5> f4,
-    Function<T5, T6> f5,
-    Function<T6, T7> f6,
-    Function<T7, T8> f7,
-    Function<T8, T9> f8,
-    Function<T9, T10> f9){
+  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10> Continuation<T10> threadMaybeRec(T0 t0,
+                                                                                      Function<T0, T1> f0,
+                                                                                      Function<T1, T2> f1,
+                                                                                      Function<T2, T3> f2,
+                                                                                      Function<T3, T4> f3,
+                                                                                      Function<T4, T5> f4,
+                                                                                      Function<T5, T6> f5,
+                                                                                      Function<T6, T7> f6,
+                                                                                      Function<T7, T8> f7,
+                                                                                      Function<T8, T9> f8,
+                                                                                      Function<T9, T10> f9){
     T1 v = f0.apply(t0);
     if(v==null)
       return done(null);
@@ -529,33 +529,33 @@ public class Threading{
     return trampoline(()->threadMaybeRec(t0,f0,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10));
   }
 
-  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11> RecursiveVal<T11> threadRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3,
-    Function<T4, T5> f4,
-    Function<T5, T6> f5,
-    Function<T6, T7> f6,
-    Function<T7, T8> f7,
-    Function<T8, T9> f8,
-    Function<T9, T10> f9,
-    Function<T10, T11> f10){
+  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11> Continuation<T11> threadRec(T0 t0,
+                                                                                     Function<T0, T1> f0,
+                                                                                     Function<T1, T2> f1,
+                                                                                     Function<T2, T3> f2,
+                                                                                     Function<T3, T4> f3,
+                                                                                     Function<T4, T5> f4,
+                                                                                     Function<T5, T6> f5,
+                                                                                     Function<T6, T7> f6,
+                                                                                     Function<T7, T8> f7,
+                                                                                     Function<T8, T9> f8,
+                                                                                     Function<T9, T10> f9,
+                                                                                     Function<T10, T11> f10){
     return recur(()->threadRec(f0.apply(t0),f1,f2,f3,f4,f5,f6,f7,f8,f9,f10));
   }
 
-  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11> RecursiveVal<T11> threadMaybeRec(T0 t0,
-    Function<T0, T1> f0,
-    Function<T1, T2> f1,
-    Function<T2, T3> f2,
-    Function<T3, T4> f3,
-    Function<T4, T5> f4,
-    Function<T5, T6> f5,
-    Function<T6, T7> f6,
-    Function<T7, T8> f7,
-    Function<T8, T9> f8,
-    Function<T9, T10> f9,
-    Function<T10, T11> f10){
+  private static <T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11> Continuation<T11> threadMaybeRec(T0 t0,
+                                                                                          Function<T0, T1> f0,
+                                                                                          Function<T1, T2> f1,
+                                                                                          Function<T2, T3> f2,
+                                                                                          Function<T3, T4> f3,
+                                                                                          Function<T4, T5> f4,
+                                                                                          Function<T5, T6> f5,
+                                                                                          Function<T6, T7> f6,
+                                                                                          Function<T7, T8> f7,
+                                                                                          Function<T8, T9> f8,
+                                                                                          Function<T9, T10> f9,
+                                                                                          Function<T10, T11> f10){
     T1 v = f0.apply(t0);
     if(v==null)
       return done(null);

@@ -15,11 +15,11 @@ import static org.junit.Assert.fail;
 
 
 public class TrampolineTest {
-    static Supplier< RecursiveVal<Boolean>> isEven(int a) {
+    static Supplier<Continuation<Boolean>> isEven(int a) {
         return () -> a == 0 ? done(true) : recur(isOdd(a-1));
     }
 
-    static Supplier<RecursiveVal< Boolean>> isOdd(int a) {
+    static Supplier<Continuation< Boolean>> isOdd(int a) {
         return () -> a == 0 ? done(false) : recur(isEven(a - 1));
     }
 
@@ -28,7 +28,7 @@ public class TrampolineTest {
         assertTrue(trampoline(isEven(200000)));
     }
 
-    static Supplier<RecursiveVal<Integer>> onlyEven(int a){
+    static Supplier<Continuation<Integer>> onlyEven(int a){
         return () -> {
             if(a<=0) return done(0);
             if(a%2==0) return seq(onlyEven(a-1),a);
@@ -49,11 +49,11 @@ public class TrampolineTest {
         }catch(NoSuchElementException e){}
     }
 
-    static Supplier< RecursiveVal< Integer>> nothing(){
+    static Supplier<Continuation< Integer>> nothing(){
         return Trampoline::stop;
     }
 
-    static Supplier<RecursiveVal< Integer>> nil(){
+    static Supplier<Continuation< Integer>> nil(){
         return () -> null;
     }
 

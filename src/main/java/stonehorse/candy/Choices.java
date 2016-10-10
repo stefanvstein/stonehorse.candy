@@ -7,7 +7,7 @@ import java.util.function.Function;
 import static stonehorse.candy.Trampoline.trampoline;
 import static stonehorse.candy.Trampoline.done;
 import static stonehorse.candy.Trampoline.recur;
-import stonehorse.candy.Trampoline.RecursiveVal;
+import stonehorse.candy.Trampoline.Continuation;
 import static stonehorse.candy.NullableBooleans.truth;
 
 /**
@@ -90,7 +90,7 @@ public class Choices{
     return trampoline(condRec(t0, v0, t1, v1, v2));
   }
 
-  private static <T> Supplier<RecursiveVal<T>> condRec(
+  private static <T> Supplier<Trampoline.Continuation<T>> condRec(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
       Supplier<Boolean> t1, Supplier<? extends T> v1,
       Supplier<? extends T> v2){
@@ -120,7 +120,7 @@ public class Choices{
     return trampoline(condRec(t0, v0, t1, v1, t2, v2, v3));
   }
 
-  private static <T> Supplier<RecursiveVal<T>> condRec(
+  private static <T> Supplier<Trampoline.Continuation<T>> condRec(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
       Supplier<Boolean> t1, Supplier<? extends T> v1,
       Supplier<Boolean> t2, Supplier<? extends T> v2,
@@ -152,7 +152,7 @@ public class Choices{
     return trampoline(condRec(t0, v0, t1, v1, t2, v2, t3, v3, v4));
   }
 
-  private static <T> Supplier<RecursiveVal<T>> condRec(
+  private static <T> Supplier<Trampoline.Continuation<T>> condRec(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
       Supplier<Boolean> t1, Supplier<? extends T> v1,
       Supplier<Boolean> t2, Supplier<? extends T> v2,
@@ -186,7 +186,7 @@ public class Choices{
     return trampoline(condRec(t0, v0, t1, v1, t2, v2, t3, v3, t4, v4, v5));
   }
 
-  private static <T> Supplier<RecursiveVal<T>> condRec(
+  private static <T> Supplier<Trampoline.Continuation<T>> condRec(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
       Supplier<Boolean> t1, Supplier<? extends T> v1,
       Supplier<Boolean> t2, Supplier<? extends T> v2,
@@ -222,7 +222,7 @@ public class Choices{
     return trampoline(condRec(t0, v0, t1, v1, t2, v2, t3, v3, t4, v4, t5, v5, v6));
   }
 
-  private static <T> Supplier<RecursiveVal<T>> condRec(
+  private static <T> Supplier<Continuation<T>> condRec(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
       Supplier<Boolean> t1, Supplier<? extends T> v1,
       Supplier<Boolean> t2, Supplier<? extends T> v2,
@@ -260,7 +260,7 @@ public class Choices{
     return trampoline(condRec(t0, v0, t1, v1, t2, v2, t3, v3, t4, v4, t5, v5, t6, v6, v7));
   }
 
-  private static <T> Supplier<RecursiveVal<T>> condRec(
+  private static <T> Supplier<Continuation<T>> condRec(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
       Supplier<Boolean> t1, Supplier<? extends T> v1,
       Supplier<Boolean> t2, Supplier<? extends T> v2,
@@ -300,7 +300,7 @@ public class Choices{
     return trampoline(condRec(t0, v0, t1, v1, t2, v2, t3, v3, t4, v4, t5, v5, t6, v6, t7, v7, v8));
   }
 
-  private static <T> Supplier<RecursiveVal<T>> condRec(
+  private static <T> Supplier<Trampoline.Continuation<T>> condRec(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
       Supplier<Boolean> t1, Supplier<? extends T> v1,
       Supplier<Boolean> t2, Supplier<? extends T> v2,
@@ -342,7 +342,7 @@ public class Choices{
     return trampoline(condRec(t0, v0, t1, v1, t2, v2, t3, v3, t4, v4, t5, v5, t6, v6, t7, v7, t8, v8, v9));
   }
 
-  private static <T> Supplier<RecursiveVal<T>> condRec(
+  private static <T> Supplier<Trampoline.Continuation<T>> condRec(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
       Supplier<Boolean> t1, Supplier<? extends T> v1,
       Supplier<Boolean> t2, Supplier<? extends T> v2,
@@ -386,7 +386,7 @@ public class Choices{
     return trampoline(condRec(t0, v0, t1, v1, t2, v2, t3, v3, t4, v4, t5, v5, t6, v6, t7, v7, t8, v8, t9, v9, v10));
   }
 
-  private static <T> Supplier<RecursiveVal<T>> condRec(
+  private static <T> Supplier<Trampoline.Continuation<T>> condRec(
       Supplier<Boolean> t0, Supplier<? extends T> v0,
       Supplier<Boolean> t1, Supplier<? extends T> v1,
       Supplier<Boolean> t2, Supplier<? extends T> v2,
@@ -403,7 +403,7 @@ public class Choices{
                       ()->recur(condRec(t1, v1, t2, v2, t3, v3, t4, v4, t5, v5, t6, v6, t7, v7, t8, v8, t9, v9, v10)));
    }
 
-   private static <T> Supplier<RecursiveVal<T>> condRec(
+   private static <T> Supplier<Trampoline.Continuation<T>> condRec(
             Supplier<Boolean> t0, Supplier<? extends T> v0,
             Supplier<? extends T> v1) {
         requireAllNonNull(t0,v0,v1);

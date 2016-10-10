@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.function.Supplier;
 import static stonehorse.candy.Choices.mapOr;
 import static stonehorse.candy.Choices.ifelse;
-import stonehorse.candy.Trampoline.RecursiveVal;
+import stonehorse.candy.Trampoline.Continuation;
 import static stonehorse.candy.Trampoline.done;
 import static stonehorse.candy.Trampoline.recur;
 import static stonehorse.candy.Trampoline.trampoline;
@@ -54,7 +54,7 @@ public class SupplierLogic{
     return Objects.equals(o, s0.get());
   }
 
-  private static Supplier<RecursiveVal<Boolean>> anyEqualsRec(Object o, Supplier<Object> s0){
+  private static Supplier<Continuation<Boolean>> anyEqualsRec(Object o, Supplier<Object> s0){
     return ()->done(Objects.equals(o, s0.get()));
   }
 
@@ -69,7 +69,7 @@ public class SupplierLogic{
     return Objects.equals(o, s0.get());
   }
 
-  private static Supplier<RecursiveVal<Boolean>> allEqualsRec(Object o, Supplier<Object> s0){
+  private static Supplier<Trampoline.Continuation<Boolean>> allEqualsRec(Object o, Supplier<Object> s0){
     return ()->done(Objects.equals(o, s0.get()));
   }
 
@@ -115,9 +115,9 @@ public class SupplierLogic{
     return trampoline(anyEqualsRec(o,s0,s1));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> anyEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1){
+  private static Supplier<Trampoline.Continuation<Boolean>> anyEqualsRec(Object o,
+                                                                         Supplier<Object> s0,
+                                                                         Supplier<Object> s1){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->done(true),
                ()->recur(anyEqualsRec(o,s1)));
@@ -137,9 +137,9 @@ public class SupplierLogic{
     return trampoline(allEqualsRec(o,s0,s1));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> allEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1){
+  private static Supplier<Trampoline.Continuation<Boolean>> allEqualsRec(Object o,
+                                                                         Supplier<Object> s0,
+                                                                         Supplier<Object> s1){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->recur(allEqualsRec(o,s1)),
                ()->done(false));
@@ -195,10 +195,10 @@ public class SupplierLogic{
     return trampoline(anyEqualsRec(o,s0,s1,s2));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> anyEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1,
-       Supplier<Object> s2){
+  private static Supplier<Continuation<Boolean>> anyEqualsRec(Object o,
+                                                              Supplier<Object> s0,
+                                                              Supplier<Object> s1,
+                                                              Supplier<Object> s2){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->done(true),
                ()->recur(anyEqualsRec(o,s1,s2)));
@@ -220,10 +220,10 @@ public class SupplierLogic{
     return trampoline(allEqualsRec(o,s0,s1,s2));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> allEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1,
-       Supplier<Object> s2){
+  private static Supplier<Continuation<Boolean>> allEqualsRec(Object o,
+                                                              Supplier<Object> s0,
+                                                              Supplier<Object> s1,
+                                                              Supplier<Object> s2){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->recur(allEqualsRec(o,s1,s2)),
                ()->done(false));
@@ -287,11 +287,11 @@ public class SupplierLogic{
     return trampoline(anyEqualsRec(o,s0,s1,s2,s3));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> anyEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1,
-       Supplier<Object> s2,
-       Supplier<Object> s3){
+  private static Supplier<Trampoline.Continuation<Boolean>> anyEqualsRec(Object o,
+                                                                         Supplier<Object> s0,
+                                                                         Supplier<Object> s1,
+                                                                         Supplier<Object> s2,
+                                                                         Supplier<Object> s3){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->done(true),
                ()->recur(anyEqualsRec(o,s1,s2,s3)));
@@ -315,11 +315,11 @@ public class SupplierLogic{
     return trampoline(allEqualsRec(o,s0,s1,s2,s3));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> allEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1,
-       Supplier<Object> s2,
-       Supplier<Object> s3){
+  private static Supplier<Continuation<Boolean>> allEqualsRec(Object o,
+                                                              Supplier<Object> s0,
+                                                              Supplier<Object> s1,
+                                                              Supplier<Object> s2,
+                                                              Supplier<Object> s3){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->recur(allEqualsRec(o,s1,s2,s3)),
                ()->done(false));
@@ -391,12 +391,12 @@ public class SupplierLogic{
     return trampoline(anyEqualsRec(o,s0,s1,s2,s3,s4));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> anyEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1,
-       Supplier<Object> s2,
-       Supplier<Object> s3,
-       Supplier<Object> s4){
+  private static Supplier<Trampoline.Continuation<Boolean>> anyEqualsRec(Object o,
+                                                                         Supplier<Object> s0,
+                                                                         Supplier<Object> s1,
+                                                                         Supplier<Object> s2,
+                                                                         Supplier<Object> s3,
+                                                                         Supplier<Object> s4){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->done(true),
                ()->recur(anyEqualsRec(o,s1,s2,s3,s4)));
@@ -422,12 +422,12 @@ public class SupplierLogic{
     return trampoline(allEqualsRec(o,s0,s1,s2,s3,s4));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> allEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1,
-       Supplier<Object> s2,
-       Supplier<Object> s3,
-       Supplier<Object> s4){
+  private static Supplier<Continuation<Boolean>> allEqualsRec(Object o,
+                                                              Supplier<Object> s0,
+                                                              Supplier<Object> s1,
+                                                              Supplier<Object> s2,
+                                                              Supplier<Object> s3,
+                                                              Supplier<Object> s4){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->recur(allEqualsRec(o,s1,s2,s3,s4)),
                ()->done(false));
@@ -507,13 +507,13 @@ public class SupplierLogic{
     return trampoline(anyEqualsRec(o,s0,s1,s2,s3,s4,s5));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> anyEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1,
-       Supplier<Object> s2,
-       Supplier<Object> s3,
-       Supplier<Object> s4,
-       Supplier<Object> s5){
+  private static Supplier<Trampoline.Continuation<Boolean>> anyEqualsRec(Object o,
+                                                                         Supplier<Object> s0,
+                                                                         Supplier<Object> s1,
+                                                                         Supplier<Object> s2,
+                                                                         Supplier<Object> s3,
+                                                                         Supplier<Object> s4,
+                                                                         Supplier<Object> s5){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->done(true),
                ()->recur(anyEqualsRec(o,s1,s2,s3,s4,s5)));
@@ -541,13 +541,13 @@ public class SupplierLogic{
     return trampoline(allEqualsRec(o,s0,s1,s2,s3,s4,s5));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> allEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1,
-       Supplier<Object> s2,
-       Supplier<Object> s3,
-       Supplier<Object> s4,
-       Supplier<Object> s5){
+  private static Supplier<Trampoline.Continuation<Boolean>> allEqualsRec(Object o,
+                                                                         Supplier<Object> s0,
+                                                                         Supplier<Object> s1,
+                                                                         Supplier<Object> s2,
+                                                                         Supplier<Object> s3,
+                                                                         Supplier<Object> s4,
+                                                                         Supplier<Object> s5){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->recur(allEqualsRec(o,s1,s2,s3,s4,s5)),
                ()->done(false));
@@ -635,14 +635,14 @@ public class SupplierLogic{
     return trampoline(anyEqualsRec(o,s0,s1,s2,s3,s4,s5,s6));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> anyEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1,
-       Supplier<Object> s2,
-       Supplier<Object> s3,
-       Supplier<Object> s4,
-       Supplier<Object> s5,
-       Supplier<Object> s6){
+  private static Supplier<Continuation<Boolean>> anyEqualsRec(Object o,
+                                                              Supplier<Object> s0,
+                                                              Supplier<Object> s1,
+                                                              Supplier<Object> s2,
+                                                              Supplier<Object> s3,
+                                                              Supplier<Object> s4,
+                                                              Supplier<Object> s5,
+                                                              Supplier<Object> s6){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->done(true),
                ()->recur(anyEqualsRec(o,s1,s2,s3,s4,s5,s6)));
@@ -672,14 +672,14 @@ public class SupplierLogic{
     return trampoline(allEqualsRec(o,s0,s1,s2,s3,s4,s5,s6));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> allEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1,
-       Supplier<Object> s2,
-       Supplier<Object> s3,
-       Supplier<Object> s4,
-       Supplier<Object> s5,
-       Supplier<Object> s6){
+  private static Supplier<Trampoline.Continuation<Boolean>> allEqualsRec(Object o,
+                                                                         Supplier<Object> s0,
+                                                                         Supplier<Object> s1,
+                                                                         Supplier<Object> s2,
+                                                                         Supplier<Object> s3,
+                                                                         Supplier<Object> s4,
+                                                                         Supplier<Object> s5,
+                                                                         Supplier<Object> s6){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->recur(allEqualsRec(o,s1,s2,s3,s4,s5,s6)),
                ()->done(false));
@@ -775,15 +775,15 @@ public class SupplierLogic{
     return trampoline(anyEqualsRec(o,s0,s1,s2,s3,s4,s5,s6,s7));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> anyEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1,
-       Supplier<Object> s2,
-       Supplier<Object> s3,
-       Supplier<Object> s4,
-       Supplier<Object> s5,
-       Supplier<Object> s6,
-       Supplier<Object> s7){
+  private static Supplier<Trampoline.Continuation<Boolean>> anyEqualsRec(Object o,
+                                                                         Supplier<Object> s0,
+                                                                         Supplier<Object> s1,
+                                                                         Supplier<Object> s2,
+                                                                         Supplier<Object> s3,
+                                                                         Supplier<Object> s4,
+                                                                         Supplier<Object> s5,
+                                                                         Supplier<Object> s6,
+                                                                         Supplier<Object> s7){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->done(true),
                ()->recur(anyEqualsRec(o,s1,s2,s3,s4,s5,s6,s7)));
@@ -815,15 +815,15 @@ public class SupplierLogic{
     return trampoline(allEqualsRec(o,s0,s1,s2,s3,s4,s5,s6,s7));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> allEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1,
-       Supplier<Object> s2,
-       Supplier<Object> s3,
-       Supplier<Object> s4,
-       Supplier<Object> s5,
-       Supplier<Object> s6,
-       Supplier<Object> s7){
+  private static Supplier<Continuation<Boolean>> allEqualsRec(Object o,
+                                                              Supplier<Object> s0,
+                                                              Supplier<Object> s1,
+                                                              Supplier<Object> s2,
+                                                              Supplier<Object> s3,
+                                                              Supplier<Object> s4,
+                                                              Supplier<Object> s5,
+                                                              Supplier<Object> s6,
+                                                              Supplier<Object> s7){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->recur(allEqualsRec(o,s1,s2,s3,s4,s5,s6,s7)),
                ()->done(false));
@@ -927,16 +927,16 @@ public class SupplierLogic{
     return trampoline(anyEqualsRec(o,s0,s1,s2,s3,s4,s5,s6,s7,s8));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> anyEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1,
-       Supplier<Object> s2,
-       Supplier<Object> s3,
-       Supplier<Object> s4,
-       Supplier<Object> s5,
-       Supplier<Object> s6,
-       Supplier<Object> s7,
-       Supplier<Object> s8){
+  private static Supplier<Trampoline.Continuation<Boolean>> anyEqualsRec(Object o,
+                                                                         Supplier<Object> s0,
+                                                                         Supplier<Object> s1,
+                                                                         Supplier<Object> s2,
+                                                                         Supplier<Object> s3,
+                                                                         Supplier<Object> s4,
+                                                                         Supplier<Object> s5,
+                                                                         Supplier<Object> s6,
+                                                                         Supplier<Object> s7,
+                                                                         Supplier<Object> s8){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->done(true),
                ()->recur(anyEqualsRec(o,s1,s2,s3,s4,s5,s6,s7,s8)));
@@ -970,16 +970,16 @@ public class SupplierLogic{
     return trampoline(allEqualsRec(o,s0,s1,s2,s3,s4,s5,s6,s7,s8));
   }
 
-  private static Supplier<RecursiveVal<Boolean>> allEqualsRec(Object o,
-       Supplier<Object> s0,
-       Supplier<Object> s1,
-       Supplier<Object> s2,
-       Supplier<Object> s3,
-       Supplier<Object> s4,
-       Supplier<Object> s5,
-       Supplier<Object> s6,
-       Supplier<Object> s7,
-       Supplier<Object> s8){
+  private static Supplier<Trampoline.Continuation<Boolean>> allEqualsRec(Object o,
+                                                                         Supplier<Object> s0,
+                                                                         Supplier<Object> s1,
+                                                                         Supplier<Object> s2,
+                                                                         Supplier<Object> s3,
+                                                                         Supplier<Object> s4,
+                                                                         Supplier<Object> s5,
+                                                                         Supplier<Object> s6,
+                                                                         Supplier<Object> s7,
+                                                                         Supplier<Object> s8){
     return ()->ifelse(Objects.equals(o, s0.get()),
                ()->recur(allEqualsRec(o,s1,s2,s3,s4,s5,s6,s7,s8)),
                ()->done(false));

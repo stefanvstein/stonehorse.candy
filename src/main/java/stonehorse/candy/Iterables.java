@@ -118,7 +118,7 @@ public class Iterables {
         };
     }
 
-    private static <T> Supplier<Trampoline.RecursiveVal<T>> filterI(Predicate<? super T> f, Iterator<T> elements) {
+    private static <T> Supplier<Continuation<T>> filterI(Predicate<? super T> f, Iterator<T> elements) {
         return () -> {
             if (!elements.hasNext())
                 return stop();
@@ -148,7 +148,7 @@ public class Iterables {
         };
     }
 
-    private static <A, V> Supplier<RecursiveVal<V>> mapI(Function<? super A, ? extends V> f, final Iterator<A> elements) {
+    private static <A, V> Supplier<Continuation<V>> mapI(Function<? super A, ? extends V> f, final Iterator<A> elements) {
         return () -> {
             V v = f.apply(elements.next());
             if (elements.hasNext())
@@ -171,7 +171,7 @@ public class Iterables {
 
     }
 
-    private static <A, B, V> Supplier<RecursiveVal<V>> mapI(BiFunction<? super A, ? super B, ? extends V> f, final Iterator<? extends A> i1, final Iterator<? extends B> i2) {
+    private static <A, B, V> Supplier<Continuation<V>> mapI(BiFunction<? super A, ? super B, ? extends V> f, final Iterator<? extends A> i1, final Iterator<? extends B> i2) {
         return () -> {
             if (!i1.hasNext())
                 return stop();
@@ -197,7 +197,7 @@ public class Iterables {
         return () -> lazy(reductionsI(f, accumulator, elements.iterator())).iterator();
     }
 
-    private static <V, A> Supplier<RecursiveVal<V>> reductionsI(BiFunction<? super V, ? super A, ? extends V> f, V a, final Iterator<? extends A> elements) {
+    private static <V, A> Supplier<Continuation<V>> reductionsI(BiFunction<? super V, ? super A, ? extends V> f, V a, final Iterator<? extends A> elements) {
         return () -> {
             if (!elements.hasNext())
                 return stop();
@@ -224,7 +224,7 @@ public class Iterables {
         };
     }
 
-    private static <T> Supplier<RecursiveVal<T>> dropI(int num, Iterator<? extends T> i) {
+    private static <T> Supplier<Continuation<T>> dropI(int num, Iterator<? extends T> i) {
         return () -> {
             if (0 < num) {
                 if (i.hasNext()) {
@@ -304,7 +304,7 @@ public class Iterables {
         };
     }
 
-    private static <T> Supplier<RecursiveVal<T>> takeI(int num, Iterator<? extends T> iterator) {
+    private static <T> Supplier<Continuation<T>> takeI(int num, Iterator<? extends T> iterator) {
         return () -> {
             if (!iterator.hasNext())
                 return stop();
@@ -329,7 +329,7 @@ public class Iterables {
         };
     }
 
-    private static <T> Supplier<RecursiveVal<T>> takeWhileI(Predicate<? super T> pred, Iterator<? extends T> iterator) {
+    private static <T> Supplier<Continuation<T>> takeWhileI(Predicate<? super T> pred, Iterator<? extends T> iterator) {
         return () -> {
             if (!iterator.hasNext())
                 return stop();
@@ -365,7 +365,7 @@ public class Iterables {
         return () -> lazy(takeNthI(iterable.iterator(), nth, 0)).iterator();
     }
 
-    private static <T> Supplier< RecursiveVal<T>> takeNthI(Iterator<? extends T> iterator, int nth, int cnt) {
+    private static <T> Supplier<Continuation<T>> takeNthI(Iterator<? extends T> iterator, int nth, int cnt) {
         return () -> {
             if (not(iterator.hasNext()))
                 return stop();
@@ -390,7 +390,7 @@ public class Iterables {
 
     }
 
-    private static <V, A> Supplier<RecursiveVal<A>> flatMapI(Function<? super V, Iterable<A>> f, Iterator<A> current, Iterator<? extends V> data) {
+    private static <V, A> Supplier<Continuation<A>> flatMapI(Function<? super V, Iterable<A>> f, Iterator<A> current, Iterator<? extends V> data) {
         return () -> {
             if (not(isNull(current))  && current.hasNext()) {
                 A a = current.next();
@@ -492,7 +492,7 @@ public class Iterables {
         return ()->lazy(dropWhileI(predicate, true, iterable.iterator())).iterator();
     }
 
-    private static <T> Supplier<RecursiveVal<T>> dropWhileI(Predicate<? super T> predicate, boolean dropping, Iterator<T> i){
+    private static <T> Supplier<Continuation<T>> dropWhileI(Predicate<? super T> predicate, boolean dropping, Iterator<T> i){
         return ()->{
             if(i.hasNext()){
                 T v=i.next();
@@ -525,7 +525,7 @@ public class Iterables {
         };
     }
 
-    private static <T> Supplier< RecursiveVal< Iterable<T>>> partitionI(int num, List<T> acc, Iterator< T> iterator) {
+    private static <T> Supplier<Continuation< Iterable<T>>> partitionI(int num, List<T> acc, Iterator< T> iterator) {
         return () -> {
             if (iterator.hasNext()) {
                 acc.add(iterator.next());
@@ -558,7 +558,7 @@ public class Iterables {
         };
     }
 
-    private static <T> Supplier< RecursiveVal< Iterable<T>>> partitionByI(Function<? super T, Object> function, T2<Object, List<T>> acc, Iterator<T> iterator) {
+    private static <T> Supplier<Continuation< Iterable<T>>> partitionByI(Function<? super T, Object> function, T2<Object, List<T>> acc, Iterator<T> iterator) {
         return () -> {
             if (iterator.hasNext()) {
                 T v = iterator.next();
@@ -625,7 +625,7 @@ public class Iterables {
         };
     }
 
-    private static <T> Supplier<RecursiveVal<T>> concatI(Iterator<? extends T> current, Iterator<? extends Iterable<? extends T>> following) {
+    private static <T> Supplier<Continuation<T>> concatI(Iterator<? extends T> current, Iterator<? extends Iterable<? extends T>> following) {
         return () -> {
             if (current == null && following == null)
                 return stop();
@@ -660,7 +660,7 @@ public class Iterables {
         };
     }
 
-    private static <T> Supplier<RecursiveVal<T>> withLastI(Iterator<T> a, T b){
+    private static <T> Supplier<Continuation<T>> withLastI(Iterator<T> a, T b){
         return ()->{
             if(a.hasNext()){
                 T n = a.next();
@@ -684,7 +684,7 @@ public class Iterables {
         };
     }
 
-    private static <T> Supplier<RecursiveVal<T>> withI(T a, Iterator<? extends T> i) {
+    private static <T> Supplier<Continuation<T>> withI(T a, Iterator<? extends T> i) {
         return () -> {
             if (i.hasNext())
                 return seq(withI(i.next(), i), a);
@@ -707,7 +707,7 @@ public class Iterables {
         };
     }
 
-    private static <T> Supplier<RecursiveVal<T>> iterateI(Function<? super T, ? extends T> function, T val) {
+    private static <T> Supplier<Continuation<T>> iterateI(Function<? super T, ? extends T> function, T val) {
         return () -> {
             T n = function.apply(val);
             return seq(iterateI(function,n), n);
@@ -743,7 +743,7 @@ public class Iterables {
         return () -> lazy(repeatedlyI(supplier)).iterator();
     }
 
-    private static <T> Supplier<RecursiveVal<T>> repeatedlyI(Supplier<? extends T> supplier) {
+    private static <T> Supplier<Continuation<T>> repeatedlyI(Supplier<? extends T> supplier) {
         return () -> seq(repeatedlyI(supplier), supplier.get());
     }
     /**
@@ -763,7 +763,7 @@ public class Iterables {
         return ()->lazy(repeatI(t,lim)).iterator();
     }
 
-    private static <T> Supplier<RecursiveVal<T>> repeatI(T t, Integer lim){
+    private static <T> Supplier<Continuation<T>> repeatI(T t, Integer lim){
         return ()->{
             if(lim==null)
                 return seq(repeatI(t,null), t);
@@ -822,7 +822,7 @@ public class Iterables {
         return ()->lazy(rangeI(to,step, from)).iterator();
     }
 
-    private static Supplier< RecursiveVal<Integer>> rangeI( int to, int step, int n){
+    private static Supplier<Continuation<Integer>> rangeI(int to, int step, int n){
         return () -> {
             if(step>0 && n >= to )
                 return stop();
@@ -848,7 +848,7 @@ public class Iterables {
         return ()->lazy(cycleI(in, in.iterator())).iterator();
     }
 
-    private static <T> Supplier<RecursiveVal<T>> cycleI(Iterable< T> in, Iterator<T> iterator){
+    private static <T> Supplier<Continuation<T>> cycleI(Iterable< T> in, Iterator<T> iterator){
         return ()->{
             Iterator<T> i = iterator;
             if(!i.hasNext())
