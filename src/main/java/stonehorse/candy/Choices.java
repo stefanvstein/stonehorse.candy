@@ -1,4 +1,5 @@
 package stonehorse.candy;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import static java.util.Objects.requireNonNull;
 import static java.util.Objects.isNull;
@@ -429,6 +430,22 @@ public class Choices{
     return test ? then.get() : otherwise.get();
   }
 
+  /**
+   * Transforms t with then if p test t or otherwise transforms t. Behaves like ifelse, but then and otherwise are transformations of t depending of predicate p.
+   * <p>Example:
+   * <pre>{@code
+   * either("Text", text->true, String::toUpperCase, String::toLowerCase) => "TEXT"
+   * either("Text", text->false, String::toUpperCase, String::toLowerCase) => "text"
+   * }</pre>
+   */
+  public static <T,V> V either(T t,
+                               Predicate<? super T> p,
+                               Function<? super T,? extends V> then,
+                               Function<? super T,? extends V> otherwise) {
+    return ifelse(p.test(t),
+            () -> then.apply(t),
+            () -> otherwise.apply(t));
+  }
   /**
    * Then is evaluated and its value returned if test is true. Otherwise null is returned
    * <p>Example:

@@ -61,6 +61,11 @@ public class ChoicesTest {
         } catch (NullPointerException e) {
         }
     }
+    @Test
+    public void testEither() {
+        assertEquals("TEXT", either("Text", text -> true, String::toUpperCase, String::toLowerCase));
+        assertEquals("text", either("Text", text -> false, String::toUpperCase, String::toLowerCase));
+    }
 
     @Test
     public void testWhen() {
