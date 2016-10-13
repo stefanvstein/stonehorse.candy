@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9,"i11":9,"i12":9,"i13":9,"i14":9,"i15":9,"i16":9,"i17":9,"i18":9,"i19":9,"i20":9,"i21":9,"i22":9};
+var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9,"i11":9,"i12":9,"i13":9,"i14":9,"i15":9,"i16":9,"i17":9,"i18":9,"i19":9,"i20":9,"i21":9,"i22":9,"i23":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -351,6 +351,15 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </td>
 </tr>
 <tr id="i15" class="rowColor">
+<td class="colFirst"><code>static &lt;T,V&gt;&nbsp;V</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Choices.html#either-T-java.util.function.Predicate-java.util.function.Function-java.util.function.Function-">either</a></span>(T&nbsp;t,
+      <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html?is-external=true" title="class or interface in java.util.function">Predicate</a>&lt;? super T&gt;&nbsp;p,
+      <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function">Function</a>&lt;? super T,? extends V&gt;&nbsp;then,
+      <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function">Function</a>&lt;? super T,? extends V&gt;&nbsp;otherwise)</code>
+<div class="block">Transforms t with then if p test t or otherwise transforms t.</div>
+</td>
+</tr>
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;T</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Choices.html#ifelse-boolean-java.util.function.Supplier-java.util.function.Supplier-">ifelse</a></span>(boolean&nbsp;test,
       <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;T&gt;&nbsp;then,
@@ -358,7 +367,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <div class="block">Evaluates then and returns its value unless test is false, in which case otherwise is evaluated and its value returned.</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;T</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Choices.html#ifNot-boolean-java.util.function.Supplier-java.util.function.Supplier-">ifNot</a></span>(boolean&nbsp;test,
      <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;T&gt;&nbsp;then,
@@ -366,7 +375,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <div class="block">Evaluates then and returns its value unless test is true, in which case otherwise is evaluated and its value returned.</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>static &lt;T,V&gt;&nbsp;V</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Choices.html#mapOr-T-java.util.function.Function-java.util.function.Supplier-">mapOr</a></span>(T&nbsp;t,
      <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function">Function</a>&lt;T,V&gt;&nbsp;f,
@@ -374,13 +383,13 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <div class="block">Return application of t to f, unless t is null, in which case evaluation of supplier s returns</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Choices.html#requireAllNonNull-java.lang.Object...-">requireAllNonNull</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;nonNulls)</code>
 <div class="block">Throws null pointer exception if any is null</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;T</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Choices.html#unless-java.util.function.Supplier-boolean-java.util.function.Supplier-">unless</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;T&gt;&nbsp;then,
       boolean&nbsp;test,
@@ -388,21 +397,21 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <div class="block">Evaluates then and returns its value unless test is true, in which case otherwise is evaluated and its value returned.</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;T</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Choices.html#unlessNull-T-java.util.function.Supplier-">unlessNull</a></span>(T&nbsp;t,
           <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;? extends T&gt;&nbsp;then)</code>
 <div class="block">t is delivered unless it is null, in which case the evaluation of then is returned</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;T</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Choices.html#when-boolean-java.util.function.Supplier-">when</a></span>(boolean&nbsp;test,
     <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;T&gt;&nbsp;then)</code>
 <div class="block">Then is evaluated and its value returned if test is true.</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;T</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Choices.html#whenNot-boolean-java.util.function.Supplier-">whenNot</a></span>(boolean&nbsp;test,
        <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;T&gt;&nbsp;then)</code>
@@ -766,6 +775,26 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
  <pre><code>
  ifelse(true, () -&gt; "Yes", () -&gt; "No") =&gt; "Yes"
  ifelse(false, () -&gt; "Yes", () -&gt; "No") =&gt; "No"
+ </code></pre></div>
+</li>
+</ul>
+<a name="either-java.lang.Object-java.util.function.Predicate-java.util.function.Function-java.util.function.Function-">
+<!--   -->
+</a><a name="either-T-java.util.function.Predicate-java.util.function.Function-java.util.function.Function-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>either</h4>
+<pre>public static&nbsp;&lt;T,V&gt;&nbsp;V&nbsp;either(T&nbsp;t,
+                             <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html?is-external=true" title="class or interface in java.util.function">Predicate</a>&lt;? super T&gt;&nbsp;p,
+                             <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function">Function</a>&lt;? super T,? extends V&gt;&nbsp;then,
+                             <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function">Function</a>&lt;? super T,? extends V&gt;&nbsp;otherwise)</pre>
+<div class="block">Transforms t with then if p test t or otherwise transforms t. Behaves like ifelse, but then and otherwise are transformations of t depending of predicate p.
+ <p>Example:
+ <pre><code>
+ either("Text", text-&gt;true, String::toUpperCase, String::toLowerCase) =&gt; "TEXT"
+ either("Text", text-&gt;false, String::toUpperCase, String::toLowerCase) =&gt; "text"
  </code></pre></div>
 </li>
 </ul>
