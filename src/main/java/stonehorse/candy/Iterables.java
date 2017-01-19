@@ -580,7 +580,7 @@ public class Iterables {
     }
 
     /**
-     * Tuple of Iterables of lazy iterators by spliting iterables iterators at i
+     * Tuple of Iterables of lazy iterators by spliting iterables iterators at i. Two iterators of iterable will be created per iterator
      * * <p>Example:
      * <pre>{@code
      *  list(map( Iterables::list, splitAt( 3, asList(1, 2, 3, 4, 5, 6, 7))))) => [[1, 2, 3], [4, 5, 6, 7]]
@@ -594,7 +594,7 @@ public class Iterables {
     }
 
     /**
-     * Tuple of Iterables of lazy iterators by spliting iterables iterators by predicate
+     * Tuple of Iterables of lazy iterators by spliting iterables iterators by predicate. Two iterators of iterable will be created per iterator.
      * * <p>Example:
      * <pre>{@code
      *  list(map( Iterables::list, splitWith(v->v%2==0, asList(4,2,3,4)))) => [[4, 2], [3, 4]]
