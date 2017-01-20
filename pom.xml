@@ -1,13 +1,20 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.stefanvstein</groupId>
   <artifactId>candy</artifactId>
-  <version>0.1</version>
+  <version>0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>stonehorse.candy - simpler java</name>
+  <description>A basic set of functionality that make java
+  programming simpler. Including tail call recursion using
+  trampolines and lazy Iterables.</description>
   <url>https://github.com/stefanvstein/stonehorse.candy</url>
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.sourceEncoding>
+    UTF-8</project.build.sourceEncoding>
   </properties>
   <licenses>
     <license>
@@ -19,14 +26,18 @@
     <developer>
       <name>Stefan von Stein</name>
       <email>stefanvstein@gmail.com</email>
-      <organizationUrl>https://github.com/stefanvstein</organizationUrl>
+      <organizationUrl>
+      https://github.com/stefanvstein</organizationUrl>
     </developer>
   </developers>
-<scm>
-  <connection>scm:git:git://github.com/stefanvstein/stonehorse.candy.git</connection>
-  <developerConnection>scm:git:ssh://github.com:stefanvstein/stonehorse.candy.git</developerConnection>
-  <url>https://github.com/stefanvstein/stonehorse.candy/tree/master</url>
-</scm> 
+  <scm>
+    <connection>
+    scm:git:git://github.com/stefanvstein/stonehorse.candy.git</connection>
+    <developerConnection>
+    scm:git:ssh://github.com:stefanvstein/stonehorse.candy.git</developerConnection>
+    <url>
+    https://github.com/stefanvstein/stonehorse.candy/tree/master</url>
+  </scm>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -35,18 +46,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <distributionManagement>
-    <repository>
-      <id>repo</id>
-      <url>https://github.com/stefanvstein/mvn/raw/master/releases</url>
-    </repository>
-    <snapshotRepository>
-      <id>snapshot-repo</id>
-      <url>https://github.com/stefanvstein/mvn/raw/master/snapshots</url>
-    </snapshotRepository>
-
  
-  </distributionManagement>
   <build>
     <resources>
       <resource>
@@ -94,7 +94,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-	    <version>2.10.4</version>
+        <version>2.10.4</version>
         <configuration>
           <links>
             <link>https://docs.oracle.com/javase/8/docs/api/</link>
@@ -112,33 +112,31 @@
           </execution>
         </executions>
       </plugin>
-<plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-gpg-plugin</artifactId>
-      <version>1.5</version>
-      <executions>
-        <execution>
-          <id>sign-artifacts</id>
-          <phase>verify</phase>
-          <goals>
-            <goal>sign</goal>
-          </goals>
-        </execution>
-      </executions>
-    </plugin>
-<plugin>
-      <groupId>org.sonatype.plugins</groupId>
-      <artifactId>nexus-staging-maven-plugin</artifactId>
-      <version>1.6.7</version>
-      <extensions>true</extensions>
-      <configuration>
-        <serverId>ossrh</serverId>
-        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-        <autoReleaseAfterClose>true</autoReleaseAfterClose>
-      </configuration>
-    </plugin>
- 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.7</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>
-
