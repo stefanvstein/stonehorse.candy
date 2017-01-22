@@ -1,6 +1,6 @@
 # Stonehorse.candy, simpler java
 
-Candy is a collection of java functions intended to simplify code structure. It introduce tail calls using a trampoline and functions for reversing functional composition. There is a Iterable library for composition of lazy iterators. It is supposed to be simple, rather than easy, to use. It relies on Java 8 and the lambda expresion. 
+Candy is a collection of java functions intended to simplify code structure, reducing the need of variables. It introduce tail calls using a trampoline, functions for composition of lazy iterables and functions for reversing functional composition. It is supposed to be simple, rather than easy, to use. It relies on Java 8 and the lambda expresion. 
 
 It is very early, and interface may still change
 
@@ -31,54 +31,80 @@ Choices.java, [Maybe.java](#maybejava), [Iterables.java](#iterablesjava) [Thread
 Choices is a number of expression replacements for the if-statement. It is used to reduce the control flow graph and to make code easier to read by naming different types of conditional expressions
 
 #### ifelse
+The `ifelse` function is the expression equivalent of the `if else` statement. It represents a single value and eliminates the need of temporary variables.
 
-The most basic one is ifelse. An if else statement like:
 
 ```java
-int question =3;
-String answer ="Unknown";
+// Write:
+int question=3;
+final String answer=ifelse(question==3, 
+                           ()->"YES", 
+                           ()->"NO"));
+println(answer);
+
+// instead of either:
+
+int question=3;
+String answer="Unknown";
 if(question==3)
   answer="YES";
 else 
   answer="NO";
 println(answer);
-```
 
-can be written as
+// where the temporary variable, answer, is needed or:
+
+int question=3;
+if(question==3)
+  println("YES");
+else 
+  println("NO");
+
+// where println calls are duplicated.
+```
+Code becomes less complex with `ifelse` expressions. Nested `ifelse` expressions logically becomes much simpler, as complexity doesn't grow exponentially. Expressions doesn't require temporaries and represent a single value even when nested.
+
+`ifelse` expressions are equvivalent to the ternary operator, which also is expression with a value, but having verb first can be easier to read as expressions grow. E.g.:
 
 ```java
 int question=3;
-println(ifelse(question==3, 
-             ()->"YES", 
-             ()->"NO"));
+final String answer = question==3 ? "YES" : "NO";
+println(answer);
 ```
 
-The ifelse function is an expression, so only one print statement is needed while the temporary answer variable isn't necesary, so the code becomes less complex. Premature evaluation is avoided by the answers being Suppliers. It's possible to write this even shorter using the ternary operator, but having the verb first can be simpler as expressions grow. 
+Conditional expressions as functions, like `ifelse`, can be categorized to further reveal intent. The function `when`
+is like `ifelse` but returns `null` instead of evaluation of an `else` clause.
 
 ```java
-int question=3;
-println(question==3 ? "YES" : "NO");
+final String answer = when(question==3, ()->"YES"));
+// is same as:
+final String answer = question==3 ? "YES" : null;
 ```
 
-A growing expression is less complex than a growing set of statements. The initial example is not too complex, but real methods rarely consists of only single conditionals. Nested if statements is painful.
+With the `when` function you know you don't need to look further for an `else` clause. The intent is revealed at head, in contrast to the `if` statement where you need to parse ahead to understand structure and occationally find an `else` clause. This is difficult with nested `if else` statement structures. 
 
-#### when
-Is like ifelse but returns null instead of evaluation of the else clause when the test is false.
+#### doWhen
+`if` statements without corresponding `else` clauses usually indicate side effects. Side effects should not represent a value. The purpose of the `void` keyword is to indicate side effects, routines that do not return anything.
 
+`doWhen` acts like when but does not return anything. It reveals that it is used to do side effects when a condition is met, and that your code should not act on the outcome, it's a side effect, unless something exceptional occur.
 ```java
-println(question==3 ? "YES" : null);
+doWhen(debug, ()->println("DEBUG - we have reached all the way to this point"));
 ```
 
-becomes 
+#### unless
+
+When the normal path through an if statement is the truth, when the else clause is exceptional, it becomes easier to understand code when you read the then caluse before the test. The test and the else clause becomes a guard for exceptional conditions. With the unless function the important path stands out by standing ahead. 
 
 ```java
-println(when(question==3, ()->"YES"));
-```
-
-or using whenNot when false is of interest:
-
-```java
-println(whenNot(question==4, ()->"NO"));
+return unless( ()-> "There are " + n + " apples",
+               n<0,
+               ()-> "Weird!! Less than 0 apples?");
+               
+// is both easier understand and less complex than:
+if(n<0)
+  return "Weird!! Less than 0 apples?"
+else 
+  return "There are " + n + " apples"
 ```
 
 #### mapOr
@@ -98,34 +124,7 @@ return mapOr(a, String::toUpperCase, ()->"");
 
 Using Optional is another mean to handle null, mapOr is sometimes easier as Optional is an object oriented construct.
 
-#### unless
 
-Sometimes it easier to understand a program if you read the then caluse before the test statement. That is when the normal path is the truth.
-
-```java
-
-if(n<0)
-  return useBackup();
-else 
-  return doSomethingInteresting();
-```
-
-can instead be written
-
-```java
-return unless(()->doSomethingInteresting(), 
-              n<0, 
-              ()->useBackup());
-```
-as it's more important to understand that this program is about to do something interesting, while the backup plan is exceptional.
-
-#### doWhen
-
-Sometimes it's more clear if side effects don't return result. It may be better to take care of failing effects as early as possible. The doWhen function is void but still act as a conditional. It behaves as when, but do indicates that its clearly not a function.
-
-```java
-doWhen(debug, ()->println("DEBUG - we have reached all the way to this point"));
-```
 
 #### cond
 
