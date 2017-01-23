@@ -28,7 +28,7 @@ Below are a few example usages of some functions to describe the basics. The fun
 
 ### [Choices](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Choices.html).java
 
-*Choices contains [ifelse](#ifelse),[when](#when),[unless](#unless),[mapOr](#mapor) & [cond](#cond)*
+*Choices contains [ifelse](#ifelse),[when](#when),[unless](#unless),[mapOr](#mapor), [cond](#cond) & [either](#either)*
 
 Choices is a number of expression replacements for the if-statement. It is used to reduce the control flow graph and to make code easier to read by naming different types of conditional expressions
 
@@ -139,6 +139,26 @@ String a= cond(()->1==2, ()->"What?",
 
 The cond function is helpful in reducing nested if statements
 
+#### either
+
+Either is the pure if else expression. The test is performed on an object using a predicate of the objects type, which result application of either Suppliers.
+
+```java
+String s= either(value,
+                 this::is3,
+                 v->"III",
+                 Integer::toBinaryString);
+
+//would be the equivalent of:
+
+String s = null;
+if(is3(value))
+  s="III";
+else
+  s=Integer.toBinaryString(value)
+```
+`either` reduces the need of variables further.
+
 ### [Maybe](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Maybe.html).java
 
 *To [Usage](#usage)*
@@ -155,7 +175,7 @@ Maybe.just and Maybe.nothing creates Optionals while Maybe.map calls map on that
 
 There is also a Maybe.maybe(T t) function that return Maybe.nothing() if t happen to be null. 
 
-### [Iterables.java](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Iterables.html)
+### [Iterables](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Iterables.html).java
 
 *Back to [Usage](#usage)*
 *Iterables contains: [map](#map), [filter](#filter), [reduce](#reduce), [take](#take-and-takewhile) & [iterate](#iterate)
