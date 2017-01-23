@@ -141,6 +141,8 @@ The cond function is helpful in reducing nested if statements
 
 ### Maybe.java
 
+*To (Usage)[#usage]*
+
 Null checks can easily be eliminated with Optional. Sometimes its preferable to have the verb first, as Optional is a object oriented construct. It's a matter of taste. Verb first programs may be easier to maintain.
 
 ```java
@@ -154,6 +156,9 @@ Maybe.just and Maybe.nothing creates Optionals while Maybe.map calls map on that
 There is also a Maybe.maybe(T t) function that return Maybe.nothing() if t happen to be null. 
 
 ### Iterables.java
+
+*Back to (Usage)[#usage]*
+*Iterables contains: [map](#map), [filter](#filter), [reduce](#reduce), take(#takeandtakewhile) & [iterate](#iterate)
 
 Streams in Java are great as they provide the functional construct we are used to in other languages. Since streams are an object oriented construct it is pretty hard to add new functions. Iterables is a set of functions with similar functionality, but without the OO principles. It is used to create transforming lazy and composable Iterables. Iterables are simpler, easier to extend, and have guaranteed ordering. All computation is done with the iterators extracted from these Iterables.
 
@@ -282,6 +287,8 @@ Again, the iterators produced are lazy and the while functions can safely be com
 
 ### Threading.java and Functions.java
 
+*Back to (Usage)[#usage]*
+
 As seen above functional composition can be a little difficult to read. It executes backwards. With the thread function you can write nested composition in serial fasion, or backwards if you will.
 
 ```java
@@ -319,6 +326,8 @@ There are overloads of thread with arity on functions to call. There is also thr
 Since the if statements replacements found in Choices.java are expressions, they also fit well within the thread function. 
 
 ### Trampoline.java
+
+*Back to (Usage)[#usage]*
 
 Most functions in this code collection is of functional style. Functional programming languages usually utilize tail calls to implement iteration. It is simple and allow for programming without side effects. Java does not support tail calls well since the compiler can't optimize away excessive stack usage, among other things. Compilers can implement tail call optimization using a trampoline, and the very same constructs can be written by hand in a library.
 
@@ -407,7 +416,7 @@ Supplier<Continuation<V>> mapI(Function<? super A, ? extends V> f,
 The seq function is like recur but adds an aditional value along with the continuation. The lazy function creates a Iterator of the value passes along with the continuation. The iterator returned by lazy will continue to call incomming continuations and return values when present, until an eventual final value is present. There is also a stop function that stops the iterator without returning a final value.
 
 
-New lazy iterables can easily be constructed by composing the dozen of functions already existing. PErhaps like
+New lazy iterables can easily be constructed by composing the dozen of functions already existing. Perhaps like:
 ```java
 <T> Iterable<T> interleave(Supplier<? extends T> t, Iterable<? extends T> d){
   return with(first(d), flatMap(v-> asList(t.get(),v), Iterables.next(d)));
