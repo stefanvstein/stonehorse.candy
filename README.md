@@ -158,7 +158,7 @@ There is also a Maybe.maybe(T t) function that return Maybe.nothing() if t happe
 ### Iterables.java
 
 *Back to [Usage](#usage)*
-*Iterables contains: [map](#map), [filter](#filter), [reduce](#reduce), [take](#takeandtakewhile) & [iterate](#iterate)
+*Iterables contains: [map](#map), [filter](#filter), [reduce](#reduce), [take](#take-and-takewhile) & [iterate](#iterate)
 
 Streams in Java are great as they provide the functional construct we are used to in other languages. Since streams are an object oriented construct it is pretty hard to add new functions. Iterables is a set of functions with similar functionality, but without the OO principles. It is used to create transforming lazy and composable Iterables. Iterables are simpler, easier to extend, and have guaranteed ordering. All computation is done with the iterators extracted from these Iterables.
 
