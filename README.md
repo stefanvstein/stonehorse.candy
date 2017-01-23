@@ -28,7 +28,7 @@ Below are a few example usages of some functions to describe the basics. The fun
 
 ### Choices.java
 
-*Choices contains [ifelse](#ifelse),[when](#when),[unless](#unless),[mapOr](#mapor),[cond](#cond)*
+*Choices contains [ifelse](#ifelse),[when](#when),[unless](#unless),[mapOr](#mapor) & [cond](#cond)*
 
 Choices is a number of expression replacements for the if-statement. It is used to reduce the control flow graph and to make code easier to read by naming different types of conditional expressions
 
@@ -157,8 +157,8 @@ There is also a Maybe.maybe(T t) function that return Maybe.nothing() if t happe
 
 ### Iterables.java
 
-*Back to (Usage)[#usage]*
-*Iterables contains: [map](#map), [filter](#filter), [reduce](#reduce), take(#takeandtakewhile) & [iterate](#iterate)
+*Back to [Usage](#usage)*
+*Iterables contains: [map](#map), [filter](#filter), [reduce](#reduce), [take](#takeandtakewhile) & [iterate](#iterate)
 
 Streams in Java are great as they provide the functional construct we are used to in other languages. Since streams are an object oriented construct it is pretty hard to add new functions. Iterables is a set of functions with similar functionality, but without the OO principles. It is used to create transforming lazy and composable Iterables. Iterables are simpler, easier to extend, and have guaranteed ordering. All computation is done with the iterators extracted from these Iterables.
 
@@ -287,7 +287,7 @@ Again, the iterators produced are lazy and the while functions can safely be com
 
 ### Threading.java and Functions.java
 
-*Back to (Usage)[#usage]*
+*Back to [Usage](#usage)*
 
 As seen above functional composition can be a little difficult to read. It executes backwards. With the thread function you can write nested composition in serial fasion, or backwards if you will.
 
@@ -327,7 +327,7 @@ Since the if statements replacements found in Choices.java are expressions, they
 
 ### Trampoline.java
 
-*Back to (Usage)[#usage]*
+*Back to [Usage](#usage)*
 
 Most functions in this code collection is of functional style. Functional programming languages usually utilize tail calls to implement iteration. It is simple and allow for programming without side effects. Java does not support tail calls well since the compiler can't optimize away excessive stack usage, among other things. Compilers can implement tail call optimization using a trampoline, and the very same constructs can be written by hand in a library.
 
