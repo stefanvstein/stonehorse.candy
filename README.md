@@ -71,7 +71,7 @@ int question=3;
 final String answer = question==3 ? "YES" : "NO";
 println(answer);
 ```
-
+#### when
 Conditional expressions as functions, like `ifelse`, can be categorized to further reveal intent. The function `when`
 is like `ifelse` but returns `null` instead of evaluation of an `else` clause.
 
@@ -100,7 +100,7 @@ return unless( ()-> "There are " + n + " apples",
                n<0,
                ()-> "Weird!! Less than 0 apples?");
                
-// is both easier understand and less complex than:
+// is both easier understand, as the normal case comes first, and less complex than:
 if(n<0)
   return "Weird!! Less than 0 apples?"
 else 
@@ -109,26 +109,24 @@ else
 
 #### mapOr
 
-Return function application of something, except when something happen to be null and the value instead is pulled from a Supplier.
+It is common that you have to check if an object exist prior to calling it. Sometimes it is difficult to see the value of the absence of the call due to null.
 
 ```java
+return mapOr(a, String::toUpperCase, ()->"");
+
+//..is simpler than:
+
 if (null==a)
   return "";
 else return a.toUpperCase();
 ```
-..can instead be written as
 
-```java
-return mapOr(a, String::toUpperCase, ()->"");
-```
-
-Using Optional is another mean to handle null, mapOr is sometimes easier as Optional is an object oriented construct.
-
+Using Optional is another mean to handle null, mapOr is sometimes easier as Optional as it is a single call.
 
 
 #### cond
 
-The cond function is kind of a switch case expression. Each case is a pair of Suppliers where the  first is a Boolean Supplier and the other is of the cond expressions return type. A last stand alone Supplier is the default, if all other cases has returned FALSE. As each case is a function call it can match on anything. It will short circuit when a match is found
+The `cond` function is kind of a `switch case` expression. Each case is a pair of Suppliers where the first is a Boolean Supplier and the other is of the cond expressions return type. A last stand alone Supplier is the default, if all other cases has returned FALSE. As each case is a function call it can match on anything. `cond` will short circuit when a match is found
 
 ```java
 String a= cond(()->1==2, ()->"What?",
@@ -141,25 +139,21 @@ The cond function is helpful in reducing nested if statements
 
 ### Maybe.java
 
-Null checks can easily be eliminated with Optional, which is a object oriented construct. Sometimes its preferable to have the verb first. Its a matter of taste. Verb first programs may be easier to maintain.
+Null checks can easily be eliminated with Optional. Sometimes its preferable to have the verb first, as Optional is a object oriented construct. It's a matter of taste. Verb first programs may be easier to maintain.
 
 ```java
 Maybe.map(String::toUpperCase, Maybe.just("Value"))
-```
-
-would yield Maybe.just("VALUE") while
-
-```java
+// would yield Maybe.just("VALUE") while
 Maybe.map(String::toUpperCase, Maybe.nothing())
-```
+//..yield Maybe.nothing().
+``` 
+Maybe.just and Maybe.nothing creates Optionals while Maybe.map calls map on that Optional.
 
-yield Maybe.nothing(). Maybe.just and Maybe.nothing creates Optionals while Maybe.map calls map on that Optional.
-
-There is also a Maybe.maybe(T t) funktion that return Maybe.nothing() if t happen to be null. 
+There is also a Maybe.maybe(T t) function that return Maybe.nothing() if t happen to be null. 
 
 ### Iterables.java
 
-Streams in Java are great as they provide the functional construct we are used to in other languages. Since streams are an object oriented construct it is pretty hard to add new functions. Iterables is a set of functions with similar functionality, but without the OO principles. It is used to create transforming Iterables that are lazy and can be composed.
+Streams in Java are great as they provide the functional construct we are used to in other languages. Since streams are an object oriented construct it is pretty hard to add new functions. Iterables is a set of functions with similar functionality, but without the OO principles. It is used to create transforming lazy and composable Iterables. Iterables are simpler, easier to extend, and have guaranteed ordering. All computation is done with the iterators extracted from these Iterables.
 
 #### map
 
