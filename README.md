@@ -26,7 +26,7 @@ Below are a few example usages of some functions to describe the basics. The fun
 
 [JavaDoc](https://stefanvstein.github.io/stonehorse.candy/index.html)
 
-### [Choices.java](docs/stonehorse/candy/Maybe.html)
+### [Choices.java](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Choices.html)
 
 *Choices contains [ifelse](#ifelse),[when](#when),[unless](#unless),[mapOr](#mapor) & [cond](#cond)*
 
@@ -155,7 +155,7 @@ Maybe.just and Maybe.nothing creates Optionals while Maybe.map calls map on that
 
 There is also a Maybe.maybe(T t) function that return Maybe.nothing() if t happen to be null. 
 
-### Iterables.java
+### [Iterables.java](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Iterables.html)
 
 *Back to [Usage](#usage)*
 *Iterables contains: [map](#map), [filter](#filter), [reduce](#reduce), [take](#take-and-takewhile) & [iterate](#iterate)
@@ -285,7 +285,7 @@ And there is more:
 
 Again, the iterators produced are lazy and the while functions can safely be composed with other Iterables functions. It is about what to transform rather than how to iterate data. 
 
-### Threading.java and Functions.java
+### [Threading.java](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Threading.html) and [Functions.java](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Functions.html)
 
 *Back to [Usage](#usage)*
 
@@ -325,7 +325,7 @@ There are overloads of thread with arity on functions to call. There is also thr
 
 Since the if statements replacements found in Choices.java are expressions, they also fit well within the thread function. 
 
-### Trampoline.java
+### [Trampoline.java](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Trampoline.html)
 
 *Back to [Usage](#usage)*
 
