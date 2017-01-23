@@ -1,4 +1,4 @@
-# Stonehorse.candy, simpler java
+#Stonehorse.candy, simpler java
 
 Candy is a collection of java functions intended to simplify code structure, reducing the need of variables. It introduce tail calls using a trampoline, functions for composition of lazy iterables and functions for reversing functional composition. It is supposed to be simple, rather than easy, to use. It relies on Java 8 and the lambda expresion. 
 
@@ -22,11 +22,11 @@ Candy can be found in the central maven repo, just add the follwing to your pom.
 
 Below are a few example usages of some functions to describe the basics. The functions are grouped in classes.
 
-*[Choices.java](#choicesjava), [Maybe.java](#maybejava), [Iterables.java](#iterablesjava) [Threading.java and Functions.java](#threadingjava-and-functionsjava) & [Trampoline.java](#trampolinejava)*
+*[Choices](#choicesjava).java, [Maybe](#maybejava).java, [Iterables](#iterablesjava).java, [Threading and Functions](#threading-and-functionsjava).java & [Trampoline](#trampolinejava).java*
 
 [JavaDoc](https://stefanvstein.github.io/stonehorse.candy/index.html)
 
-### [Choices.java](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Choices.html)
+### [Choices](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Choices.html).java
 
 *Choices contains [ifelse](#ifelse),[when](#when),[unless](#unless),[mapOr](#mapor) & [cond](#cond)*
 
@@ -139,9 +139,9 @@ String a= cond(()->1==2, ()->"What?",
 
 The cond function is helpful in reducing nested if statements
 
-### Maybe.java
+### [Maybe](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Maybe.html).java
 
-*To (Usage)[#usage]*
+*To [Usage](#usage)*
 
 Null checks can easily be eliminated with Optional. Sometimes its preferable to have the verb first, as Optional is a object oriented construct. It's a matter of taste. Verb first programs may be easier to maintain.
 
@@ -285,7 +285,7 @@ And there is more:
 
 Again, the iterators produced are lazy and the while functions can safely be composed with other Iterables functions. It is about what to transform rather than how to iterate data. 
 
-### [Threading.java](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Threading.html) and [Functions.java](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Functions.html)
+### [Threading](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Threading.html) and [Functions](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Functions.html).java
 
 *Back to [Usage](#usage)*
 
@@ -325,7 +325,7 @@ There are overloads of thread with arity on functions to call. There is also thr
 
 Since the if statements replacements found in Choices.java are expressions, they also fit well within the thread function. 
 
-### [Trampoline.java](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Trampoline.html)
+### [Trampoline](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Trampoline.html).java
 
 *Back to [Usage](#usage)*
 
