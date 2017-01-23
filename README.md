@@ -22,13 +22,14 @@ Candy can be found in the central maven repo, just add the follwing to your pom.
 
 Below are a few example usages of some functions to describe the basics. The functions are grouped in classes.
 
-Choices.java, [Maybe.java](#maybejava), [Iterables.java](#iterablesjava) [Threading.java and Functions.java](#threadingjava-and-functionsjava) & [Trampoline.java](#trampolinejava)
+*[Choices.java](#choicesjava), [Maybe.java](#maybejava), [Iterables.java](#iterablesjava) [Threading.java and Functions.java](#threadingjava-and-functionsjava) & [Trampoline.java](#trampolinejava)*
 
 [JavaDoc](https://stefanvstein.github.io/stonehorse.candy/index.html)
 
 ### Choices.java
 
-[ifelse](#ifelse),[when](#when),[unless](#unless),[mapOr](#mapor),[cond](#cond)
+*Choices contains [ifelse](#ifelse),[when](#when),[unless](#unless),[mapOr](#mapor),[cond](#cond)*
+
 Choices is a number of expression replacements for the if-statement. It is used to reduce the control flow graph and to make code easier to read by naming different types of conditional expressions
 
 #### ifelse
