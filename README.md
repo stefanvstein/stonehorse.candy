@@ -26,7 +26,7 @@ Below are a few example usages of some functions to describe the basics. The fun
 
 [JavaDoc](https://stefanvstein.github.io/stonehorse.candy/index.html)
 
-### Choices.java
+### [Choices.java](docs/stonehorse/candy/Maybe.html)
 
 *Choices contains [ifelse](#ifelse),[when](#when),[unless](#unless),[mapOr](#mapor) & [cond](#cond)*
 
