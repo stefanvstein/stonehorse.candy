@@ -273,9 +273,9 @@ Since rangeFrom would continue forever we can limit the iterators produced using
 println(list(take(4, rangeFrom(1))));
 ```
 
-would print [1,2,3,4]. rangeFrom would not produce more than 4 numbers, as take won't pull more.
+would print [1,2,3,4]. rangeFrom would not produce more than 4 numbers, as take won't pull more numbers.
 
-And there is more: 
+There is more: 
 
 * **first** takes the first element of the next iterator. This is terminal
 * **second** takes the second element of the next iterator. This is terminal
@@ -312,27 +312,17 @@ Again, the iterators produced are lazy and the while functions can safely be com
 
 As seen above functional composition can be a little difficult to read. It executes backwards. With the thread function you can write nested composition in serial fashion, or backwards if you will.
 
-```java
-println(list(take(4, rangeFrom(1))));
-```
-
-can instead be written
-
-```java
-println(thread(rangeFrom(1),
-               r->take(4, r),
-               s->list(s)));
-```
-
-The thread function takes the first value, and applies that to the first function, and applies the result of that to the second function and finally returns the result of the last function.
-
-Method references cleans things up
 
 ```java
 println(thread(rangeFrom(1),
                r->take(4, r),
                Iterables::list));
+
+// is same as:
+
+println(list(take(4, rangeFrom(1))));
 ```
+The thread function takes the first value, and applies that to the first function, and applies the result of that to the second function and finally returns the result of the last function.
 
 When we have more than one argument, we can clean things up by resorting to partial application. Functions.java contains functions that improve functions. That is e.g. the partial application of converting a BiFunction to a Function by applying the first argument prior to executing the function.
 
@@ -342,15 +332,13 @@ println(thread(rangeFrom(1),
                Iterables::list));
 ```
 
-There are overloads of thread with arity on functions to call. There is also threadMaybe that works the same but aborts with null when ever a null is to be passed between the functions.
-
 Since the if statements replacements found in Choices.java are expressions, they also fit well within the thread function. 
 
 ### [Trampoline](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Trampoline.html).java
 
 *Back to [Usage](#usage)*
 
-Most functions in this code collection is of functional style. Functional programming languages usually utilize tail calls to implement iteration. It is simple and allow for programming without side effects. Java does not support tail calls well since the compiler can't optimize away excessive stack usage, among other things. Compilers can implement tail call optimization using a trampoline, and the very same constructs can be written by hand in a library.
+Most functions in this code collection is of functional style. Functional programming languages usually utilize tail calls to implement iteration. It is simple and allow for programming without side effects. Variables are turned into final argument values. Java does not support tail calls well since the compiler can't optimize away excessive stack usage, among other things. Compilers can implement tail call optimization using a trampoline, and the very same constructs can be written by hand in a library.
 
 A function like:
 
@@ -373,8 +361,6 @@ static Supplier<Continuation<String>> foo(int a) {
             () -> recur(foo( a + 1)));
 }
 ```
-
-with a bit more complex signature, and explicit intent on recursion
 ... can be used by the trampoline without eating stack:
 
 ```java
@@ -389,15 +375,15 @@ This technique does allow for mutual recursion, like:
 static Supplier<Continuation<Boolean>> isEven(int a) {
   return () -> 
     ifelse(a == 0,
-    () -> done(true),
-    () -> recur(isOdd(a - 1)));
+           () -> done(true),
+           () -> recur(isOdd(a - 1)));
 }
 
 static Supplier<Continuation<Boolean>> isOdd(int a) {
   return () -> 
     ifelse(a == 0,
-    () -> done(false)
-    () -> recur(isEven(a - 1)));
+           () -> done(false)
+           () -> recur(isEven(a - 1)));
 }
 
 trampoline(isEven(200000));
@@ -407,40 +393,38 @@ A recursive function returns a Supplier of a Continuation. The Continuation eith
 
 Three other functions lazy, seq, and stop are used similarly to produce lazy recursion through a the Iterator interface. Using these, the lazy iterators in Iterables.java becomes pretty easy to implement. 
 
-The map function is implemented as:
+The map function can be implemented as:
 
 ```java
-public static <A, V> Iterable<V> map( Function<? super A, V> f, 
-                                      Iterable<A> data) {
-  if (isNull(data) || isNull(f))
-    return null;
-  return () -> {
-    Iterator<A> i = data.iterator();
-    if (!i.hasNext())
-      return emptyIterator();
-    return lazy(mapI(f, i)).iterator();
-  };
+public static <A, V> Iterable<V> map(final Function<? super A, V> f, 
+                                     final Iterable<A> data) {
+  requireNonNull(f);
+  return when(nonNull(data), () ->
+     () -> either(data.iterator(),
+                  Iterator::hasNext,
+                  i -> lazy(mapI(f, i)).iterator(),
+                  i -> emptyIterator()));
 }
 
-private static <A, V> 
-Supplier<Continuation<V>> mapI(Function<? super A, ? extends V> f,
-                               Iterator<A> elements) {
-  return () -> {
-    V v = f.apply(elements.next());
-    if (elements.hasNext())
-      return seq(mapI(f, elements), v);
-    return done(v);
-  };
+private static <A, V> Supplier<Continuation<V>> mapI(final Function<? super A, ? extends V> f, 
+                                                     final Iterator<A> elements) {
+  return () -> either(f.apply(elements.next()),
+                      v -> elements.hasNext(),
+                      v -> seq(mapI(f, elements), v),
+                      Trampoline::done);
 }
 ```
 
-The seq function is like recur but adds an additional value along with the continuation. The lazy function creates a Iterator of the value passes along with the continuation. The iterator returned by lazy will continue to call incoming continuations and return values when present, until an eventual final value is present. There is also a stop function that stops the iterator without returning a final value.
+The seq function is like recur but adds an additional value along with the continuation. The lazy function creates a Iterator of the value passed along with the continuation. The iterator returned by lazy will continue to call incoming continuations and return values when present, until an eventual final value is present. There is also a stop function that stops the iterator without returning a final value.
 
 
 New lazy iterables can easily be constructed by composing the dozen of functions already existing. Perhaps like:
 ```java
-<T> Iterable<T> interleave(Supplier<? extends T> t, Iterable<? extends T> d){
-  return with(first(d), flatMap(v-> asList(t.get(),v), Iterables.next(d)));
+<T> Iterable<T> interleave(Supplier<? extends T> t, 
+                           Iterable<? extends T> d){
+  return with(first(d), 
+              flatMap(v-> asList(t.get(), v),
+                      Iterables.next(d)));
 }
 ```
 With recursion its also easy to implement these from scratch.
