@@ -2,6 +2,10 @@ package stonehorse.candy;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+
+/**
+ * Creating lists from variable number of args without the varargs hazards
+ */
 public class Lists{
     private Lists(){}
     public static <T> List<T> asList(){

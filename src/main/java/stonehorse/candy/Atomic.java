@@ -10,7 +10,11 @@ import java.util.function.IntUnaryOperator;
 import java.util.function.LongUnaryOperator;
 import java.util.function.UnaryOperator;
 
+/**
+ * Utility functions for java.util.concurrent.atomic with function first interface
+ */
 public class Atomic {
+
     public static AtomicBoolean atomic(boolean b){
         return new AtomicBoolean(b);
     }
@@ -23,21 +27,35 @@ public class Atomic {
     public static <T> AtomicReference<T> atomic(T o){
         return new AtomicReference<>(o);
     }
+
+    /**
+     * @see java.util.concurrent.atomic.AtomicReference#updateAndGet(UnaryOperator)
+     */
     public static <T> T swap(AtomicReference<T> ref, UnaryOperator<T> f ){
         Objects.requireNonNull(ref);
         Objects.requireNonNull(f);
         return ref.updateAndGet(f);
     }
+    /**
+     * @see java.util.concurrent.atomic.AtomicInteger#updateAndGet(IntUnaryOperator)
+     */
     public static int swap(AtomicInteger ref, IntUnaryOperator f ){
         Objects.requireNonNull(ref);
         Objects.requireNonNull(f);
         return ref.updateAndGet(f);
     }
+    /**
+     * @see java.util.concurrent.atomic.AtomicLong#updateAndGet(LongUnaryOperator)
+     */
     public static long swap(AtomicLong ref, LongUnaryOperator f ){
         Objects.requireNonNull(ref);
         Objects.requireNonNull(f);
         return ref.updateAndGet(f);
     }
+
+    /**
+     * Like updateAndGate for AtomicBoolean
+     */
     public static boolean swap(AtomicBoolean ref, BooleanOperator f ){
         Objects.requireNonNull(ref);
         Objects.requireNonNull(f);

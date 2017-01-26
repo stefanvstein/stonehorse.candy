@@ -24,7 +24,7 @@ Below are a few example usages of some functions to describe the basics. The fun
 
 *[Choices](#choicesjava).java, [Maybe](#maybejava).java, [Iterables](#iterablesjava).java, [Threading and Functions](#threading-and-functionsjava).java & [Trampoline](#trampolinejava).java*
 
-[JavaDoc](https://stefanvstein.github.io/stonehorse.candy/index.html)
+[JavaDoc](https://stefanvstein.github.io/stonehorse.candy/javadocs/index.html)
 
 ### [Choices](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Choices.html).java
 

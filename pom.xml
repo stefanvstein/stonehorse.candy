@@ -106,7 +106,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
           </links>
           <notimestamp>true</notimestamp>
           <reportOutputDirectory>${basedir}</reportOutputDirectory>
-          <destDir>docs</destDir>
+          <destDir>docs/javadocs</destDir>
         </configuration>
         <executions>
           <execution>

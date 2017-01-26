@@ -110,6 +110,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">Atomic</span>
 extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+<div class="block">Utility functions for java.util.concurrent.atomic with function first interface</div>
 </li>
 </ul>
 </div>
@@ -164,7 +165,9 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Atomic.html#swap-java.util.concurrent.atomic.AtomicBoolean-stonehorse.candy.BooleanOperator-">swap</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicBoolean.html?is-external=true" title="class or interface in java.util.concurrent.atomic">AtomicBoolean</a>&nbsp;ref,
-    <a href="../../stonehorse/candy/BooleanOperator.html" title="interface in stonehorse.candy">BooleanOperator</a>&nbsp;f)</code>&nbsp;</td>
+    <a href="../../stonehorse/candy/BooleanOperator.html" title="interface in stonehorse.candy">BooleanOperator</a>&nbsp;f)</code>
+<div class="block">Like updateAndGate for AtomicBoolean</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>static int</code></td>
@@ -282,6 +285,10 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>swap</h4>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;T&nbsp;swap(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicReference.html?is-external=true" title="class or interface in java.util.concurrent.atomic">AtomicReference</a>&lt;T&gt;&nbsp;ref,
                          <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/UnaryOperator.html?is-external=true" title="class or interface in java.util.function">UnaryOperator</a>&lt;T&gt;&nbsp;f)</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicReference.html?is-external=true#updateAndGet-java.util.function.UnaryOperator-" title="class or interface in java.util.concurrent.atomic"><code>AtomicReference.updateAndGet(UnaryOperator)</code></a></dd>
+</dl>
 </li>
 </ul>
 <a name="swap-java.util.concurrent.atomic.AtomicInteger-java.util.function.IntUnaryOperator-">
@@ -292,6 +299,10 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>swap</h4>
 <pre>public static&nbsp;int&nbsp;swap(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicInteger.html?is-external=true" title="class or interface in java.util.concurrent.atomic">AtomicInteger</a>&nbsp;ref,
                        <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/IntUnaryOperator.html?is-external=true" title="class or interface in java.util.function">IntUnaryOperator</a>&nbsp;f)</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicInteger.html?is-external=true#updateAndGet-java.util.function.IntUnaryOperator-" title="class or interface in java.util.concurrent.atomic"><code>AtomicInteger.updateAndGet(IntUnaryOperator)</code></a></dd>
+</dl>
 </li>
 </ul>
 <a name="swap-java.util.concurrent.atomic.AtomicLong-java.util.function.LongUnaryOperator-">
@@ -302,6 +313,10 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>swap</h4>
 <pre>public static&nbsp;long&nbsp;swap(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicLong.html?is-external=true" title="class or interface in java.util.concurrent.atomic">AtomicLong</a>&nbsp;ref,
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/LongUnaryOperator.html?is-external=true" title="class or interface in java.util.function">LongUnaryOperator</a>&nbsp;f)</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicLong.html?is-external=true#updateAndGet-java.util.function.LongUnaryOperator-" title="class or interface in java.util.concurrent.atomic"><code>AtomicLong.updateAndGet(LongUnaryOperator)</code></a></dd>
+</dl>
 </li>
 </ul>
 <a name="swap-java.util.concurrent.atomic.AtomicBoolean-stonehorse.candy.BooleanOperator-">
@@ -312,6 +327,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <h4>swap</h4>
 <pre>public static&nbsp;boolean&nbsp;swap(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicBoolean.html?is-external=true" title="class or interface in java.util.concurrent.atomic">AtomicBoolean</a>&nbsp;ref,
                            <a href="../../stonehorse/candy/BooleanOperator.html" title="interface in stonehorse.candy">BooleanOperator</a>&nbsp;f)</pre>
+<div class="block">Like updateAndGate for AtomicBoolean</div>
 </li>
 </ul>
 <a name="value-java.util.concurrent.atomic.AtomicInteger-">
