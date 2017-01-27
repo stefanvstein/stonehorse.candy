@@ -351,7 +351,7 @@ static String foo(int a) {
 }
 ```
 
-...that eats stack, can be rewritten like:
+...that eats stack, can be rewritten with a new return type, Supplier<Continuation<?>>, like:
 
 ```java
 static Supplier<Continuation<String>> foo(int a) {
@@ -361,13 +361,13 @@ static Supplier<Continuation<String>> foo(int a) {
             () -> recur(foo( a + 1)));
 }
 ```
-... can be used by the trampoline without eating stack:
+...and be used by a trampoline to recur without eating stack:
 
 ```java
 trampoline(foo(0));
 ```
 
-The functions done and recur creates data telling the trampoline to either stop calling foo or to continue with the data passed to recur, a Supplier.
+The functions done and recur creates Continuations telling the trampoline to either return with "Foo" or to continue with the data passed to recur, a Supplier.
 
 This technique does allow for mutual recursion, like:
 
