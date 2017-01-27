@@ -389,11 +389,12 @@ static Supplier<Continuation<Boolean>> isOdd(int a) {
 trampoline(isEven(200000));
 ```
 
-A recursive function returns a Supplier of a Continuation. The Continuation either contains a final value or another function returning a Continuation. The trampoline will call the repeatedly returned continuation function as long as they returned. When none is returned the eventual final value is returned. The functions done and recur produce the appropriate Continuations, with final value or continuation.
+The Continuation either contains a final value or another function returning a Continuation. The trampoline will call the repeatedly returned continuation function as long as they are returned. When done is returned the eventual final value is returned. The functions done and recur produce the appropriate Continuations, with final value or continuation.
 
-Three other functions lazy, seq, and stop are used similarly to produce lazy recursion through a the Iterator interface. Using these, the lazy iterators in Iterables.java becomes pretty easy to implement. 
+Three other functions lazy, seq, and stop are used similarly to produce lazy recursion through a the Iterator interface. The lazy function returns a lazy Iterator that generate value using the trampoline, while value of seq is returned.Stop will terminate the iterator, while recur will continue recursion without delivering a value to the iterator. 
 
-The map function can be implemented as:
+
+Using these, the lazy iterators in Iterables.java becomes pretty easy to implement. The map function can be implemented as:
 
 ```java
 public static <A, V> Iterable<V> map(final Function<? super A, V> f, 
@@ -415,10 +416,8 @@ private static <A, V> Supplier<Continuation<V>> mapI(final Function<? super A, ?
 }
 ```
 
-The seq function is like recur but adds an additional value along with the continuation. The lazy function creates a Iterator of the value passed along with the continuation. The iterator returned by lazy will continue to call incoming continuations and return values when present, until an eventual final value is present. There is also a stop function that stops the iterator without returning a final value.
-
-
 New lazy iterables can easily be constructed by composing the dozen of functions already existing. Perhaps like:
+
 ```java
 <T> Iterable<T> interleave(Supplier<? extends T> t, 
                            Iterable<? extends T> d){
@@ -427,9 +426,10 @@ New lazy iterables can easily be constructed by composing the dozen of functions
                       Iterables.next(d)));
 }
 ```
+
 With recursion its also easy to implement these from scratch.
 
-The important aspect of trampoline is that functional algorithms with tail recursion can be implemented in Java.
+Known functional algorithms with tail recursion can be implemented in Java the way they are defined.
 
  <div align="right">
  /Stefan von Stein
