@@ -28,7 +28,7 @@ Below are a few example usages of some functions to describe the basics. The fun
 
 ### [Choices](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Choices.html).java
 
-*Choices contains [ifelse](#ifelse),[when](#when),[unless](#unless),[mapOr](#mapor), [cond](#cond) & [either](#either)*
+*Choices contains [ifelse](#ifelse), [when](#when), [unless](#unless), [mapOr](#mapor), [cond](#cond) & [either](#either)*
 
 Choices is a number of expression replacements for the if-statement. It is used to reduce the control flow graph and to make code easier to read by naming different types of conditional expressions
 
@@ -179,7 +179,7 @@ There is also a Maybe.maybe(T t) function that return Maybe.nothing() if t happe
 
 *Back to [Usage](#usage)*
 
-*Iterables contains: [map](#map), [filter](#filter), [reduce](#reduce), [take](#take-and-takewhile) & [iterate](#iterate)
+*Iterables contains: [map](#map), [filter](#filter), [reduce](#reduce), [take](#take-and-takewhile) & [iterate](#iterate)*
 
 Streams in Java are great as they provide the functional construct we are used to in other languages. Since streams are an object oriented construct it is pretty hard to add new functions. Iterables is a set of functions with similar functionality, but without the OO principles. It is used to create transforming lazy and composable Iterables. Iterables are simpler, easier to extend, and have guaranteed ordering. All computation is done with the iterators extracted from these Iterables.
 
@@ -351,7 +351,7 @@ static String foo(int a) {
 }
 ```
 
-...that eats stack, can be rewritten with a new return type, Supplier<Continuation<?>>, like:
+...that eats stack, can be rewritten with a new return type, Supplier&lt;Continuation&lt;?&gt;&gt;, like:
 
 ```java
 static Supplier<Continuation<String>> foo(int a) {
