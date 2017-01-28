@@ -2,7 +2,7 @@
 
 Candy is a collection of java functions intended to simplify code structure, by reducing the need of variables. It introduce tail calls using a trampoline, functions for composition of lazy iterables and functions for reversing functional composition. Candy is supposed to be small, simple and easy to use. It relies on Java 8 and the lambda expression. 
 
-It is early interface may still change
+It is early and interface may still change
 
 ## Installation
 
@@ -338,7 +338,7 @@ Since the if statements replacements found in Choices.java are expressions, they
 
 *Back to [Usage](#usage)*
 
-Most functions in this code collection is of functional style. Functional programming languages usually utilize tail calls to implement iteration. It is simple and allow for programming without side effects. Variables are turned into final argument values. Java does not support tail calls well since the compiler can't optimize away excessive stack usage, among other things. Compilers can implement tail call optimization using a trampoline, and the very same constructs can be written by hand in a library.
+Functional programming languages usually utilize recursive tail calls to implement iteration. It is simple and allow for programming without side effects as variables are turned into final function arguments. Java does not support optimized recursive calls and will continuously consume stack. Both compilers and libraries can optimize recursive tail calls using a trampoline.
 
 A function like:
 
@@ -351,7 +351,7 @@ static String foo(int a) {
 }
 ```
 
-...that eats stack, can be rewritten with a new return type, Supplier&lt;Continuation&lt;?&gt;&gt;, like:
+...that eats stack, can be rewritten with a new return type, Supplier&lt;Continuation&lt;?&gt;&gt; and explicit intent on recursion:
 
 ```java
 static Supplier<Continuation<String>> foo(int a) {
@@ -367,7 +367,7 @@ static Supplier<Continuation<String>> foo(int a) {
 trampoline(foo(0));
 ```
 
-The functions done and recur creates Continuations telling the trampoline to either return with "Foo" or to continue with the data passed to recur, a Supplier.
+The functions done and recur creates Continuations telling the trampoline to either return with a supplied value, "Foo", or to continue recuring with the data passed to recur, a Supplier.
 
 This technique does allow for mutual recursion, like:
 
@@ -391,10 +391,10 @@ trampoline(isEven(200000));
 
 The Continuation either contains a final value or another function returning a Continuation. The trampoline will call the repeatedly returned continuation function as long as they are returned. When done is returned the eventual final value is returned. The functions done and recur produce the appropriate Continuations, with final value or continuation.
 
-Three other functions lazy, seq, and stop are used similarly to produce lazy recursion through a the Iterator interface. The lazy function returns a lazy Iterator that generate value using the trampoline, while value of seq is returned.Stop will terminate the iterator, while recur will continue recursion without delivering a value to the iterator. 
+Three other functions lazy, seq, and stop are used similarly to produce lazy recursion through a the Iterator interface. The lazy function returns a lazy Iterator that generate succesive values using the trampoline, the second value of seq.
 
 
-Using these, the lazy iterators in Iterables.java becomes pretty easy to implement. The map function can be implemented as:
+A lazy higher order map function can be implemented as:
 
 ```java
 public static <A, V> Iterable<V> map(final Function<? super A, V> f, 
@@ -415,6 +415,7 @@ private static <A, V> Supplier<Continuation<V>> mapI(final Function<? super A, ?
                       Trampoline::done);
 }
 ```
+The stop function will terminate the iterator, while recur will continue recursion without delivering a value to the iterator. 
 
 New lazy iterables can easily be constructed by composing the dozen of functions already existing. Perhaps like:
 
