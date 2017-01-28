@@ -22,9 +22,9 @@ Candy can be found in the central maven repo, just add the following to your pom
 
 Below are a few example usages of some functions to describe the basics. The functions are grouped in classes.
 
-*[Choices](#choicesjava).java have abstractions of the if statement as functional expressions*
-*[Maybe](#maybejava).java have functions for using Optional* *[Iterables](#iterablesjava).java have functions for lazy and composable Iterables*
-*[Threading and Functions](#threading-and-functionsjava).java have functions for transforming function calls*
+*[Choices](#choicesjava).java have abstractions of the if statement as functional expressions*<br/>
+*[Maybe](#maybejava).java have functions for using Optional*<br/> *[Iterables](#iterablesjava).java have functions for lazy and composable Iterables*<br/>
+*[Threading and Functions](#threading-and-functionsjava).java have functions for transforming function calls*<br/>
 *[Trampoline](#trampolinejava).java have functions for implementing recursive tail calls*
 
 [JavaDoc](https://stefanvstein.github.io/stonehorse.candy/javadocs/index.html)
