@@ -419,7 +419,7 @@ private static <A, V> Supplier<Continuation<V>> mapI(final Function<? super A, ?
 ```
 The `stop` function will terminate the iterator, while `recur` will continue recursion without delivering a value to the iterator. The value of calling `recur` will be invisible to the iterator.
 
-New lazy iterables can easily be constructed by composing the dozen of functions already existing in e.g. [Iterable](iterablejava).java. Perhaps like:
+New lazy iterables can easily be constructed by composing the dozen of functions already existing in e.g. [Iterable](#iterablejava).java. Perhaps like:
 
 ```java
 <T> Iterable<T> interleave(Supplier<? extends T> t,
