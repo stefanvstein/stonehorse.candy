@@ -158,8 +158,7 @@ public class IterablesTest {
         assertEquals(null,
                 list(flatMap((v) -> asList(v.toString()),
                         null)));
-        Function<A,Iterable<A>> f= null;
-        Iterable<A> as=flatMap(f, asList(b()));
+       
     }
 
 

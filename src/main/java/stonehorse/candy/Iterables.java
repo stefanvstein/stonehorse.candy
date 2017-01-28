@@ -383,23 +383,23 @@ public class Iterables {
      * list( flatMap((v) -> asList(v, v), asList(1, 2))) => [1, 1, 2, 2]
      * }</pre>
      */
-    public static <V, A> Iterable<A> flatMap(Function<? super V, Iterable< A>> f, Iterable<? extends V> data) {
+    public static <V, A> Iterable<A> flatMap(Function<? super V, Iterable<? extends A>> f, Iterable<? extends V> data) {
         if (isNull(data) || isNull(f))
             return null;
-        return lazy(flatMapI(f, null, data.iterator()));
+        return lazy(Iterables.<V,A>flatMapI(f, null, data.iterator()));
 
     }
 
-    private static <V, A> Supplier<Continuation<A>> flatMapI(Function<? super V, Iterable<A>> f, Iterator<A> current, Iterator<? extends V> data) {
+    private static <V, A> Supplier<Continuation<A>> flatMapI(Function<? super V, Iterable<? extends A>> f, Iterator<? extends A> current, Iterator<? extends V> data) {
         return () -> {
             if (not(isNull(current))  && current.hasNext()) {
                 A a = current.next();
                 return seq(flatMapI(f, current, data), a);
             }
             if (data != null && data.hasNext()) {
-                Iterable<A> c = f.apply(data.next());
+                Iterable<? extends A> c = f.apply(data.next());
                 if (null != c)
-                    return recur(flatMapI(f, c.iterator(), data));
+                    return recur(Iterables.<V,A>flatMapI(f, c.iterator(), data));
                 return recur(flatMapI(f, null, data));
             }
             return stop();
