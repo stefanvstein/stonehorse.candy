@@ -137,14 +137,14 @@ public class Iterables {
      * list(map( e -> e+1, Arrays.asList(1, 2, 3, 4))) => [2, 3, 4, 5]
      * }</pre>
      */
-    public static <A, V> Iterable<V> map(final Function<? super A, V> f, final Iterable<A> data) {
+    public static <A, V> Iterable<V> map(final Function<? super A, ? extends V> f, final Iterable<A> data) {
         if (isNull(data) || isNull(f))
             return null;
         return () -> {
             Iterator<A> i = data.iterator();
             if (!i.hasNext())
                 return emptyIterator();
-            return lazy(mapI(f, i)).iterator();
+            return lazy(Iterables.<A,V>mapI(f, i)).iterator();
         };
     }
 
@@ -163,11 +163,11 @@ public class Iterables {
      * list(map( (a,b) -> a+b, Arrays.asList(1, 2, 3, 4), Arrays.asList(1, 2, 3))) => [2, 4, 6]
      * }</pre>
      */
-    public static <A, B, V> Iterable<V> map(BiFunction<? super A, ? super B, V> f, final Iterable<? extends A> i1, final Iterable<? extends B> i2) {
+    public static <A, B, V> Iterable<V> map(BiFunction<? super A, ? super B, ? extends V> f, final Iterable<? extends A> i1, final Iterable<? extends B> i2) {
         if (isNull(i1) || isNull(i2) || isNull(f))
             return null;
         return () ->
-                lazy(mapI(f, i1.iterator(), i2.iterator())).iterator();
+                lazy(Iterables.<A,B,V>mapI(f, i1.iterator(), i2.iterator())).iterator();
 
     }
 

@@ -233,7 +233,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>static &lt;A,B,V&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;V&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Iterables.html#map-java.util.function.BiFunction-java.lang.Iterable-java.lang.Iterable-">map</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/BiFunction.html?is-external=true" title="class or interface in java.util.function">BiFunction</a>&lt;? super A,? super B,V&gt;&nbsp;f,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Iterables.html#map-java.util.function.BiFunction-java.lang.Iterable-java.lang.Iterable-">map</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/BiFunction.html?is-external=true" title="class or interface in java.util.function">BiFunction</a>&lt;? super A,? super B,? extends V&gt;&nbsp;f,
    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;? extends A&gt;&nbsp;i1,
    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;? extends B&gt;&nbsp;i2)</code>
 <div class="block">Iterable of lazy iterators applying a combining function to every element induced by two Iterables, until one of the iterators are empty.</div>
@@ -241,7 +241,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>static &lt;A,V&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;V&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Iterables.html#map-java.util.function.Function-java.lang.Iterable-">map</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function">Function</a>&lt;? super A,V&gt;&nbsp;f,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../stonehorse/candy/Iterables.html#map-java.util.function.Function-java.lang.Iterable-">map</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function">Function</a>&lt;? super A,? extends V&gt;&nbsp;f,
    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;A&gt;&nbsp;data)</code>
 <div class="block">Iterable of lazy iterators applying a function to all element induced by a Iterable</div>
 </td>
@@ -528,7 +528,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>map</h4>
-<pre>public static&nbsp;&lt;A,V&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;V&gt;&nbsp;map(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function">Function</a>&lt;? super A,V&gt;&nbsp;f,
+<pre>public static&nbsp;&lt;A,V&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;V&gt;&nbsp;map(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function">Function</a>&lt;? super A,? extends V&gt;&nbsp;f,
                                     <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;A&gt;&nbsp;data)</pre>
 <div class="block">Iterable of lazy iterators applying a function to all element induced by a Iterable
  <p>Example:
@@ -543,7 +543,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>map</h4>
-<pre>public static&nbsp;&lt;A,B,V&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;V&gt;&nbsp;map(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/BiFunction.html?is-external=true" title="class or interface in java.util.function">BiFunction</a>&lt;? super A,? super B,V&gt;&nbsp;f,
+<pre>public static&nbsp;&lt;A,B,V&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;V&gt;&nbsp;map(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/BiFunction.html?is-external=true" title="class or interface in java.util.function">BiFunction</a>&lt;? super A,? super B,? extends V&gt;&nbsp;f,
                                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;? extends A&gt;&nbsp;i1,
                                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;? extends B&gt;&nbsp;i2)</pre>
 <div class="block">Iterable of lazy iterators applying a combining function to every element induced by two Iterables, until one of the iterators are empty.
