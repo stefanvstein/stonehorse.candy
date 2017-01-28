@@ -1,6 +1,6 @@
 #Stonehorse.candy, simpler java
 
-Candy is a collection of java functions intended to simplify code structure, by reducing the need of variables. It introduce tail calls using a trampoline, functions for composition of lazy iterables and functions for reversing functional composition. Candy is supposed to be small, simple and easy to use. It relies on Java 8 and the lambda expression. 
+Candy is a collection of java functions intended to simplify code structure, by reducing the need of variables. It introduce tail calls using a trampoline, functions for composition of lazy iterables and functions for reversing functional composition. Candy is supposed to be small, simple and easy to use. It relies on Java 8 and the lambda expression.
 
 It is early and interface may still change
 
@@ -39,8 +39,8 @@ The `ifelse` function is the expression equivalent of the `if else` statement. I
 ```java
 // Write:
 int question=3;
-final String answer=ifelse(question==3, 
-                           ()->"YES", 
+final String answer=ifelse(question==3,
+                           ()->"YES",
                            ()->"NO"));
 println(answer);
 
@@ -50,7 +50,7 @@ int question=3;
 String answer="Unknown";
 if(question==3)
   answer="YES";
-else 
+else
   answer="NO";
 println(answer);
 
@@ -59,7 +59,7 @@ println(answer);
 int question=3;
 if(question==3)
   println("YES");
-else 
+else
   println("NO");
 
 // where println calls are duplicated.
@@ -83,7 +83,7 @@ final String answer = when(question==3, ()->"YES"));
 final String answer = question==3 ? "YES" : null;
 ```
 
-With the `when` function you know you don't need to look further for an `else` clause. The intent is revealed at head, in contrast to the `if` statement where you need to parse ahead to understand structure and occasionally find an `else` clause. This is difficult with nested `if else` statement structures. 
+With the `when` function you know you don't need to look further for an `else` clause. The intent is revealed at head, in contrast to the `if` statement where you need to parse ahead to understand structure and occasionally find an `else` clause. This is difficult with nested `if else` statement structures.
 
 #### doWhen
 `if` statements without corresponding `else` clauses usually indicate side effects. Side effects should not represent a value. The purpose of the `void` keyword is to indicate side effects, routines that do not return anything.
@@ -95,17 +95,17 @@ doWhen(debug, ()->println("DEBUG - we have reached all the way to this point"));
 
 #### unless
 
-When the normal path through an if statement is the truth, when the else clause is exceptional, it becomes easier to understand code when you read the then clause before the test. The test and the else clause becomes a guard for exceptional conditions. With the unless function the important path stands out by standing ahead. 
+When the normal path through an if statement is the truth, when the else clause is exceptional, it becomes easier to understand code when you read the then clause before the test. The test and the else clause becomes a guard for exceptional conditions. With the unless function the important path stands out by standing ahead.
 
 ```java
 return unless( ()-> "There are " + n + " apples",
                n<0,
                ()-> "Weird!! Less than 0 apples?");
-               
+
 // is both easier understand, as the normal case comes first, and less complex than:
 if(n<0)
   return "Weird!! Less than 0 apples?"
-else 
+else
   return "There are " + n + " apples"
 ```
 
@@ -170,10 +170,10 @@ Maybe.map(String::toUpperCase, Maybe.just("Value"))
 // would yield Maybe.just("VALUE") while
 Maybe.map(String::toUpperCase, Maybe.nothing())
 //..yield Maybe.nothing().
-``` 
+```
 Maybe.just and Maybe.nothing creates Optionals while Maybe.map calls map on that Optional.
 
-There is also a Maybe.maybe(T t) function that return Maybe.nothing() if t happen to be null. 
+There is also a Maybe.maybe(T t) function that return Maybe.nothing() if t happen to be null.
 
 ### [Iterables](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Iterables.html).java
 
@@ -185,7 +185,7 @@ Streams in Java are great as they provide the functional construct we are used t
 
 #### map
 
-Returns an Iterable which iterator applies a function to each element 
+Returns an Iterable which iterator applies a function to each element
 ```java
 Iterable<Integer> inced = Iterables.map( e -> e+1, Arrays.asList(1, 2, 3));
 println(Iterables.list(inced));
@@ -206,8 +206,8 @@ would print [2, 4], as 1 and 2 are odd numbers
 The iterators produced by even  are lazy, which is nice since we then can compose the functions without excessive memory allocation.
 
 ```java
-Iterable<Integer> odd = Iterables.map( v-> v+1, 
-                                     Iterables.filter( e -> 0==e%2, 
+Iterable<Integer> odd = Iterables.map( v-> v+1,
+                                     Iterables.filter( e -> 0==e%2,
                                                        Arrays.asList(1, 2, 3, 4)));
 println(Iterables.list(odd));
 ```
@@ -220,8 +220,8 @@ With some static imports it becomes more readable
 Function<Integer, Integer> inc = (v) -> v+1;
 Predicate<Integer> isEven = (e) -> 0==e%2;
 void printOdd(){
-  Iterable<Integer> odd = map( inc, 
-                               filter( isEven, 
+  Iterable<Integer> odd = map( inc,
+                               filter( isEven,
                                        asList(1, 2, 3, 4)));
   println(list(odd));
 }
@@ -241,7 +241,7 @@ This is terminal
 
 #### take and takeWhile
 
-Rather than producing a single value like you do with reduce, you may need the first few elements in iterators. The take functions creates Iterables producing iterators that limit the number of elements produced. 
+Rather than producing a single value like you do with reduce, you may need the first few elements in iterators. The take functions creates Iterables producing iterators that limit the number of elements produced.
 
 ```java
 Iterable<Integer> afew = take(3, asList(1,2,3,4));
@@ -253,7 +253,7 @@ would print [1, 2, 3] while takeWhile takes elements as long as they match a pre
 Iterable<Integer> afew = takeWhile(e -> e < 3, asList(1,2,3,4));
 println(list(afew));
 ```
-would print [1, 2]. 
+would print [1, 2].
 
 #### iterate
 
@@ -275,7 +275,7 @@ println(list(take(4, rangeFrom(1))));
 
 would print [1,2,3,4]. rangeFrom would not produce more than 4 numbers, as take won't pull more numbers.
 
-There is more: 
+There is more:
 
 * **first** takes the first element of the next iterator. This is terminal
 * **second** takes the second element of the next iterator. This is terminal
@@ -291,7 +291,7 @@ There is more:
 * **flatMap** is the iterable of concatenations of the result of applying map to every element in iterators of data
 * **reductions** is the iterable of producing intermediate values of the reduction of elements by f, starting with accumulator
 * **takeNth** is the iterable of every nth element
-* **partition** is the iterable of num length iterables 
+* **partition** is the iterable of num length iterables
 * **partitionBy** is the iterable of iterables grouped by application
 * **splitAt** is the tuple of iterables split at i, where both are lazy
 * **repeatedly** is the iterable of continuous supplier retrieval
@@ -304,7 +304,7 @@ There is more:
 * **forceList** is a new list of iterable. This is terminal
 * **forseSet** is a new set of iterable. This is terminal
 
-Again, the iterators produced are lazy and the while functions can safely be composed with other Iterables functions. It is about what to transform rather than how to iterate data. 
+Again, the iterators produced are lazy and the while functions can safely be composed with other Iterables functions. It is about what to transform rather than how to iterate data.
 
 ### [Threading](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Threading.html) and [Functions](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Functions.html).java
 
@@ -332,7 +332,7 @@ println(thread(rangeFrom(1),
                Iterables::list));
 ```
 
-Since the if statements replacements found in Choices.java are expressions, they also fit well within the thread function. 
+Since the if statements replacements found in Choices.java are expressions, they also fit well within the thread function.
 
 ### [Trampoline](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Trampoline.html).java
 
@@ -344,43 +344,43 @@ A function like:
 
 ```java
 static String foo(int a) {
-  return 
+  return
     ifelse(a > 200000,
            () -> "Foo"
            () -> foo(a + 1));
 }
 ```
 
-...that eats stack, can be rewritten with a new return type, Supplier&lt;Continuation&lt;?&gt;&gt; and explicit intent on recursion:
+...that eats stack, can be rewritten with a new return type, `Supplier&lt;Continuation&lt;?&gt;&gt;` and explicit intent on recursion using `done` and `recur`:
 
 ```java
 static Supplier<Continuation<String>> foo(int a) {
-  return () -> 
+  return () ->
      ifelse(a > 200000,
             () -> done("Foo"),
             () -> recur(foo( a + 1)));
 }
 ```
-...and be used by a trampoline to recur without eating stack:
+...and be used by a `trampoline` to recur without eating stack:
 
 ```java
 trampoline(foo(0));
 ```
 
-The functions done and recur creates Continuations telling the trampoline to either return with a supplied value, "Foo", or to continue recuring with the data passed to recur, a Supplier.
+The functions `done` and `recur` creates Continuations telling the trampoline to either return with a supplied value, "Foo", or to continue recurring with the data passed to recur.
 
 This technique does allow for mutual recursion, like:
 
 ```java
 static Supplier<Continuation<Boolean>> isEven(int a) {
-  return () -> 
+  return () ->
     ifelse(a == 0,
            () -> done(true),
            () -> recur(isOdd(a - 1)));
 }
 
 static Supplier<Continuation<Boolean>> isOdd(int a) {
-  return () -> 
+  return () ->
     ifelse(a == 0,
            () -> done(false)
            () -> recur(isEven(a - 1)));
@@ -389,15 +389,14 @@ static Supplier<Continuation<Boolean>> isOdd(int a) {
 trampoline(isEven(200000));
 ```
 
-The Continuation either contains a final value or another function returning a Continuation. The trampoline will call the repeatedly returned continuation function as long as they are returned. When done is returned the eventual final value is returned. The functions done and recur produce the appropriate Continuations, with final value or continuation.
+The Continuation either contains a final value or another function returning a Continuation. The trampoline will call the repeatedly returned continuation function as long as they are returned. When the value of `done` is returned the eventually contained final value is returned. The functions `done` and `recur` produce the appropriate Continuations, with final value or continuation.
 
-Three other functions lazy, seq, and stop are used similarly to produce lazy recursion through a the Iterator interface. The lazy function returns a lazy Iterator that generate succesive values using the trampoline, the second value of seq.
-
+Three other functions `lazy`, `seq`, and `stop` are used similarly to produce lazy recursion through a the `Iterator` interface. The `lazy` function returns a lazy Iterator that generate successive values using a trampoline, the second value of seq.
 
 A lazy higher order map function can be implemented as:
 
 ```java
-public static <A, V> Iterable<V> map(final Function<? super A, V> f, 
+public static <A, V> Iterable<V> map(final Function<? super A, V> f,
                                      final Iterable<A> data) {
   requireNonNull(f);
   return when(nonNull(data), () ->
@@ -407,7 +406,7 @@ public static <A, V> Iterable<V> map(final Function<? super A, V> f,
                   i -> emptyIterator()));
 }
 
-private static <A, V> Supplier<Continuation<V>> mapI(final Function<? super A, ? extends V> f, 
+private static <A, V> Supplier<Continuation<V>> mapI(final Function<? super A, ? extends V> f,
                                                      final Iterator<A> elements) {
   return () -> either(f.apply(elements.next()),
                       v -> elements.hasNext(),
@@ -415,23 +414,21 @@ private static <A, V> Supplier<Continuation<V>> mapI(final Function<? super A, ?
                       Trampoline::done);
 }
 ```
-The stop function will terminate the iterator, while recur will continue recursion without delivering a value to the iterator. 
+The `stop` function will terminate the iterator, while `recur` will continue recursion without delivering a value to the iterator. The value of calling recur will be invisible to the iterator.
 
-New lazy iterables can easily be constructed by composing the dozen of functions already existing. Perhaps like:
+New lazy iterables can easily be constructed by composing the dozen of functions already existing in the [Iterable](iterablejava).java. Perhaps like:
 
 ```java
-<T> Iterable<T> interleave(Supplier<? extends T> t, 
+<T> Iterable<T> interleave(Supplier<? extends T> t,
                            Iterable<? extends T> d){
-  return with(first(d), 
+  return with(first(d),
               flatMap(v-> asList(t.get(), v),
                       Iterables.next(d)));
 }
 ```
 
-With recursion its also easy to implement these from scratch.
-
 Known functional algorithms with tail recursion can be implemented in Java the way they are defined.
 
  <div align="right">
  /Stefan von Stein
-</div> 
+</div>
