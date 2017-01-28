@@ -22,7 +22,10 @@ Candy can be found in the central maven repo, just add the following to your pom
 
 Below are a few example usages of some functions to describe the basics. The functions are grouped in classes.
 
-*[Choices](#choicesjava).java, [Maybe](#maybejava).java, [Iterables](#iterablesjava).java, [Threading and Functions](#threading-and-functionsjava).java & [Trampoline](#trampolinejava).java*
+*[Choices](#choicesjava).java have abstractions of the if statement as functional expressions*
+*[Maybe](#maybejava).java have functions for using Optional* *[Iterables](#iterablesjava).java have functions for lazy and composable Iterables*
+*[Threading and Functions](#threading-and-functionsjava).java have functions for transforming function calls*
+*[Trampoline](#trampolinejava).java have functions for implementing recursive tail calls*
 
 [JavaDoc](https://stefanvstein.github.io/stonehorse.candy/javadocs/index.html)
 
@@ -391,7 +394,7 @@ trampoline(isEven(200000));
 
 The Continuation either contains a final value or another function returning a Continuation. The trampoline will call the repeatedly returned continuation function as long as they are returned. When the value of `done` is returned the eventually contained final value is returned. The functions `done` and `recur` produce the appropriate Continuations, with final value or continuation.
 
-Three other functions `lazy`, `seq`, and `stop` are used similarly to produce lazy recursion through a the `Iterator` interface. The `lazy` function returns a lazy Iterator that generate successive values using a trampoline, the second value of seq.
+Three other functions `lazy`, `seq`, and `stop` are used similarly to produce lazy recursion through a the `Iterator` interface. The `lazy` function returns a lazy Iterator that generate successive values using a trampoline, the second value of `seq`.
 
 A lazy higher order map function can be implemented as:
 
@@ -414,9 +417,9 @@ private static <A, V> Supplier<Continuation<V>> mapI(final Function<? super A, ?
                       Trampoline::done);
 }
 ```
-The `stop` function will terminate the iterator, while `recur` will continue recursion without delivering a value to the iterator. The value of calling recur will be invisible to the iterator.
+The `stop` function will terminate the iterator, while `recur` will continue recursion without delivering a value to the iterator. The value of calling `recur` will be invisible to the iterator.
 
-New lazy iterables can easily be constructed by composing the dozen of functions already existing in the [Iterable](iterablejava).java. Perhaps like:
+New lazy iterables can easily be constructed by composing the dozen of functions already existing in e.g. [Iterable](iterablejava).java. Perhaps like:
 
 ```java
 <T> Iterable<T> interleave(Supplier<? extends T> t,
