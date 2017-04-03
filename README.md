@@ -1,4 +1,4 @@
-#Stonehorse.candy, simpler java
+# Stonehorse.candy, simpler java
 
 Candy is a collection of java functions intended to simplify code structure, by reducing the need of variables. It introduce tail calls using a trampoline, functions for composition of lazy iterables and functions for reversing functional composition. Candy is supposed to be small, simple and easy to use. It relies on Java 8 and the lambda expression.
 
@@ -29,7 +29,7 @@ Below are a few example usages of some functions to describe the basics. The fun
 
 [JavaDoc](https://stefanvstein.github.io/stonehorse.candy/javadocs/index.html)
 
-### [Choices](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Choices.html).java
+### [Choices](https://stefanvstein.github.io/stonehorse.candy/javadocs/stonehorse/candy/Choices.html).java
 
 *Choices contains [ifelse](#ifelse), [when](#when), [unless](#unless), [mapOr](#mapor), [cond](#cond) & [either](#either)*
 
@@ -162,7 +162,7 @@ else
 ```
 `either` reduces the need of variables further.
 
-### [Maybe](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Maybe.html).java
+### [Maybe](https://stefanvstein.github.io/stonehorse.candy/javadocs/stonehorse/candy/Maybe.html).java
 
 *To [Usage](#usage)*
 
@@ -178,7 +178,7 @@ Maybe.just and Maybe.nothing creates Optionals while Maybe.map calls map on that
 
 There is also a Maybe.maybe(T t) function that return Maybe.nothing() if t happen to be null.
 
-### [Iterables](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Iterables.html).java
+### [Iterables](https://stefanvstein.github.io/stonehorse.candy/javadocs/stonehorse/candy/Iterables.html).java
 
 *Back to [Usage](#usage)*
 
@@ -309,7 +309,7 @@ There is more:
 
 Again, the iterators produced are lazy and the while functions can safely be composed with other Iterables functions. It is about what to transform rather than how to iterate data.
 
-### [Threading](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Threading.html) and [Functions](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Functions.html).java
+### [Threading](https://stefanvstein.github.io/stonehorse.candy/javadocs/stonehorse/candy/Threading.html) and [Functions](https://stefanvstein.github.io/stonehorse.candy/javadocs/stonehorse/candy/Functions.html).java
 
 *Back to [Usage](#usage)*
 
@@ -337,7 +337,7 @@ println(thread(rangeFrom(1),
 
 Since the if statements replacements found in Choices.java are expressions, they also fit well within the thread function.
 
-### [Trampoline](https://stefanvstein.github.io/stonehorse.candy/stonehorse/candy/Trampoline.html).java
+### [Trampoline](https://stefanvstein.github.io/stonehorse.candy/javadocs/stonehorse/candy/Trampoline.html).java
 
 *Back to [Usage](#usage)*
 
